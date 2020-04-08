@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<head>
+  <%- include ("head.ejs") %>
+</head>
+
+<body leftmargin="0" topmargin="0">
+<DIV ID="objContents">
+<%- include ("ddScript.ejs") %>
+
+<div id="wrap">
+	<div id="header">
+	  <%- include ("header.ejs") %>
+	</div><!--// header -->
+
+	<div class="location">
+	  <%- include ("location.ejs") %>
+	</div><!--// location -->
+
+	<div id="sub_container" class="clfix">
+		<div id="sidebar">
+		  <%- include ("sidebar.ejs") %>
+		</div><!--// sidebar -->
+
+		<div id="sub_contents">
+			<div class="contop">
+				<% if(tbl == "1") { %>
+				<h3 class="page_title">Notice</h3>
+				<% } else if (tbl == "2") { %>
+				<h3 class="page_title">Gallery</h3>
+				<% } else if (tbl == "3") { %>
+				<h3 class="page_title">Free board</h3>
+				<% } %>
+				<p>Genesys Lab.</p>
+			</div><!--// contop -->
+			<div class="conbody">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+    <td height="2" bgcolor="#555" colspan="6"></td>
+  </tr>
+  <tr height="35" >
+    <td height="35" colspan="6" align="left" style="padding:5px 20px 5px 20px; font-size:14px; color:#333; word-break:break-all;">
+      <strong> <%= data[0].title %> </strong>
+    </td>
+  </tr>
+  <tr>
+    <td height="1" bgcolor="#dcdcdc" colspan="6"></td>
+  </tr>
+   <tr height="40" >
+    <td height="40" colspan="6">
+		<ul class="bbs_top clfix">
+			<li class="bg_none"><em class="tit">작성자</em><span style="padding-left:10px;word-break:break-all;"><%= data[0].author %> </span></li>
+			<li><em class="tit">작성일</em><span style="padding-left:10px;word-break:break-all;"> <%= data[0].date %></span></li>
+			<li><em class="tit">조회수</em><span style="padding-left:10px;word-break:break-all;"> <%= data[0].hit %> </span></li>
+		</ul>
+	</td>
+  </tr>
+
+      <tr>
+    <td height="1" bgcolor="#aaaaaa" colspan="6"></td>
+  </tr>
+  <tr >
+    <td height="15" colspan="6"></td>
+  </tr>
+  <tr>
+    <td colspan="6"> </td>
+  </tr>
+  <tr>
+    <td colspan="6">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-bottom:1px solid #ddd;">
+            <tr>
+                <td  style="word-break:break-all;padding:15px;">
+                <div id="DivContents" style="line-height:1.4;word-break:break-all;"> <%= data[0].content %> </div>
+            	</td>
+            </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td height="5" colspan="6"></td>
+  </tr>
+  <tr>
+    <td height="40" colspan="6" align="right">
+                        <a href="./board.ejs?tbl=<%= tbl %>&pageNum=1"><div class="bbs_btn">목록</div></a>
+                                  </td>
+  </tr>
+</table>
+<br>
+
+							<!-- sns tag -->
+							<table width="100%" cellpadding="0" cellspacing="0" border="0">
+								<tr>
+																			<td width="25" align="right" style="padding-left:8px;">
+																																</td>
+																	</tr>
+							</table>
+							<!-- sns tag -->
+							<script type="text/javascript" src="/css/jquery-1.7.min.js"></script>
+<br>
+<br>
+<br>
+<br>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+	<colgroup>
+		<col width="13%">
+		<col width="87%">
+	  </colgroup>
+	<tr>
+		<td height="40" align="center" style="font-weight:bold;border-top:2px solid #555;" class="tit">이전글</td>
+		<td style="padding-left:20px;border-top:2px solid #555; background:url(/images/bar.jpg) 0 55% no-repeat;">
+<% if(pre.length === 0) { %>
+없습니다.
+<% } else { %>
+<a href="./board_view.ejs?tbl=<%= tbl %>&id=<%= pre[0].id %>"><%= pre[0].title %></a>
+<% } %></td>
+	</tr>
+	<tr>
+		<td height="40" align="center" style="font-weight:bold;border-top:1px solid #cccccc;border-bottom:1px solid #cccccc;" class="tit">다음글</td>
+		<td style="padding-left:20px;border-top:1px solid #cccccc;border-bottom:1px solid #cccccc; background:url(/images/bar.jpg) 0 55% no-repeat;">
+<% if(next.length === 0) { %>
+없습니다.
+<% } else { %>
+<a href="./board_view.ejs?tbl=<%= tbl %>&id=<%= next[0].id %>"><%= next[0].title %></a>
+
+<% } %></td>
+	</tr>
+</table>
+<br>
+
+<script>
+function imgResize()
+{
+    // DivContents ¿µ¿ª¿¡¼­ ÀÌ¹ÌÁö°¡ maxsize º¸´Ù Å©¸é ÀÚµ¿ ¸®»çÀÌÁî ½ÃÄÑÁÜ
+    maxsize = 700; // °¡·Î»çÀÌÁî ( ´Ù¸¥°ªÀ¸·Î ÁöÁ¤ÇÏ¸éµÊ)
+    var content = document.getElementById("DivContents");
+    var img = content.getElementsByTagName("img");
+    for(i=0; i<img.length; i++)
+    {
+
+        if ( eval('img[' + i + '].width > maxsize') )
+        {
+            var heightSize = ( eval('img[' + i + '].height')*maxsize )/eval('img[' + i + '].width') ;
+            eval('img[' + i + '].width = maxsize') ;
+            eval('img[' + i + '].height = heightSize') ;
+        }
+    }
+}
+window.onload = imgResize;
+</script>			</div><!--// conbody -->
+		</div><!--// sub_contents -->
+	</div><!--// sub_container -->
+
+
+	<div id="footer">
+	  <%- include ("footer.ejs") %>
+	</div><!--// footer -->
+</div><!--// wrap -->
+
+
+</DIV>
+<DIV ID="objSelection">
+</DIV>
+
+</body>
+</html>
+<!-- new post -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript" src="/addr_zip/Uzipjs/new_UzipJs.js"></script>
+<!-- openDaumPostcode -->

@@ -1,0 +1,127 @@
+
+<% if(tbl == 'contact') { %>
+
+			<div class="contop">
+				<h3 class="page_title">Contact us</h3>
+				<p>Genesys Lab.</p>
+			</div><!--// contop -->
+			<div class="conbody">
+			<div id="map" class="map">
+          </div>
+        	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f8dc91238bee9605b7f28e98f905f90"></script>
+        	<script>
+        		var container = document.getElementById('map');
+        		var options = {
+        			center: new kakao.maps.LatLng(36.62883224146073, 127.45657148318668),
+        			level: 3
+        		};
+
+        		var map = new kakao.maps.Map(container, options);
+            var markerPosition  = new kakao.maps.LatLng(36.62883224146073, 127.45657148318668);
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                  position: markerPosition
+                });
+            // 마커가 지도 위에 표시되도록 설정합니다
+            marker.setMap(map);
+
+            // 커스텀 오버레이에 표시할 내용입니다
+            // HTML 문자열 또는 Dom Element 입니다
+            var content = '<div class ="overlay"><span class="left"></span><span class="center">            <a href="https://map.kakao.com/link/to/Genesys,36.62883224146073, 127.45657148318668" style="color:blue;text-decoration:none;" target="_blank">길찾기</a></span><span class="right"></span></div>';
+
+            // 커스텀 오버레이가 표시될 위치입니다
+            var position = new kakao.maps.LatLng(36.62883224146073, 127.45657148318668);
+
+            // 커스텀 오버레이를 생성합니다
+            var customOverlay = new kakao.maps.CustomOverlay({
+                position: position,
+                content: content
+            });
+
+            // 커스텀 오버레이를 지도에 표시합니다
+            customOverlay.setMap(map);
+          </script>
+          <div style="text-align:right;">
+          </div>
+	    <p class="mt10" style='margin-top:10px;text-align:center;'>
+	      충청북도 청주시
+	    </p>
+	  </div><!--// conbody -->
+
+<% } else if(tbl == 'sitemap') { %>
+	<div class="contop">
+	<h3 class="page_title">Site Map</h3>
+	<p>Genesys Lab.</p>
+	</div><!--// contop -->
+	<div class="conbody">
+	<div class="site_wrap">
+	<dl class="site_con">
+		<dt>Research</dt>
+		<dd><a href="/sub01/sub01.php">Fuel Cell</a></dd>
+<dd><a href="/sub01/sub02.php">Lithium Secondary Battery</a></dd>
+<dd><a href="/sub01/sub03.php">Biocidal polymers</a></dd>
+<dd><a href="/sub01/sub04.php">Polymer composites</a></dd>
+<dd><a href="/sub01/sub05.php">Water treatment</a></dd>
+<dd><a href="/sub01/sub06.php">Self-healing polymers</a></dd>
+	</dl>
+	<dl class="site_con">
+		<dt>Professor</dt>
+		<dd><a href="/sub02/sub01.php">Professor</a></dd>
+	</dl>
+
+	<dl class="site_con  margin_0">
+		<dt>Members</dt>
+		<dd><a href="/bbs/board.php?tbl=candidate1">Ph.D. Candidate</a></dd>
+		<dd><a href="/bbs/board.php?tbl=candidate2">M.S. Candidate</a></dd>
+		<dd><a href="/bbs/board.php?tbl=alumni">Alumni</a></dd>	</dl>
+</div>
+
+
+
+<div class="site_wrap mt30">
+		<dl class="site_con">
+		<dt>Publication</dt>
+		<dd><a href="/bbs/board.php?tbl=journals">Journals</a></dd>
+		<dd><a href="/bbs/board.php?tbl=presentations">Presentations</a></dd>
+		<dd><a href="/bbs/board.php?tbl=patent">Patent</a></dd>
+	</dl>
+	<dl class="site_con ">
+		<dt>Board</dt>
+		<dd><a href="/bbs/board.php?tbl=notice">Notice</a></dd>
+		<dd><a href="/bbs/board.php?tbl=gallery">Gallery</a></dd>
+	</dl>
+</div>
+
+<style type="text/css">
+/*»çÀÌÆ®¸Ê*/
+.site_wrap {width:100%;margin-bottom:30px; text-align:left;}
+.site_con {width:230px;float:left;margin-right:65px; margin-top:10px;}
+.site_con dt {margin-bottom:5px; font-size:17px; color:#0a82a8;padding-bottom:10px;  font-weight:bold; border-bottom:2px solid #0a82a8;line-height:45px; height:35px; padding-left:10px; text-align:left; padding-left:0px;}
+
+.site_con dd {font-size:13px; color:#666;text-align:left; padding-left:3px; border-bottom:1px solid #ccc; line-height:36px; padding-left:10px;  font-weight:bold; background:url(/images/sub01/dot_li.jpg)no-repeat 10px 14px; padding-left:2px; }
+.site_con dd a {color:#666;}
+.site_con dd a:hover {color:#009ed0;text-decoration:none;}
+.baby_o{font-size:12px;color:#666;line-height:22px; padding-left:15px; padding-top:6px;}
+.site_con span {background-color:#ffffff; }
+.site_con dd .baby_o a:hover {color:#009ed0;text-decoration:underline; font-weight:normal}
+
+.site_con ul{background-color:#f8f8f8; border-bottom:1px solid #ccc; padding-bottom:7px;}
+
+
+.margin_0 {margin-right:0;}
+
+.site_wrap:after { /* after */
+ content:".";
+ display:block;
+ height:0;
+ clear:both;
+ visibility:hidden; 
+}  
+*html .site_wrap  { height:1%;} /* IE5, IE6 À» À§ÇÑ ±ÔÄ¢ */
+*:first-child+html .site_wrap   { height:1%;} /* IE7 À» À§ÇÑ ±ÔÄ¢ */
+
+</style>
+</div><!--// conbody -->
+		
+<% } %>
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" />
+<title>Genesys</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script src="./js/ckeditor/ckeditor.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR:300,400,500&display=swap&subset=korean" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+//페이지가 로드되면 실행한다.
+$(document).ready( function() {
+	$("#header").load("/includeHTML/header.html");
+	$("#bottom").load("/includeHTML/bottom.html");
+});
+
+</script>
+</head>
+<body>
+<div class="wrapper">
+  <div class="content">
+    <div id="header">
+    </div>
+    <div class="img_visual">
+      <img src="images/main_img.jpg" alt="">
+    </div>
+    <div class="contentarea2">
+      <div class="sidebar">
+        <ul>
+          <li><img src="images/info.png" alt="">회사소개</li>
+          <li><a href="./board.ejs?pageNum=1">게시판</a></li>
+          <li><a href="ref_board">자료실</a></li>
+        </ul>
+      </div>
+      <div class="contentbar">
+        <div class="content_title">
+          게시판
+        </div>
+        <div class="location">
+          home > 커뮤니티 > 게시판
+        </div>
+        <div class="content_main">
+          <hr>
+          <form name="edit" action="/edit" method="post">
+        	<input type="hidden" name="mode" value="W" />
+        	<table border="1" summary="게시판 등록 폼" align="center">
+        		<caption>게시판 등록 폼</caption>
+        		<colgroup>
+        			<col width="100" />
+        			<col width="300" />
+        		</colgroup>
+        		<tbody>
+        			<tr>
+        				<th >제목</th>
+        				<td align="left" colspan="3"><textarea id="title" name="title" cols="60" rows="1"><%= data[0].title %></textarea></td>
+        			</tr>
+        			<tr>
+        				<th>작성자</th>
+        				<td  align="left"><input type="text" id="author" name="author" value="<%= data[0].author %>" readonly/></td>
+                <th width="50px" align="center">글번호</th>
+                <td width="10px" ><input type="text" id="id" name="id" value="<%= data[0].id %>" size="1" style = "text-align:center;" readonly/></td>
+                </tr>
+        			<tr>
+        				<td colspan="4">
+        					<textarea id="content" name="content" cols="80" rows="18"><%- data[0].content %></textarea>
+        					<script>
+        					CKEDITOR.replace('content');
+        					</script>
+        				</td>
+        			</tr>
+        		</tbody>
+        	</table>
+
+        	<p>
+
+        		<input type="submit" value="수정하기" />
+        	</p>
+        	</form>
+      		<hr>
+        </div>
+      </div>
+
+      </div>
+			<div id="bottom">
+
+			</div>
+  </div>
+</div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/slide.js"></script>
+</body>
+</html>

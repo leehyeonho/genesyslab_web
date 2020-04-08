@@ -1,0 +1,42 @@
+		
+		<% if(tbl == 1) { %>
+                
+		<div class="sub_title">
+                <h2>Board</h2>
+                </div><!--// sub_title -->
+       		<div class="lnb">
+		<h3 class='on' ><a href="/board.ejs?tbl=1&pageNum=1"  class="over" ><span>Notice</span></a></h3>
+                <h3 class='#none' ><a href="/board.ejs?tbl=2&pageNum=1"  ><span>Gallery</span></a></h3>
+                <h3 class='#none' ><a href="/board.ejs?tbl=3&pageNum=1"  ><span>Free</span></a></h3>
+		
+		<% } else if(tbl == 2) { %>
+                
+		<div class="sub_title">
+                <h2>Board</h2>
+                </div><!--// sub_title -->
+                <div class="lnb">
+		<h3 class='#none'><a href="/board.ejs?tbl=1&pageNum=1"   ><span>Notice</span></a></h3>
+                <h3 class='on' ><a href="/board.ejs?tbl=2&pageNum=1"  class="over" ><span>Gallery</span></a></h3>
+                <h3 class='#none' ><a href="/board.ejs?tbl=3&pageNum=1"  ><span>Free</span></a></h3>
+		
+		<% } else if(tbl == 3) { %>
+                
+		
+                <div class="sub_title">
+                <h2>Board</h2>
+                </div><!--// sub_title -->
+                <div class="lnb"><h3 class='#none' ><a href="/board.ejs?tbl=1&pageNum=1"  ><span>Notice</span></a></h3>
+                <h3 class='#none' ><a href="/board.ejs?tbl=2&pageNum=1"  ><span>Gallery</span></a></h3>
+                <h3 class='on' ><a href="/board.ejs?tbl=3&pageNum=1"  class="over" ><span>Free</span></a></h3>
+		
+		<% } else { %>
+		<div class="sub_title">
+                <h2 style="text-transform: uppercase;"><%= tbl %></h2>
+                </div><!--// sub_title -->
+                <div class="lnb">
+		<h3 class='on' ><a href="/sub.ejs?tbl=<%= tbl %>"  class="over" ><span style="text-transform:capitalize;"><%= tbl %></span></a></h3>
+		
+		<% } %>
+        	
+		</div>
+

@@ -1,0 +1,54 @@
+		<div class="inner">
+			<h1><a href="/"><img src="/images/banner3.jpg" alt="GENESYS LAB" /></a></h1>
+			<div class="top_menu clfix">
+				<span class="tm1"><a href="/"><img src="/images/home.png" alt="" />HOME</a></span>
+				<span class="tm2"><a href="/sub.ejs?tbl=contact">CONTACT US</a></span>
+				<span class="tm3"><a href="/sub.ejs?tbl=sitemap">SITEMAP</a></span>
+			</div><!--// top_menu -->
+			<ul id="gnb" class="clfix">
+	<li><a href="/sub01/sub01.php">RESEARCH</a>
+		<ul class="gnb_2depth gnb_2depth1">
+			<li><a href="/sub01/sub01.php">Fuel Cell</a></li>
+			<li><a href="/sub01/sub02.php" style="font-size:12px">Lithium Secondary Battery</a></li>
+			<li><a href="/sub01/sub03.php">Biocidal Polymers</a></li>
+			<li><a href="/sub01/sub04.php">Polymer Composites</a></li>
+			<li><a href="/sub01/sub05.php">Water Treatment</a></li>
+			<li><a href="/sub01/sub06.php">Self-healing Polymers</a></li>
+		</ul>
+	</li>
+	<li><a href="/sub02/sub01.php">PROFESSOR</a>
+		<!-- <ul class="gnb_2depth gnb_2depth2">
+			<li><a href="/sub02/sub01.php">Professor</a></li>
+		</ul> -->
+	</li>
+	<li><a href="/bbs/board.php?tbl=candidate1">MEMBERS</a>
+		<ul class="gnb_2depth gnb_2depth3">
+			<li><a href="/bbs/board.php?tbl=candidate1">Ph.D. Candidate</a></li>
+			<li><a href="/bbs/board.php?tbl=candidate2">M.S. Candidate</a></li>
+			<li><a href="/bbs/board.php?tbl=alumni">Alumni</a></li>
+		</ul>
+	</li>
+	<li><a href="/bbs/board.php?tbl=journals">PUBLICATION</a>
+		<ul class="gnb_2depth gnb_2depth4">
+			<li><a href="/bbs/board.php?tbl=journals">Journals</a></li>
+			<li><a href="/bbs/board.php?tbl=presentations">Presentations</a></li>
+			<li><a href="/bbs/board.php?tbl=patent">Patent</a></li>
+		</ul>
+	</li>
+	<li><a href="/board.ejs?tbl=1&pageNum=1">BOARD</a>
+		<ul class="gnb_2depth gnb_2depth5">
+			<li><a href="/board.ejs?tbl=1&pageNum=1">Notice</a></li>
+			<li><a href="/board.ejs?tbl=2&pageNum=1">Gallery</a></li>
+                        <li><a href="/board.ejs?tbl=3&pageNum=1">free</a></li>
+
+		</ul>
+	</li>
+</ul><!--// gnb -->
+
+<script type="text/javascript">
+	$('#gnb > li').hover(function(){
+		$(this).find('.gnb_2depth').stop(true,true).fadeIn();
+	}, function(){
+		$(this).find('.gnb_2depth').stop(true,true).fadeOut();
+	});
+</script>		</div><!--// inner -->
