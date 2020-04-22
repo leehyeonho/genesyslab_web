@@ -61,6 +61,11 @@ app.post('/edit', function(request, response){
   board.edit(request, response);
 });
 
+app.get('/board_write.ejs', function(request, response) {
+  response.render('board_write', {session : session, tbl : request.query.tbl});
+});
+
+
 app.get('/board_delete', function(request, response){
   board.delete(request, response);
 });
