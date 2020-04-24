@@ -34,15 +34,15 @@
 			</div><!--// contop -->
 			<div class="conbody">
 <form name="wirte" action="/write" method="post">
-<input type="hidden" id="tbl" name="tbl" value="<%= tbl %> />
-<input type="hidden" id="author" name="author" value="<%= session.user_name %> />
+<input type="hidden" id="tbl" name="tbl" value="<%= tbl %>" />
+<input type="hidden" id="author" name="author" value="<%= session.user_name %>" />
 <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
   <tr>
     <td height="2" bgcolor="#555" colspan="6"></td>
   </tr>
   <tr height="35" >
     <td height="35" colspan="6" align="left" style="padding:5px 20px 5px 20px; font-size:14px; color:#333; word-break:break-all;">
-      <strong><textarea id="title" name="title" cols="60" rows="1"></textarea></strong>
+      <strong><textarea id="title" name="title" cols="60" rows="1" value="<%= session.user_name %>" ></textarea></strong>
     </td>
   </tr>
   <tr>
@@ -79,10 +79,10 @@
   </tr>
   <tr>
     <td height="40" align="center" text-align="center">
-<input type="submit" value="글쓰기"/>                        
                                   </td>
   </tr>
 </table>
+<input type="submit" value="글쓰기"/>
 </form>
 <br>
 

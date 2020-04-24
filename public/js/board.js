@@ -3,7 +3,13 @@ const ejs = require('ejs');
 var sql = '';
 
 exports.home = function(request, response) {
-  sql = 'SELECT count(*) as cnt FROM bbs_free';
+  if (request.query.tbl == "1") {
+	sql = 'SELECT count(*) as cnt FROM bbs_notice';
+    } else if (request.query.tbl == "2") {
+	sql = 'SELECT count(*) as cnt FROM bbs_gallery';
+    } else if (request.query.tbl == "3") {
+	sql = 'SELECT count(*) as cnt FROM bbs_free';
+    }
   db.query(sql, function(error, result) {
     var totalCount = result[0].cnt;
     if (request.query.tbl == "1") {
@@ -46,11 +52,11 @@ exports.write = function(request, response) {
     }
   db.query(sql, [author, title, content], function(error, result) {
 	if(request.body.tbl == "1") {
-	  response.redirect('/./board.ejs?tbl=1&pageNum=1');
+	  response.redirect('/board.ejs?tbl=1&pageNum=1');
 	} else if(request.body.tbl == "2") {
-	  response.redirect('/./board.ejs?tbl=2&pageNum=1');
+	  response.redirect('/board.ejs?tbl=2&pageNum=1');
 	} else if(request.body.tbl == "3") {
-	  response.redirect('/./board.ejs?tbl=3&pageNum=1');
+	  response.redirect('/board.ejs?tbl=3&pageNum=1');
 	}
     });
 }
