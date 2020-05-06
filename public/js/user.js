@@ -21,8 +21,12 @@ exports.login = function (request, response) {
 		 request.session.user_id = result[0].user_id;
 		 request.session.user_name = result[0].user_name;
 		 request.session.user_tell = result[0].user_tell;
+		 request.session.isLogined = true;
 		 console.log("login success, user_id : " + request.session.user_id);
-                 response.render('index', {session : request.session});
+                 request.session.save(function(){
+		   response.redirect('/');
+		 });
+		 //response.render('index', {session : request.session});
                 } else { // 비교 실패
 		    console.log("password incorrected");
 		    response.redirect('/');
@@ -61,3 +65,9 @@ exports.signup = function ( request, response ){
   });
 }
 
+exports.logout = function ( request, response ){
+  request.session.destroy(function(){
+    request.session;
+  });
+  response.redirect('/');
+}

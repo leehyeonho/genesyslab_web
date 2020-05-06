@@ -51,7 +51,6 @@
 			<div class="conbody">
 <br />
 <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
-<form name="ListCheck" id="test" method="post" action="/bbs/process.php" enctype="multipart/form-data" validate="UTF-8" onsubmit="return listChk(this)">
   <tr>
     <td height="2" bgcolor="#555555" colspan="26"></td>
   </tr>
@@ -95,7 +94,6 @@
       <tr>
     <td height="1" bgcolor="#dcdcdc" colspan="26"></td>
   </tr>
-</form>
 </table>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
@@ -113,7 +111,13 @@
 			</div>
 				</td>
 <td align="right">
+<% if(tbl == 1) { %>
+<%   if(session.user_id == 'admin') { %>
+       <a href="./board_write.ejs?tbl=<%= tbl %>"><div class="bbs_btn">글쓰기</div>
+<%   } %>
+<% } else { %>
 <a href="./board_write.ejs?tbl=<%= tbl %>"><div class="bbs_btn">글쓰기</div>
+<% } %>
 </td>
 	</tr>
 </table>
@@ -146,18 +150,16 @@
 			<td>
 				<table border="0" cellspacing="0" cellpadding="0" align="center">
 					<tr>
-				<form name=search action="/bbs/board.php" autocomplete="off" style="margin:0px;">
-				<input type=hidden name=tbl value="notice">
-				<input type=hidden name=mode value="">
-				<input type=hidden name=page value="1">
+				<form name="frm_search" method="post" action="/search" autocomplete="off" style="margin:0px;">
 						<td style="font-size:0">
 													<select name="findType">
 								<option value="" selected>--검색--</option>
 								<option value="title" >제목</option>
 								<option value="name" >작성자</option>
 								<option value="content" >내용</option>
-							</select>
-							&nbsp;<input type="text" name="findWord" class="board_search_area" placeholder="검색어를 입력하세요." value="">&nbsp;<input type="submit" value="검색" class="board_btn_seach"/>
+</select>
+<input type="hidden" id="tbl" name="tbl" value"<%= tbl %> />
+&nbsp;<input type="text" name="search" id="search" class="board_search_area" placeholder="검색어를 입력하세요." value="">&nbsp;<input type="submit" value="검색" class="board_btn_seach"/>
 						</td>
 				</form>
 					</tr>

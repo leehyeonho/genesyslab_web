@@ -43,13 +43,13 @@
 			</div><!--// member_1 -->
 			<div class="memberBox member_2">
 				<a href="/bbs/board.php?tbl=candidate2">
-					<h2>M.S. Candidate</h2>
+					<h2></h2>
 					<p>Genesys Lab.</p>
 					<span class="btn_more"><img src="/images/button_home.png" alt="" /></span>
 				</a>
 			</div><!--// member_2 -->
 			<div class="memberBox member_3">
-				<% if ( session.user_id ) { %>
+				<% if ( session.isLogined == true ) { %>
 				  <h3> <%= session.user_name %> 님 안녕하세요 </h3>
 				    <form action="/logout" method="get">
 				      <input type="submit" value="logout"/>

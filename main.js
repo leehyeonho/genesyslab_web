@@ -13,16 +13,26 @@ app.use(passport.session());
 //cookie,session
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const MySQLStore = require('express-mysql-session')(session);
+var options = {
+    host      : 'localhost',
+    port:3306,
+    user      : 'root',
+    password  : 'genesys11',
+    database  : 'genesys'
+};
+var sessionStore = new MySQLStore(options);
 app.use(cookieParser());
 app.use(session({
-  key: 'user_id',
-  secret: 'secret',
+  secret: 'g1e2n3e4s5y6s7',
   resave: false,
   saveUninitialized: true,
+  store: sessionStore,
   cookie: {
     maxAge: 24000 * 60 * 60
   }
 }));
+app.use(bodyParser.urlencoded({extended: false}));
 
 // ejs
 // const ejs = require('ejs');
@@ -41,12 +51,12 @@ const port = 3000
 
 //index.html
 app.get('/', function(request, response) {
-  response.render('index', {session : session});
+  response.render('index', {session : request.session});
 });
 
 //sub
 app.get('/sub.ejs', function(request, response) {
-  response.render('sub', {session : session, tbl : request.query.tbl});
+  response.render('sub', {session : request.session, tbl : request.query.tbl});
 });
 
 app.get('/board.ejs', function(request, response){
@@ -57,14 +67,18 @@ app.post('/write', function(request, response){
   board.write(request, response);
 });
 
-app.post('/edit', function(request, response){
-  board.edit(request, response);
+app.post('/delete', function(request, response){
+  board.delete(request, response);
 });
 
 app.get('/board_write.ejs', function(request, response) {
-  response.render('board_write', {session : session, tbl : request.query.tbl});
+  response.render('board_write', {session: request.session, tbl : request.query.tbl});
+
 });
 
+app.post('/search', function(request, response) {
+  board.search(request, response);
+});
 
 app.get('/board_delete', function(request, response){
   board.delete(request, response);
@@ -83,9 +97,7 @@ app.post('/login', function(request, response){
 });
 
 app.get('/logout', function(request, response){
-  request.session.destroy();
-  response.clearCookie('sid');
-  response.redirect('/');
+  user.logout(request,response);
 });
 
 app.post('/signup', function(request, response){

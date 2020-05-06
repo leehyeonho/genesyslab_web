@@ -33,7 +33,7 @@ exports.home = function(request, response) {
         endPage = totalPage;
       }
       endPage = parseInt(endPage);
-      response.render('board', {totalCount : totalCount, pageNum : request.query.pageNum, start : startPage, end : endPage, data : results, tbl : request.query.tbl});
+      response.render('board', {session : request.session, totalCount : totalCount, pageNum : request.query.pageNum, start : startPage, end : endPage, data : results, tbl : request.query.tbl});
       });
 
     });
@@ -91,7 +91,7 @@ exports.view = function(request, response) {
     }
     db.query(sql, [request.query.id], function(error, next) {
 
-    response.render('board_view', {data : result, tbl : tbl, pre : pre, next : next});
+    response.render('board_view', {session : request.session, data : result, tbl : tbl, pre : pre, next : next, id : request.query.id});
     });
     });
     });
@@ -126,8 +126,42 @@ exports.edit = function(request, response) {
 }
 
 exports.delete = function(request, response) {
-  sql = 'DELETE FROM bbs_free WHERE id = ?';
-  db.query(sql, [request.query.id], function(error, result) {
-    response.redirect('/./board.ejs?pageNum=1');
+  var tbl = request.body.tbl;
+  var id = request.body.id;
+  if(tbl == "1") {
+    sql = 'DELETE FROM bbs_notice WHERE id = ?';
+  } else if(tbl == "2") {
+    sql = 'DELETE FROM bbs_gallery WHERE id = ?';
+  } else if(tbl == "3") {
+    sql = 'DELETE FROM bbs_free WHERE id = ?';
+  }
+  db.query(sql, [id], function(error, result) {
+    response.redirect('/./board.ejs?tbl=' + tbl + '&pageNum=1');
     });
+}
+
+exports.search = function(request, response) {
+  var search = "%" + request.body.search + "%";
+  var tbl = request.body.tbl;
+  if(tbl == "1") {
+    sql = 'select id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date from bbs_notice where title like ? ORDER BY id DESC LIMIT ?, 10';
+  } else if(tbl == "2") {
+    
+  } else if(tbl == "3") {
+    
+  }
+    db.query(sql, [search, (request.query.pageNum-1) * 10],function(error, result) {
+    var totalCount = result[0].cnt;
+      var totalPage = totalCount / 10;
+      if (totalCount % 10 > 0) {
+        totalPage++; // 10개로 나눠도 남으면 페이지 하나 더
+      }
+      var startPage = ((request.query.pageNum  -1) / 10) * 10 + 1;
+      var endPage = startPage + 10 -1;
+      if( endPage > totalPage) {
+        endPage = totalPage;
+      }
+      endPage = parseInt(endPage);
+      response.render('board', {session : request.session, totalCount : totalCount, pageNum : request.query.pageNum, start : startPage, end : endPage, data : results, tbl : request.query.tbl});
+	});
 }
