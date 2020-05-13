@@ -1,0 +1,32 @@
+	<div class="main_container clfix">
+		<div class="left_contents">
+			<div class="notice_area">
+				<h2>NOTICE</h2>
+				<!-- 공지 -->
+								<!-- 공지 -->
+				<a href="board.ejs?tbl=1&pageNum=1" class="btn_more"><img src="/images/main/btn_more.png" alt="NOTICE 더보기" /></a>
+								<div class="recent_notice clfix">
+					<div class="recent_notice_txt">
+						<dl>
+							<dt><%= data[0].title %></dt>
+							<dd><%= data[0].content %></dd>
+						</dl>
+						<a href="board_view.ejs?tbl=1&id=<%= data[0].id %>" class="btn_more_cont">자세히보기 &gt;</a>
+
+					</div><!--// recent_notice_txt -->
+					<div class="dateBox">
+						<img src="/images/main/icon_notice.png" alt="" />
+						<span class="mmdd"><%= data[0].mmdd %></span>
+						<span class="yyyy"><%= data[0].YYYY %></span>
+					</div><!--// dateBox -->
+				</div>
+								<!--// recent_notice -->
+<ul class="notice_list">
+<% for(var i=1;i<data.length;i++) { %>
+<li>
+<a href="board_view.ejs?tbl=1&id=<%= data[i].id %>"><%= data[i].title %></a>
+<span><%= data[i].YYYY %>-<%= data[i].mmdd %></span>
+</li>
+<% } %>
+</ul>
+			</div><!--// notice_area -->

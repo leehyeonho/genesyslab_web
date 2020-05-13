@@ -42,6 +42,7 @@ const fs = require('fs');
 const ejs = require('ejs');
 var board = require('./public/js/board.js');
 var user = require('./public/js/user.js');
+var index = require('./public/js/index.js');
 app.set('view engine', 'ejs');
 app.set('views', './public/views');
 
@@ -51,7 +52,7 @@ const port = 3000
 
 //index.html
 app.get('/', function(request, response) {
-  response.render('index', {session : request.session});
+  index.index(request, response);
 });
 
 //sub
