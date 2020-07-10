@@ -62,7 +62,7 @@ $(document).ready( function() {
                 </tr>
         			<tr>
         				<td colspan="4">
-        					<textarea id="content" name="content" cols="80" rows="18"><%- data[0].content %></textarea>
+        					<textarea id="content" name="content" cols="80" rows="18"><%- data[0].content.replace(/<p>/gi, '').replace(/<\/p>/gi, '') %></textarea>
         					<script>
         					CKEDITOR.replace('content');
         					</script>

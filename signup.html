@@ -1,11 +1,96 @@
-<html>
-<body>
-<form action="/signup" method="post" name="frm_signup" id="frm_signup">
-  <input type="text" name="user_id" id="user_id" placeholder="ID" required="required" autocomplete="off"/>
-  <input type="password" name="password" id="password" placeholder="password" required="required" autocomplete="off"/>
-  <input type="text" name="user_name" id="user_name" placeholder="이름" required="required" autocomplete="off"/>
-  <input type="text" name="user_tell" id="user_tell" placeholder="전화번호" required="required" autocomplete="off"/>
-  <input type="submit" value="완료"/>
+<script type="text/javascript">
+  function isOK() {
+    var username = document.getElementById('user_name');
+    var userid = document.getElementById('user_id');
+    var pwd = document.getElementById('password');
+    var pwdchk =document.getElementById('passwordchk');
+    var usertell = document.getElementById('user_tell');
+    var email = document.getElementById('email');
+    var exptext =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    if(username.value == "" || username.value.length < 2) {
+      alert('입력된 이름이 양식에 맞지 않습니다.');
+      username.focus();
+      return false;
+    } else if(userid.value == "" || userid.value.length < 4 || userid.value.length > 10){
+      alert('입력된 아이디가 양식에 맞지 않습니다.');
+      userid.focus();
+      return false;
+    } else if(pwd.value == "" || pwd.value.length < 8 || pwd.value.length > 12 || pwd.value != pwdchk.value) {
+      alert('입력된 비밀번호가 양식에 맞지 않습니다.');
+      pwd.focus();
+      return false;
+    } else if(usertell.value == "") {
+      alert('입력된 연락처가 양식에 맞지 않습니다.');
+      user_tell.focus();
+      return false;
+    } else if(email.value == "" || exptext.match(email) == null) {
+      alert('입력된 이메일이 양식에 맞지 않습니다.');
+      email.focus();
+      return false;
+    } else {
+      alert("회원가입이 완료되었습니다.");
+    }
+
+  }
+</script>
+<form action="/signup" method="post" name="frm_signup" id="frm_signup" onsubmit="return isOK();">
+ <table style="background-color:rgba(0, 0, 0, 0.7);font-size:2vh;width:90%;height:90%;margin-left: auto; margin-right: auto;">
+       <thead>
+         <tr>
+         <td colspan="2"></td>
+         <td>필수 입력사항</td>
+         </tr>
+       </thead>
+       <tbody>
+         <tr>
+         <td>이름</td>
+         <td>
+         <input type="text" name="user_name" id="user_name" placeholder="이름" autocomplete="off"/>
+         </td>
+         <td><FONT color="red">*</FONT> 이름을 입력하세요.</td>
+         </tr>
+         <tr>
+         <td>아이디</td>
+         <td>
+         <input type="text" name="user_id" id="user_id" placeholder="ID" autocomplete="off"/>
+         </td>
+         <td><FONT color="red">*</FONT> 영문 및 숫자로 4~10자</td>
+         </tr>
+         <tr>
+         <td>비밀번호</td>
+         <td>
+         <input type="password" name="password" id="password" placeholder="password" autocomplete="off"/>
+         </td>
+         <td><FONT color="red">*</FONT> 영문 대소문자/숫자/특수문자 조합</td>
+         </tr>
+         <tr>
+         <td>비밀번호 확인</td>
+         <td>
+         <input type="password" name="passwordchk" id="passwordchk" placeholder="password" autocomplete="off"/>
+         </td>
+         <td><FONT color="red">*</FONT> 위 비밀번호를 한번 더 입력하세요</td>
+         </tr>
+         <tr>
+         <td>연락처
+         </td>
+         <td>
+         <input type="tel" id="user_tell" name="user_tell" placeholder="전화번호" pattern="(010)-\d{4}-\d{4}" title="010-0000-0000" value="010-0000-0000" autocomplete="off">
+         </td>
+         <td><FONT color="red">*</FONT> ex) 010-XXXX-XXXX</td>
+         </tr>
+         <tr>
+         <td>이메일</td>
+         <td>
+         <input type="email" class="form-control" id="email" name="email" placeholder="email" value="test@test.com">
+         </td>
+         <td><FONT color="red">*</FONT> ex) custom_lab@custom_lab.com</td>
+         </tr>
+         <tr style="text-align:center;" >
+           <td colspan="4"><button type="submit" class="login100-form-btn">
+             회원가입
+           </button></td>
+         </tr>
+       </tbody>
+     </table>
+
 </form>
-</body>
-</html>

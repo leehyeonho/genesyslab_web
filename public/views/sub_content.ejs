@@ -12,12 +12,12 @@
         	<script>
         		var container = document.getElementById('map');
         		var options = {
-        			center: new kakao.maps.LatLng(36.62883224146073, 127.45657148318668),
+        			center: new kakao.maps.LatLng(36.63353729102109, 127.45332042697082),
         			level: 3
         		};
 
         		var map = new kakao.maps.Map(container, options);
-            var markerPosition  = new kakao.maps.LatLng(36.62883224146073, 127.45657148318668);
+            var markerPosition  = new kakao.maps.LatLng(36.63353729102109, 127.45332042697082);
             // 마커를 생성합니다
             var marker = new kakao.maps.Marker({
                   position: markerPosition
@@ -30,7 +30,7 @@
             var content = '<div class ="overlay"><span class="left"></span><span class="center">            <a href="https://map.kakao.com/link/to/Genesys,36.62883224146073, 127.45657148318668" style="color:blue;text-decoration:none;" target="_blank">길찾기</a></span><span class="right"></span></div>';
 
             // 커스텀 오버레이가 표시될 위치입니다
-            var position = new kakao.maps.LatLng(36.62883224146073, 127.45657148318668);
+            var position = new kakao.maps.LatLng(36.63353729102109, 127.45332042697082);
 
             // 커스텀 오버레이를 생성합니다
             var customOverlay = new kakao.maps.CustomOverlay({
@@ -44,7 +44,7 @@
           <div style="text-align:right;">
           </div>
 	    <p class="mt10" style='margin-top:10px;text-align:center;'>
-	      충청북도 청주시
+	      충청북도 청주시 흥덕구 복대동 872-10 2층
 	    </p>
 	  </div><!--// conbody -->
 
@@ -87,8 +87,9 @@
 	</dl>
 	<dl class="site_con ">
 		<dt>Board</dt>
-		<dd><a href="/bbs/board.php?tbl=notice">Notice</a></dd>
-		<dd><a href="/bbs/board.php?tbl=gallery">Gallery</a></dd>
+		<dd><a href="board.ejs?tbl=1&pageNum=1">Notice</a></dd>
+		<dd><a href="board.ejs?tbl=2&pageNum=1">Gallery</a></dd>
+		<dd><a href="board.ejs?tbl=3&pageNum=1">Free</a></dd>
 	</dl>
 </div>
 
@@ -115,13 +116,12 @@
  display:block;
  height:0;
  clear:both;
- visibility:hidden; 
-}  
+ visibility:hidden;
+}
 *html .site_wrap  { height:1%;} /* IE5, IE6 À» À§ÇÑ ±ÔÄ¢ */
 *:first-child+html .site_wrap   { height:1%;} /* IE7 À» À§ÇÑ ±ÔÄ¢ */
 
 </style>
 </div><!--// conbody -->
-		
-<% } %>
 
+<% } %>

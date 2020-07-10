@@ -16,7 +16,7 @@ exports.home = function(request, response) {
       sql = 'SELECT id, author, title, content, hit, date_format(date,"%Y-%m-%d") as date FROM bbs_notice ORDER BY id DESC LIMIT ?, 10';
 
     } else if (request.query.tbl == "2") {
-      sql = 'SELECT id, author, title, content, hit, date_format(date,"%Y-%m-%d") as date FROM bbs_gallery ORDER BY id DESC LIMIT ?, 10';
+      sql = 'SELECT id, author, title, content, img, hit, date_format(date,"%Y-%m-%d") as date FROM bbs_gallery ORDER BY id DESC LIMIT ?, 10';
 
     } else if (request.query.tbl == "3") {
       sql = 'SELECT id, author, title, content, hit, date_format(date,"%Y-%m-%d") as date FROM bbs_free ORDER BY id DESC LIMIT ?, 10';
@@ -51,6 +51,9 @@ exports.write = function(request, response) {
       sql = 'INSERT INTO bbs_free(author, title, content) values (?, ?, ?)';
     }
   db.query(sql, [author, title, content], function(error, result) {
+    if(error) {
+      console.log(error);
+    }
 	if(request.body.tbl == "1") {
 	  response.redirect('/board.ejs?tbl=1&pageNum=1');
 	} else if(request.body.tbl == "2") {
@@ -61,13 +64,30 @@ exports.write = function(request, response) {
     });
 }
 
-exports.view = function(request, response) {  
+exports.upload = function(request, response) {
+  var author = request.body.author;
+  var title = request.body.title;
+  var content = request.body.content;
+  sql = 'INSERT INTO bbs_gallery(author, title, content, img) values (?, ?, ?, ?)';
+  db.query(sql, [author, title, content, request.file.path.substring(6)], function(error, result) {
+    if(error) {
+      console.log(error);
+    }else {
+      console.log("post")
+      console.log(request.file)
+      console.log(request.file.path.substring(6))
+  	  response.redirect('/board.ejs?tbl=2&pageNum=1');
+  	}
+    });
+}
+
+exports.view = function(request, response) {
   var tbl = request.query.tbl;
   if (tbl == "1") {
       sql = 'SELECT author, title, content, hit, date_format(date,"%Y-%m-%d") as date FROM bbs_notice where id = ?';
 
     } else if (tbl == "2") {
-      sql = 'SELECT author, title, content, hit, date_format(date,"%Y-%m-%d") as date FROM bbs_gallery where id = ?';
+      sql = 'SELECT author, title, content, img, hit, date_format(date,"%Y-%m-%d") as date FROM bbs_gallery where id = ?';
 
     } else if (tbl == "3") {
       sql = 'SELECT author, title, content, hit, date_format(date,"%Y-%m-%d") as date FROM bbs_free where id = ?';
@@ -75,11 +95,11 @@ exports.view = function(request, response) {
 
   db.query(sql, [request.query.id], function(error, result) {
       if (tbl == "1") {
-      sql = 'SELECT id, title FROM bbs_notice WHERE id < ? ORDER BY id DESC LIMIT 1';  
+      sql = 'SELECT id, title FROM bbs_notice WHERE id < ? ORDER BY id DESC LIMIT 1';
     } else if (tbl == "2") {
-      sql = 'SELECT id, title FROM bbs_gallery WHERE id < ? ORDER BY id DESC LIMIT 1';  
+      sql = 'SELECT id, title FROM bbs_gallery WHERE id < ? ORDER BY id DESC LIMIT 1';
     } else if (tbl == "3") {
-      sql = 'SELECT id, title FROM bbs_free WHERE id < ? ORDER BY id DESC LIMIT 1';  
+      sql = 'SELECT id, title FROM bbs_free WHERE id < ? ORDER BY id DESC LIMIT 1';
     }
     db.query(sql, [request.query.id], function(error, pre) {
       if (tbl == "1") {
@@ -146,9 +166,9 @@ exports.search = function(request, response) {
   if(tbl == "1") {
     sql = 'select id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date from bbs_notice where title like ? ORDER BY id DESC LIMIT ?, 10';
   } else if(tbl == "2") {
-    
+
   } else if(tbl == "3") {
-    
+
   }
     db.query(sql, [search, (request.query.pageNum-1) * 10],function(error, result) {
     var totalCount = result[0].cnt;

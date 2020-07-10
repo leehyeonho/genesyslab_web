@@ -315,4 +315,14 @@ img { border:0; }
 .bbs_top li.bg_none{background:none; margin-left:0; padding-left:20px; }
 .bbs_btn{width:90px; height:30px; background:#ffffff; color:#111; font-weight:700; border:1px solid #dbdbdb; text-align:center; line-height:30px; display:inline-block;}
 
-
+//login_box
+.login_box {
+	text-align: center;
+  padding: 40px;
+  width: 274px;
+  background-color: #F7F7F7;
+  margin: 0 auto 10px;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}

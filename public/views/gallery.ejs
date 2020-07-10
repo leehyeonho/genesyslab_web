@@ -1,0 +1,22 @@
+<h2>GALLERY</h2>
+<a href="board.ejs?tbl=2&pageNum=1" class="btn_more"><img src="/images/btn_more.png" alt="GALLERY 더보기" /></a>
+<ul class="gallery_list">
+<% for(var i=0;i<data_gallery.length;i++) { %>
+<li>
+<a href="board_view.ejs?tbl=2&id=<%= data_gallery[i].id %>">
+<div class="gallery_preview_img">
+  <div style="display: table; width: 298px; height: 168px; #position: relative; overflow: hidden;">
+    <div style=" #position: absolute; #top: 50%; #left: 50%; display: table-cell; vertical-align: middle; text-align: center;">
+      <div style=" #position: relative; #top: -50%; #left: -50%;">
+        <img src='<%= data_gallery[i].img %>' width='254' height='168' >						</div>
+    </div>
+  </div>
+</div>
+<div class="gallery_preview_txt">
+  <span><%= data_gallery[i].YYYY %>-<%= data_gallery[i].mmdd %></span>
+  <p><%= data_gallery[i].title %></p>
+</div>
+</a>
+</li>
+<% } %>
+</ul>

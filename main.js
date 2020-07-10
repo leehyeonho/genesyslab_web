@@ -14,13 +14,37 @@ app.use(passport.session());
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
+
+//multer
+const multer = require('multer');
+var storage = multer.diskStorage({
+destination: function (req, file, cb) {
+cb(null, './public/images/gallery/')
+},
+//파일이름 설정
+filename: function (req, file, cb) {
+cb(null, Date.now() + "-" + file.originalname)
+}
+
+})
+//파일 업로드 모듈
+var upload = multer({ storage: storage })
+
+// var options = {
+//     host      : 'localhost',
+//     port:3306,
+//     user      : 'root',
+//     password  : 'genesys11',
+//     database  : 'genesys'
+// };
 var options = {
     host      : 'localhost',
     port:3306,
     user      : 'root',
-    password  : 'genesys11',
+    password  : '1234',
     database  : 'genesys'
 };
+
 var sessionStore = new MySQLStore(options);
 app.use(cookieParser());
 app.use(session({
@@ -105,7 +129,9 @@ app.post('/signup', function(request, response){
   user.signup(request, response);
 });
 
-
+app.post('/upload', upload.single('imgFile'), function(request, response){
+  board.upload(request, response);
+});
 
 app.get('/:page', function(request, response){
   if(request.params.page == '/favicon.ico') {

@@ -1,32 +1,55 @@
 	<div class="main_container clfix">
 		<div class="left_contents">
+			<% if(data_notice.length < 1) { %>
+				<div class="notice_area">
+					<h2>NOTICE</h2>
+					<!-- 공지 -->
+									<!-- 공지 -->
+					<a href="board.ejs?tbl=1&pageNum=1" class="btn_more"><img src="/images/btn_more.png" alt="NOTICE 더보기" /></a>
+									<div class="recent_notice clfix">
+						<div class="recent_notice_txt">
+							<dl>
+								<dt>공지사항이 없습니다.</dt>
+								<dd></dd>
+							</dl>
+
+						</div><!--// recent_notice_txt -->
+						<div class="dateBox">
+							<img src="/images/main/icon_notice.png" alt="" />
+						</div><!--// dateBox -->
+					</div>
+									<!--// recent_notice -->
+
+				</div><!--// notice_area -->
+			<% } else { %>
 			<div class="notice_area">
 				<h2>NOTICE</h2>
 				<!-- 공지 -->
 								<!-- 공지 -->
-				<a href="board.ejs?tbl=1&pageNum=1" class="btn_more"><img src="/images/main/btn_more.png" alt="NOTICE 더보기" /></a>
+				<a href="board.ejs?tbl=1&pageNum=1" class="btn_more"><img src="/images/btn_more.png" alt="NOTICE 더보기" /></a>
 								<div class="recent_notice clfix">
 					<div class="recent_notice_txt">
 						<dl>
-							<dt><%= data[0].title %></dt>
-							<dd><%= data[0].content %></dd>
+							<dt><%= data_notice[0].title %></dt>
+							<dd><%- data_notice[0].content.replace(/<p>/gi, '').replace(/<\/p>/gi, '') %></dd>
 						</dl>
-						<a href="board_view.ejs?tbl=1&id=<%= data[0].id %>" class="btn_more_cont">자세히보기 &gt;</a>
+						<a href="board_view.ejs?tbl=1&id=<%= data_notice[0].id %>" class="btn_more_cont">자세히보기 &gt;</a>
 
 					</div><!--// recent_notice_txt -->
 					<div class="dateBox">
 						<img src="/images/main/icon_notice.png" alt="" />
-						<span class="mmdd"><%= data[0].mmdd %></span>
-						<span class="yyyy"><%= data[0].YYYY %></span>
+						<span class="mmdd"><%= data_notice[0].mmdd %></span>
+						<span class="yyyy"><%= data_notice[0].YYYY %></span>
 					</div><!--// dateBox -->
 				</div>
 								<!--// recent_notice -->
 <ul class="notice_list">
-<% for(var i=1;i<data.length;i++) { %>
+<% for(var i=1;i<data_notice.length;i++) { %>
 <li>
-<a href="board_view.ejs?tbl=1&id=<%= data[i].id %>"><%= data[i].title %></a>
-<span><%= data[i].YYYY %>-<%= data[i].mmdd %></span>
+<a href="board_view.ejs?tbl=1&id=<%= data_notice[i].id %>"><%= data_notice[i].title %></a>
+<span><%= data_notice[i].YYYY %>-<%= data_notice[i].mmdd %></span>
 </li>
 <% } %>
 </ul>
 			</div><!--// notice_area -->
+<% } %>

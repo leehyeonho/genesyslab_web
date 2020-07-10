@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
   <%- include ("head.ejs") %>
+  <script type="text/javascript" src="/js/ckeditor/ckeditor.js"></script>
 </head>
 
 <body leftmargin="0" topmargin="0">
@@ -33,7 +34,12 @@
 				<p>Genesys Lab.</p>
 			</div><!--// contop -->
 			<div class="conbody">
-<form name="wirte" action="/write" method="post">
+      <% if(tbl == "2") { %>
+        <form name="upload" action="/upload" method="post" enctype="multipart/form-data">
+      <% } else { %>
+        <form name="wirte" action="/write" method="post">
+      <% } %>
+
 <input type="hidden" id="tbl" name="tbl" value="<%= tbl %>" />
 <input type="hidden" id="author" name="author" value="<%= session.user_id %>" />
 <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
@@ -42,7 +48,7 @@
   </tr>
   <tr height="35" >
     <td height="35" colspan="6" align="left" style="padding:5px 20px 5px 20px; font-size:14px; color:#333; word-break:break-all;">
-      <strong><textarea id="title" name="title" cols="60" rows="1" value="<%= session.user_name %>" ></textarea></strong>
+      <input type="text" id="title" name="title" maxlength="20" style="width:700px;"/>
     </td>
   </tr>
   <tr>
@@ -65,6 +71,9 @@
 <div id="DivContents" style="line-height:1.4;word-break:break-all;">
   <textarea id="content" name="content" cols="58" rows="18">
   </textarea>
+  <% if(tbl == "2") { %>
+    <input type="file" name="imgFile">
+  <% } %>
     <script>
 	CKEDITOR.replace('content');
     </script>
@@ -85,17 +94,8 @@
 <input type="submit" value="글쓰기"/>
 </form>
 <br>
-
-
-							<!-- sns tag -->
-							<table width="100%" cellpadding="0" cellspacing="0" border="0">
-								<tr>
-																			<td width="25" align="right" style="padding-left:8px;">
-																																</td>
-																	</tr>
-							</table>
-							<!-- sns tag -->
 							<script type="text/javascript" src="/css/jquery-1.7.min.js"></script>
+
 <br>
 <br>
 <br>

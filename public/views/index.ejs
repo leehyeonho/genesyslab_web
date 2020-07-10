@@ -4,6 +4,13 @@
 <%- include ("head.ejs") %>
 </head>
 
+<script type="text/javascript">
+	function openPopupWindow() {
+	 document.domain = "127.0.0.1"; //document.domain 값이 팝업과 부모창 동일해야 합니다.
+	 window.open("/signup", "popup", "width=500, height=500, resizable=no, scrollbars=no") 
+	}
+</script>
+
 <body leftmargin="0" topmargin="0">
 <DIV ID="objContents">
 <%- include ("ddScript.ejs") %>
@@ -15,9 +22,10 @@
 
 	<div id="visual_wrap">
 		<link rel="stylesheet" href="/css/main_slider.css" type="text/css">
+		<link rel="stylesheet" href="/css/login.css" type="text/css">
 		<script type="text/javascript" src="/css/js/bxslider.js"></script>
 		<ul id="visual">
-			<li><p style="background:url(/images/abc.png) top center no-repeat; height:610px;"></p></li>
+			<li><p style="background:url(/images/banner3_slide.jpg) top center no-repeat; height:610px;"></p></li>
 			<li><p style="background:url(/images/visual1.png) top center no-repeat; height:610px;"></p></li>
 		</ul>
 
@@ -43,26 +51,68 @@
 			</div><!--// member_1 -->
 			<div class="memberBox member_2">
 				<a href="/bbs/board.php?tbl=candidate2">
-					<h2></h2>
+					<h2>Ph.D. Candidate</h2>
 					<p>Genesys Lab.</p>
 					<span class="btn_more"><img src="/images/button_home.png" alt="" /></span>
 				</a>
 			</div><!--// member_2 -->
 			<div class="memberBox member_3">
 				<% if ( session.isLogined == true ) { %>
-				  <h3> <%= session.user_name %> 님 안녕하세요 </h3>
-				    <form action="/logout" method="get">
-				      <input type="submit" value="logout"/>
-				    </form>
+					<span class="login100-form-title p-b-26">
+						<%= session.user_name %> 님 안녕하세요
+					</span>
+					<form action="/logout" method="get">
+						<div class="wrap-login100-form-btn">
+						<div class="login100-form-bgbtn"></div>
+						<button type="submit" class="login100-form-btn">
+							Logout
+						</button>
+					</div>
+					</form>
 				<% } else { %>
-					<form action="/login" method="post" name="frm_login" id="frm_login">
-					  <input tye="text" id="username" name="username" placeholder="ID" required="required" autocomplete="off"/>
-					  <input type="password" id="password" name="password" plasceholder="Password" required="required" autocomplete="off" />
-<input type="submit" value="login"/>
-<input type="button" onclick="location.href='/signup'" value="signup"/>
-</form>
+					<div class="container-login100">
+						<div class="wrap-login100">
+							<form class="login100-form validate-form" action="/login" method="post" name="frm_login" id="frm_login">
+								<span class="login100-form-title p-b-26">
+									LOGIN
+								</span>
+								<span class="login100-form-title p-b-48">
+									<i class="zmdi zmdi-font"></i>
+								</span>
+
+								<div class="wrap-input100 validate-input">
+									<input class="input100" type="text" id="username" name="username" placeholder="아이디" style="height:30px;" required="required" autocomplete="off">
+									<span class="focus-input100"></span>
+								</div>
+
+								<div class="wrap-input100 validate-input" data-validate="Enter password">
+									<span class="btn-show-pass">
+										<i class="zmdi zmdi-eye"></i>
+									</span>
+									<input class="input100" type="password" id="password" name="password" name="password" placeholder="비밀번호" style="height:30px;" required="required">
+									<span class="focus-input100"></span>
+								</div>
+
+								<div class="container-login100-form-btn">
+									<div class="wrap-login100-form-btn">
+										<div class="login100-form-bgbtn"></div>
+										<button type="submit" class="login100-form-btn">
+											Login
+										</button>
+
+
+									</div>
+								</div>
+						</div>
+						</form>
+						<button class="login100-form-btn" onclick="window.open('/signup', '_blank', 'width=500 height=500')">
+							signup
+						</button>
+					</div>
+
+				</div>
+
 				<% } %>
-					<p>Genesys Lab.</p>
 			</div><!--// member_3 -->
 		</div><!--// inner -->
 	</div><!--// member_info -->
@@ -101,111 +151,17 @@
 		</a>
 	</li>
 
-</ul>				<!--
-				<ul class="publication_list clfix">
-					<li>
-						<a href="#">
-							<span class="btn_more_cont">MORE &gt;</span>
-							<dl>
-								<dt>01</dt>
-								<dd>Ultra-hydrophobic sticky polymer surfaces formed by water-induced surface deformation</dd>
-							</dl>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="btn_more_cont">MORE &gt;</span>
-							<dl>
-								<dt>02</dt>
-								<dd>Enhanced physical stability and chemical durability of sulfonated poly(arylene ether sulfone) composite membranes having acid......</dd>
-							</dl>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="btn_more_cont">MORE &gt;</span>
-							<dl>
-								<dt>03</dt>
-								<dd>Cross-linked graphene oxide membrane having high ion selectivity and antibacterial activity prepared using tannic acid-functionalized ......</dd>
-							</dl>
-						</a>
-					</li>
-				</ul>
-				-->
-				<!--// publication_list -->
+</ul>
 			</div><!--// publication_area -->
 		</div><!--// left_contents -->
 
 		<div class="right_contents">
-			<h2>GALLERY</h2>
-			<a href="/bbs/board.php?tbl=gallery" class="btn_more"><img src="/images/main/btn_more.png" alt="GALLERY 더보기" /></a>
-			<ul class="gallery_list">
-	<li>
-		<a href="/bbs/board.php?tbl=gallery&mode=VIEW&num=36&">
-			<div class="gallery_preview_img">
-				<div style="display: table; width: 298px; height: 168px; #position: relative; overflow: hidden;">
-					<div style=" #position: absolute; #top: 50%; #left: 50%; display: table-cell; vertical-align: middle; text-align: center;">
-						<div style=" #position: relative; #top: -50%; #left: -50%;">
-							<img src='/editor/upload/img/1551325023.jpg' width='254' height='168' >						</div>
-					</div>
-				</div>
-			</div>
-			<div class="gallery_preview_txt">
-				<span>2019-02-28</span>
-				<p>2019 신년회 (교수님 취임 20주년 기념)</p>
-			</div>
-		</a>
-	</li>
-
-	<li>
-		<a href="/bbs/board.php?tbl=gallery&mode=VIEW&num=35&">
-			<div class="gallery_preview_img">
-				<div style="display: table; width: 298px; height: 168px; #position: relative; overflow: hidden;">
-					<div style=" #position: absolute; #top: 50%; #left: 50%; display: table-cell; vertical-align: middle; text-align: center;">
-						<div style=" #position: relative; #top: -50%; #left: -50%;">
-							<img src='/bbs/data/gallery/015c2d0a_19B3E2B5B5+C7D0C0A7BCF6BFA9BDC4-1.jpg' width='254' height='168' >						</div>
-					</div>
-				</div>
-			</div>
-			<div class="gallery_preview_txt">
-				<span>2019-02-26</span>
-				<p>19년도 학위수여식</p>
-			</div>
-		</a>
-	</li>
-
-</ul>			<!--
-			<ul class="gallery_list">
-				<li>
-					<a href="#">
-						<div class="gallery_preview_img">
-							<img src="http://placehold.it/298x168" alt="" />
-						</div>
-						<div class="gallery_preview_txt">
-							<span>2017-02-21</span>
-							<p>홈페이지를 방문해주셔서 진심으로 감사드립니다. 안녕하세요 서울대학교 고분자화학연구실입니다.</p>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<div class="gallery_preview_img">
-							<img src="http://placehold.it/298x168" alt="" />
-						</div>
-						<div class="gallery_preview_txt">
-							<span>2017-02-21</span>
-							<p>홈페이지를 방문해주셔서 진심으로 감사드립니다. 안녕하세요 서울대학교 고분자화학연구실입니다.</p>
-						</div>
-					</a>
-				</li>
-			</ul>
-			-->
-			<!--// gallery_list -->
+			<%- include ("gallery.ejs") %>
 		</div><!--// right_contents -->
 	</div><!--// main_container -->
 
 	<div id="footer">
-	  <%- include ("footer.ejs") %>	
+	  <%- include ("footer.ejs") %>
 	</div><!--// footer -->
 </div><!--// wrap -->
 

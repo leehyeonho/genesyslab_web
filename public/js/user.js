@@ -40,7 +40,7 @@ exports.login = function (request, response) {
 
 exports.signup = function ( request, response ){
   var user = request.body;
-  
+
   sql = 'select * from user_info where user_id = ?';
   db.query(sql, [user.user_id], function(err, isExist) {
     if(err) {
@@ -54,10 +54,10 @@ exports.signup = function ( request, response ){
               console.log("err : " + err);
             } else {
               console.log("회원가입 성공");
-              response.redirect('/');
+              response.redirect('/complete');
             }
             });
-          });   
+          });
       } else {
         console.log("이미 가입된 ID입니다.");
       }
