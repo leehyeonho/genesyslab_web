@@ -41,8 +41,8 @@ var options = {
     host      : 'localhost',
     port:3306,
     user      : 'root',
-    password  : '1234',
-    database  : 'genesys'
+    password  : 'customlab11',
+    database  : 'customlab'
 };
 
 var sessionStore = new MySQLStore(options);
