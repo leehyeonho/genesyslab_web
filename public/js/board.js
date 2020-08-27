@@ -190,6 +190,6 @@ exports.search = function(request, response) {
         endPage = totalPage;
       }
       endPage = parseInt(endPage);
-      response.render('board_search?tbl='+tbl, {session : request.session, totalCount : totalCount, pageNum : 1, start : startPage, end : endPage, data : result, tbl : request.query.tbl});
+      response.render('board_search', {session : request.session, totalCount : totalCount, pageNum : 1, start : startPage, end : endPage, data : result, tbl : request.query.tbl});
 	});
 }
