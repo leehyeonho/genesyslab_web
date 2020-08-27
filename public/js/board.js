@@ -162,6 +162,7 @@ exports.delete = function(request, response) {
 
 exports.search = function(request, response) {
   var search = "%" + request.body.search + "%";
+  alert(search);
   var tbl = request.body.tbl;
   if(tbl == "1") {
     sql = 'select id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date from bbs_notice where title like ? ORDER BY id DESC LIMIT ?, 10';
