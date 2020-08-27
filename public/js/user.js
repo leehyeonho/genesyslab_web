@@ -2,7 +2,6 @@ var db = require('./connection.js');
 const ejs = require('ejs');
 const bcrypt = require('bcrypt-nodejs');
 // var session = require('express-session');
-const popup = require('popups');
 var sql = '';
 
 exports.login = function (request, response) {
@@ -29,9 +28,6 @@ exports.login = function (request, response) {
 		 //response.render('index', {session : request.session});
                 } else { // 비교 실패
 		    console.log("password incorrected");
-        popup.alert({
-          content: '실패!'
-        });
 		    response.redirect('/');
 		  }
 });
