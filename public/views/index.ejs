@@ -25,17 +25,19 @@
 		Kakao.API.request({
 					url : "/v2/user/me"
 				, success : function( res ) {
-						console.log( res );
-						// @breif 아이디
-						document.getElementById( "kakaoIdentity" ).innerHTML = res.id;
-						// @breif 닉네임
-						document.getElementById( "kakaoNickName" ).innerHTML = res.properties.nickname;
-						// @breif 프로필 이미지
-						document.getElementById( "kakaoProfileImg" ).src = res.properties.profile_image;
-						// @breif 썸네일 이미지
-						document.getElementById( "kakaoThumbnailImg" ).src = res.properties.thumbnail_image;
-				}, fail : function( error ) {
-						alert( JSON.stringify( error ) );
+						return res;
+					}, fail : function( error ) {
+						alert("로그인에 실패하였습니다.");
+				}
+		});
+	}
+	function kakaoLogout() {
+		Kakao.API.request({
+					url : "/v1/user/logout"
+				, success : function(id) {
+						alert(id);
+					}, fail : function( error ) {
+						alert("로그아웃에 실패하였습니다.");
 				}
 		});
 	}
@@ -144,6 +146,9 @@
 						</form>
 						<button class="login100-form-btn" onclick="window.open('/signup', '_blank', 'width=500 height=500')">
 							signup
+						</button>
+						<button class="login100-form-btn" onclick="kakaoLogout();">
+							kakaologout
 						</button>
 					</div>
 
