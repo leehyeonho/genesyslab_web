@@ -45,14 +45,14 @@
 			<div class="memberBox member_1">
 				<a href="/sub.ejs?tbl=info">
 					<h2>회사소개</h2>
-					<p>CUSTOM LAB.</p>
+					<p>Information</p>
 					<span class="btn_more"><img src="/images/button_home.png" alt="" /></span>
 				</a>
 			</div><!--// member_1 -->
 			<div class="memberBox member_2">
 				<a href="/sub.ejs?tbl=service">
 					<h2>서비스소개</h2>
-					<p>CUSTOM LAB.</p>
+					<p>Service</p>
 					<span class="btn_more"><img src="/images/button_home.png" alt="" /></span>
 				</a>
 			</div><!--// member_2 -->
@@ -118,41 +118,7 @@
 	</div><!--// member_info -->
 
 	<%- include ("notice.ejs") %>
-
-			<div class="publication_area">
-				<h2>PUBLICATION</h2>
-				<a href="/bbs/board.php?tbl=journals" class="btn_more"><img src="/images/main/btn_more.png" alt="PUBLICATION 더보기" /></a>
-				<ul class="publication_list clfix">
-	<li>
-		<a href="/bbs/board.php?tbl=journals">
-			<span class="btn_more_cont">MORE &gt;</span>
-			<dl>
-				<dt>01</dt>
-				<dd style="word-break:break-all;">PIM-1-based carbon-sulfur composites for sodium-sulfur batteries that operate without the shuttle effect (Highlighted on Inside Back Cover)</dd>
-			</dl>
-		</a>
-	</li>
-	<li>
-		<a href="/bbs/board.php?tbl=journals">
-			<span class="btn_more_cont">MORE &gt;</span>
-			<dl>
-				<dt>02</dt>
-				<dd style="word-break:break-all;">Carbanization of Carboxylate-Functionalized Polymers of Intrinsic Microporosity for Water Treatment (Highlighted on Front Cover)</dd>
-			</dl>
-		</a>
-	</li>
-	<li>
-		<a href="/bbs/board.php?tbl=journals">
-			<span class="btn_more_cont">MORE &gt;</span>
-			<dl>
-				<dt>03</dt>
-				<dd style="word-break:break-all;">Enhanced cycle stability of rechargeable Li-O2 batteries using immobilized redox mediator on air cathode</dd>
-			</dl>
-		</a>
-	</li>
-
-</ul>
-			</div><!--// publication_area -->
+	<%- include ("publication.ejs") %>
 		</div><!--// left_contents -->
 
 		<div class="right_contents">
@@ -172,7 +138,3 @@
 
 </body>
 </html>
-<!-- new post -->
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type="text/javascript" src="/addr_zip/Uzipjs/new_UzipJs.js"></script>
-<!-- openDaumPostcode -->
