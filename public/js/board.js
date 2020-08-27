@@ -173,8 +173,8 @@ exports.search = function(request, response) {
   } else if(tbl == "3") {
       tbl = "bbs_free";
   }
-  sql = 'SELECT count(*) as cnt FROM ? where title like ?';
-  db.query(sql, [tbl, search], function(error, result) {
+  sql = 'SELECT count(*) as cnt FROM' + tbl + ' where title like ' + search;
+  db.query(sql, function(error, result) {
     totalCount = result[0].cnt;
   });
   sql = 'select id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date from ? where title like ? ORDER BY id DESC';
