@@ -161,20 +161,24 @@ exports.delete = function(request, response) {
 }
 
 exports.search = function(request, response) {
+  var totalCount = 0;
   var search = "\"%" + request.body.search + "%\"";
   console.log(search);
   var tbl = request.body.tbl;
   console.log(tbl);
   if(tbl == "1") {
-    sql = 'select id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date from bbs_notice where title like ? ORDER BY id DESC LIMIT ?, 10';
-    console.log(sql);
+    tbl = "bbs_notice";
   } else if(tbl == "2") {
-
+      tbl = "bbs_gallery";
   } else if(tbl == "3") {
-
+      tbl = "bbs_free";
   }
-    db.query(sql, [search, (request.query.pageNum-1) * 10],function(error, result) {
-    var totalCount = result[0].cnt;
+  sql = 'SELECT count(*) as cnt FROM ? where title like ? ORDER BY id DESC LIMIT ?, 10';
+  db.query(sql, function(error, result) {
+    totalCount = result[0].cnt;
+  });
+  sql = 'select id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date from ? where title like ? ORDER BY id DESC LIMIT ?, 10';
+    db.query(sql, [tbl, search, (request.query.pageNum-1) * 10],function(error, result) {
       var totalPage = totalCount / 10;
       if (totalCount % 10 > 0) {
         totalPage++; // 10개로 나눠도 남으면 페이지 하나 더
