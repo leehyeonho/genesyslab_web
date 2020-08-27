@@ -174,6 +174,7 @@ exports.search = function(request, response) {
       tbl = "bbs_free";
   }
   sql = 'SELECT count(*) as cnt FROM' + tbl + ' where title like ' + search;
+  console.log(sql);
   db.query(sql, function(error, result) {
     totalCount = result[0].cnt;
   });
