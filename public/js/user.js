@@ -2,7 +2,6 @@ var db = require('./connection.js');
 const ejs = require('ejs');
 const bcrypt = require('bcrypt-nodejs');
 // var session = require('express-session');
-const alert = require('alert');
 const popup = require('popups');
 var sql = '';
 
@@ -33,7 +32,6 @@ exports.login = function (request, response) {
         popup.alert({
           content: '실패!'
         });
-        alert('howdy')
 		    response.redirect('/');
 		  }
 });
