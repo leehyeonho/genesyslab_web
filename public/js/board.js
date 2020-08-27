@@ -178,8 +178,8 @@ exports.search = function(request, response) {
   db.query(sql, function(error, result) {
     totalCount = result[0].cnt;
   });
-  sql = 'select id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date from ? where title like ? ORDER BY id DESC';
-    db.query(sql, [tbl, search],function(error, result) {
+  sql = 'select id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date from ' + tbl + ' where title like ' + search + ' ORDER BY id DESC';
+    db.query(sql,function(error, results) {
       var totalPage = totalCount / 10;
       if (totalCount % 10 > 0) {
         totalPage++; // 10개로 나눠도 남으면 페이지 하나 더
@@ -190,6 +190,6 @@ exports.search = function(request, response) {
         endPage = totalPage;
       }
       endPage = parseInt(endPage);
-      response.render('board_search', {session : request.session, totalCount : totalCount, pageNum : 1, start : startPage, end : endPage, data : result, tbl : request.query.tbl});
+      response.render('board_search', {session : request.session, totalCount : totalCount, pageNum : 1, start : startPage, end : endPage, data : results, tbl : request.query.tbl});
 	});
 }
