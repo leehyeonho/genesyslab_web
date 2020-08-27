@@ -3,12 +3,28 @@
 <head>
 <%- include ("head.ejs") %>
 </head>
-
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
 	function openPopupWindow() {
 	 document.domain = "127.0.0.1"; //document.domain 값이 팝업과 부모창 동일해야 합니다.
 	 window.open("/signup", "popup", "width=500, height=500, resizable=no, scrollbars=no")
 	}
+</script>
+<script type='text/javascript'>
+  //<![CDATA[
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('YOUR APP KEY');  //여기서 아까 발급받은 키 중 javascript키를 사용해준다.
+    // 카카오 로그인 버튼을 생성합니다.
+    Kakao.Auth.createLoginButton({
+      container: '#kakao-login-btn',
+      success: function(authObj) {
+        alert(JSON.stringify(authObj));
+      },
+      fail: function(err) {
+         alert(JSON.stringify(err));
+      }
+    });
+  //]]>
 </script>
 
 <body leftmargin="0" topmargin="0">
@@ -108,6 +124,8 @@
 						<button class="login100-form-btn" onclick="window.open('/signup', '_blank', 'width=500 height=500')">
 							signup
 						</button>
+						<a id="kakao-login-btn"></a>
+<a href="http://developers.kakao.com/logout"></a>
 					</div>
 
 				</div>
