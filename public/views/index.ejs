@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <head>
 <%- include ("head.ejs") %>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<!-- <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function() {
         // @details 카카오톡 Developer API 사이트에서 발급받은 JavaScript Key
@@ -40,7 +40,7 @@
 				}
 		});
 	}
-</script>
+</script> -->
 </head>
 
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -161,16 +161,6 @@
 
 		<div class="right_contents">
 			<%- include ("gallery.ejs") %>
-			<% if(kakaoAuth()) { %>
-				<div>ww
-				</div>
-			<% } else { %>
-				<button class="login100-form-btn" onclick="kakaoLogout();">
-					kakaologout
-				</button>
-			<% } %>
-    <a id="kakao-login-btn"></a>
-		</div><!--// right_contents -->
 	</div><!--// main_container -->
 
 	<div id="footer">
