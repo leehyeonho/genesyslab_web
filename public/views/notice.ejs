@@ -44,7 +44,8 @@
 				</div>
 								<!--// recent_notice -->
 <ul class="notice_list">
-<% for(var i=1;i<data_notice.length;i++) { %>
+<% for(var i=1;i<5;i++) { %>
+<% if(i+1 >= data.length) { break; } %>
 <li>
 <a href="board_view.ejs?tbl=1&id=<%= data_notice[i].id %>"><%= data_notice[i].title %></a>
 <span><%= data_notice[i].YYYY %>-<%= data_notice[i].mmdd %></span>
