@@ -165,20 +165,20 @@ exports.search = function(request, response) {
   var search = "\"%" + request.body.search + "%\"";
   console.log(search);
   var tbl = request.body.tbl;
+  var tblname = "";
   console.log(tbl);
   if(tbl == "1") {
-    tbl = "bbs_notice";
+    tblname = "bbs_notice";
   } else if(tbl == "2") {
-      tbl = "bbs_gallery";
+      tblname = "bbs_gallery";
   } else if(tbl == "3") {
-      tbl = "bbs_free";
+      tblname = "bbs_free";
   }
-  sql = 'SELECT count(*) as cnt FROM ' + tbl + ' where title like ' + search;
-  console.log(sql);
+  sql = 'SELECT count(*) as cnt FROM ' + tblname + ' where title like ' + search;
   db.query(sql, function(error, result) {
     totalCount = result[0].cnt;
   });
-  sql = 'select id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date from ' + tbl + ' where title like ' + search + ' ORDER BY id DESC';
+  sql = 'select id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date from ' + tblname + ' where title like ' + search + ' ORDER BY id DESC';
     db.query(sql,function(error, results) {
       var totalPage = totalCount / 10;
       if (totalCount % 10 > 0) {
@@ -190,6 +190,6 @@ exports.search = function(request, response) {
         endPage = totalPage;
       }
       endPage = parseInt(endPage);
-      response.render('board_search', {session : request.session, totalCount : totalCount, pageNum : 1, start : startPage, end : endPage, data : results, tbl : request.query.tbl});
+      response.render('board_search', {session : request.session, totalCount : totalCount, pageNum : 1, start : startPage, end : endPage, data : results, tbl : tbl});
 	});
 }
