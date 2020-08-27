@@ -173,25 +173,22 @@ exports.search = function(request, response) {
   } else if(tbl == "3") {
       tbl = "bbs_free";
   }
-  console.log(tbl);
-  sql = 'SELECT count(*) as cnt FROM ? where title like ? ORDER BY id DESC LIMIT ?, 10';
-console.log(sql);
-  db.query(sql, function(error, result) {
+  sql = 'SELECT count(*) as cnt FROM ? where title like ?';
+  db.query(sql, [tbl, search], function(error, result) {
     totalCount = result[0].cnt;
   });
-  console.log(totalCount);
-  sql = 'select id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date from ? where title like ? ORDER BY id DESC LIMIT ?, 10';
-    db.query(sql, [tbl, search, (request.query.pageNum-1) * 10],function(error, result) {
+  sql = 'select id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date from ? where title like ? ORDER BY id DESC';
+    db.query(sql, [tbl, search],function(error, result) {
       var totalPage = totalCount / 10;
       if (totalCount % 10 > 0) {
         totalPage++; // 10개로 나눠도 남으면 페이지 하나 더
       }
-      var startPage = ((request.query.pageNum  -1) / 10) * 10 + 1;
+      var startPage = 1;
       var endPage = startPage + 10 -1;
       if( endPage > totalPage) {
         endPage = totalPage;
       }
       endPage = parseInt(endPage);
-      response.render('board', {session : request.session, totalCount : totalCount, pageNum : request.query.pageNum, start : startPage, end : endPage, data : results, tbl : request.query.tbl});
+      response.render('board_search?tbl='+tbl, {session : request.session, totalCount : totalCount, pageNum : 1, start : startPage, end : endPage, data : results, tbl : request.query.tbl});
 	});
 }
