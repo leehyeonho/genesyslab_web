@@ -185,6 +185,8 @@ function frm_check() {
       <a href="./board.ejs?tbl=<%= tbl %>&pageNum=<%= parseInt(pageNum)+1 %>">다음</a>
       <% } %>
 </div>
+<% if(tbl == "2") { %>
+<% else { %>
 <div class="board_search mt20 mb50">
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 		<tr>
@@ -210,6 +212,7 @@ function frm_check() {
 		</tr>
 	</table>
 </div>
+<% } %>
 	</div><!--// conbody -->
 	  </div><!--// sub_contents -->
 	    </div><!--// sub_container -->
