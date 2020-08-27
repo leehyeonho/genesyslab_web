@@ -35,9 +35,8 @@
 		Kakao.API.request({
 					url : "/v1/user/logout"
 				, success : function(id) {
-						alert(id);
+						alert("로그아웃되었습니다.")
 					}, fail : function( error ) {
-						alert("로그아웃에 실패하였습니다.");
 				}
 		});
 	}
@@ -147,9 +146,6 @@
 						<button class="login100-form-btn" onclick="window.open('/signup', '_blank', 'width=500 height=500')">
 							signup
 						</button>
-						<button class="login100-form-btn" onclick="kakaoLogout();">
-							kakaologout
-						</button>
 					</div>
 
 				</div>
@@ -165,16 +161,15 @@
 
 		<div class="right_contents">
 			<%- include ("gallery.ejs") %>
-			<div>카카오 아이디 : <span id="kakaoIdentity"></span></div>
-
-    <div>닉네임 : <span id="kakaoNickName"></span></div>
-
-    <div>프로필 이미지 : <img id="kakaoProfileImg" src=""/></div>
-
-    <div>썸네일 이미지 : <img id="kakaoThumbnailImg" src=""/></div>
-
-    <br/>
-
+			<% if(var res = kakaoAuth()) { %>
+				<div>
+					<%= res.id %>
+				</div>
+			<% } else { %>
+				<button class="login100-form-btn" onclick="kakaoLogout();">
+					kakaologout
+				</button>
+			<% } %>
     <a id="kakao-login-btn"></a>
 		</div><!--// right_contents -->
 	</div><!--// main_container -->
