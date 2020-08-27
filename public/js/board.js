@@ -161,7 +161,7 @@ exports.delete = function(request, response) {
 }
 
 exports.search = function(request, response) {
-  var search = "%\"" + request.body.search + "%\"";
+  var search = "\"%" + request.body.search + "%\"";
   console.log(search);
   var tbl = request.body.tbl;
   console.log(tbl);
