@@ -164,7 +164,7 @@ exports.search = function(request, response) {
   var totalCount = 0;
   var search = "\"%" + request.body.search + "%\"";
   console.log(search);
-  var tbl = request.body.tbl.value;
+  var tbl = request.body.tbl;
   console.log(tbl);
   if(tbl == "1") {
     tbl = "bbs_notice";
