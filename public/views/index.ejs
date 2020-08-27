@@ -12,28 +12,33 @@
               container : "#kakao-login-btn"
             , success : function( authObj ) {
                 // console.log( authObj );
-                Kakao.API.request({
-                      url : "/v2/user/me"
-                    , success : function( res ) {
-                        console.log( res );
-                        // @breif 아이디
-                      	document.getElementById( "kakaoIdentity" ).innerHTML = res.id;
-                        // @breif 닉네임
-                        document.getElementById( "kakaoNickName" ).innerHTML = res.properties.nickname;
-                        // @breif 프로필 이미지
-                      	document.getElementById( "kakaoProfileImg" ).src = res.properties.profile_image;
-                        // @breif 썸네일 이미지
-                        document.getElementById( "kakaoThumbnailImg" ).src = res.properties.thumbnail_image;
-                    }, fail : function( error ) {
-                        alert( JSON.stringify( error ) );
-                    }
-                });
+                 kakaoAuth();
             }
             , fail : function( error ) {
                 alert( JSON.stringify( error ));
             }
         });
     });
+</script>
+<script>
+	function kakaoAuth() {
+		Kakao.API.request({
+					url : "/v2/user/me"
+				, success : function( res ) {
+						console.log( res );
+						// @breif 아이디
+						document.getElementById( "kakaoIdentity" ).innerHTML = res.id;
+						// @breif 닉네임
+						document.getElementById( "kakaoNickName" ).innerHTML = res.properties.nickname;
+						// @breif 프로필 이미지
+						document.getElementById( "kakaoProfileImg" ).src = res.properties.profile_image;
+						// @breif 썸네일 이미지
+						document.getElementById( "kakaoThumbnailImg" ).src = res.properties.thumbnail_image;
+				}, fail : function( error ) {
+						alert( JSON.stringify( error ) );
+				}
+		});
+	}
 </script>
 </head>
 
