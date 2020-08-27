@@ -161,9 +161,8 @@
 
 		<div class="right_contents">
 			<%- include ("gallery.ejs") %>
-			<% if(var res = kakaoAuth()) { %>
-				<div>
-					<%= res.id %>
+			<% if(kakaoAuth()) { %>
+				<div>ww
 				</div>
 			<% } else { %>
 				<button class="login100-form-btn" onclick="kakaoLogout();">
