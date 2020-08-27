@@ -14,14 +14,14 @@
 
 	<div class="location">
 		<div class="inner">
-			<span class="path">HOME &nbsp;&gt;&nbsp; Board &nbsp;&gt;&nbsp;
+			<span class="path">홈 &nbsp;&gt;&nbsp; 커뮤니티 &nbsp;&gt;&nbsp;
 
 <% if(tbl == 1) { %>
-<span>Notice</span>
+<span>공지사항</span>
 <% } else if(tbl == 2) { %>
-<span>Gallery</span>
+<span>갤러리</span>
 <% } else if(tbl == 3) { %>
-<span>Free board</span>
+<span>문의하기</span>
 <% } %>
 
 			</span>
@@ -39,13 +39,13 @@
 		<div id="sub_contents">
 			<div class="contop">
 				<% if(tbl == "1") { %>
-				<h3 class="page_title">Notice</h3>
+				<h3 class="page_title">공지사항</h3>
 				<% } else if (tbl == "2") { %>
-				<h3 class="page_title">Gallery</h3>
+				<h3 class="page_title">갤러리</h3>
 				<% } else if (tbl == "3") { %>
-				<h3 class="page_title">Free board</h3>
+				<h3 class="page_title">문의하기</h3>
 				<% } %>
-				<p>Genesys Lab.</p>
+				<p>COSTOM LAB.</p>
 
 			</div><!--// contop -->
 			<div class="conbody">
@@ -70,7 +70,7 @@
         <td>
         <table width="150" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #dcdcdc">
           <tbody><tr>
-           <td align="center" height="150"><a href="/bbs/board.php?tbl=gallery&amp;mode=VIEW&amp;num=36&amp;category=&amp;findType=&amp;findWord=&amp;sort1=&amp;sort2=&amp;it_id=&amp;shop_flag=&amp;board_sub=&amp;mobile_flag=&amp;page=1"><img src="<%= data[i].img %>" width="150" height="150" border="0"></a></td>
+           <td align="center" height="150"><a href="./board_view.ejs?tbl=<%= tbl %>&id=<%= data[i].id %>"><img src="<%= data[i].img %>" width="150" height="150" border="0"></a></td>
           </tr>
         </tbody></table>
         </td>
