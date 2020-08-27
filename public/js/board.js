@@ -173,10 +173,13 @@ exports.search = function(request, response) {
   } else if(tbl == "3") {
       tbl = "bbs_free";
   }
+  console.log(tbl);
   sql = 'SELECT count(*) as cnt FROM ? where title like ? ORDER BY id DESC LIMIT ?, 10';
+console.log(sql);
   db.query(sql, function(error, result) {
     totalCount = result[0].cnt;
   });
+  console.log(totalCount);
   sql = 'select id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date from ? where title like ? ORDER BY id DESC LIMIT ?, 10';
     db.query(sql, [tbl, search, (request.query.pageNum-1) * 10],function(error, result) {
       var totalPage = totalCount / 10;
