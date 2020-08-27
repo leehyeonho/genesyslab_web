@@ -13,7 +13,7 @@
             , success : function( authObj ) {
                 // console.log( authObj );
                 Kakao.API.request({
-                      url : "/v1/user/me"
+                      url : "/v2/user/me"
                     , success : function( res ) {
                         console.log( res );
                         // @breif 아이디
