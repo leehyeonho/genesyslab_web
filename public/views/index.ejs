@@ -15,7 +15,7 @@
                 Kakao.API.request({
                       url : "/v1/user/me"
                     , success : function( res ) {
-                        // console.log( res );
+                        console.log( res );
                         // @breif 아이디
                       	document.getElementById( "kakaoIdentity" ).innerHTML = res.id;
                         // @breif 닉네임
