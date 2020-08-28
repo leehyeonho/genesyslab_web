@@ -126,8 +126,108 @@
 		<p>CUSTOM LAB.</p>
 	</div><!--// contop -->
 	<div class="conbody">
+		<div class="year_tab">
+			<div class="year_tab_inWrap">
+				<ul class="year_tab_list" style="width: 1785px; left: 0px;">
+					<li>
+					<!-- <a href="/bbs/board.php?tbl=patent&category=2020" > -->
+					<a href="javascript:iframe_url('/bbs/board.php?tbl=patent&amp;board_sub=ok&amp;category=2020');" class="on">
+					2020(6)</a>
+					</li>
+					<li>
+					<!-- <a href="/bbs/board.php?tbl=patent&category=2019" > -->
+					<a href="javascript:iframe_url('/bbs/board.php?tbl=patent&amp;board_sub=ok&amp;category=2019');" class="">
+					2019(11)</a>
+					</li>
+					<li>
+					<!-- <a href="/bbs/board.php?tbl=patent&category=2018" > -->
+					<a href="javascript:iframe_url('/bbs/board.php?tbl=patent&amp;board_sub=ok&amp;category=2018');">
+					2018(16)</a>
+					</li>
+				</ul>
+			</div>
+			<p class="prev_btn"><img src="/images/sub04/pro_btn.jpg" alt=""></p>
+			<p class="next_btn"><img src="/images/sub04/next_btn.jpg" alt=""></p>
+		</div>
+
+		<script type="text/javascript">
+		<!--
+
+		//-->
+		</script>
+
+		<iframe name="board_iframe" id="board_iframe" src="/bbs/board.php?tbl=patent&amp;board_sub=ok&amp;category=2020" frameborder="0" width="100%" scrolling="no" onload="autoResize('board_iframe')" height="863px"></iframe>
+		<style type="text/css">
+		.year_tab{width:100%; margin:0 auto; position:relative; overflow:hidden;}
+		.year_tab_inWrap{width:735px; margin:0 auto; position:relative; overflow:hidden; }
+		.year_tab ul.year_tab_list {height:45px;  white-space: nowrap; padding: 0px; position: relative; margin:0 auto; font-size:0; }
+		.year_tab ul.year_tab_list li{display: inline-block;  vertical-align:middle; font-size:14px; font-weight:600; color:#bbb; height:45px;  line-height:45px; margin:0 5px; text-align:center; width:95px; text-align:center; cursor:pointer; box-sizing:border-box;}
+		.year_tab ul.year_tab_list li:hover{color:#383838; }
+		.year_tab ul.year_tab_list li a.on{ font-size:18px; font-weight:600; color:#383838;  line-height:45px}
+		.year_tab .prev_btn{float:left; position:absolute; left:0; top:1px; cursor:pointer;}
+		.year_tab .next_btn{position:absolute; right:0; top:1px; cursor:pointer;}
+		.down_btn{display:inline-block; width:105px; height:30px;background-color:#a1a1a1; color:#fff; font-size:12px; font-weight:600; text-align:center; line-height:30px}
+		.link_btn{display:inline-block;  width:105px; height:30px; background-color:#a4b2bd; color:#fff; font-size:12px; font-weight:600; text-align:center; line-height:30px}
+		</style>
+		<script type="text/javascript">
+		$(function(){
+			//$( ".year_tab_list" ).draggable({ axis: "x" });
+			var wrprwdth = $('.year_tab').width(),
+				ulwdth = 0,
+				lilength = $('.year_tab_list li').length,
+				liwidth = parseInt($('.year_tab_list li').width() + 10),
+				moveleft = 0;
+			$(window).resize(function(){
+			   wrprwdth = $('.year_tab').width();
+			   if(parseInt(ulwdth - wrprwdth) <= parseInt(moveleft) - 95){
+					moveleft = parseInt(ulwdth - wrprwdth);
+				   $('.year_tab_list').stop().animate({left : parseInt('-' + moveleft)},800);
+				 return false;
+				}
+			});
+			// Get all list item Width;
+			// $('.year_tab_list li').each(function(){
+			//	 ulwdth += $(this).width() + 8;
+			//  });
+
+			// Set ul Width;
+			ulwdth += liwidth * lilength;
+			$('.year_tab_list').width(ulwdth);
+			moveleft = 0;
+			$('.year_tab_list').stop().animate({left : parseInt(moveleft)});
+
+			//Prev button click function
+			$('.prev_btn').click(function(){
+				if(parseInt(moveleft)<=0){
+					moveleft = 0;
+				   $('.year_tab_list').stop().animate({left : parseInt(moveleft)},800);
+				 return false;
+				}else{
+					moveleft -= ulwdth/lilength;
+					$('.year_tab_list').stop().animate({left : parseInt('-'+moveleft)},800);
+				}
+			});
+			//Next button click function
+			$('.next_btn').click(function(){
+				if(parseInt(ulwdth - wrprwdth) <= parseInt(moveleft -95 )){
+					moveleft = parseInt(ulwdth - wrprwdth);
+				   $('.year_tab_list').stop().animate({left : parseInt('-' + moveleft)},800);
+				 return false;
+				}else{
+					moveleft += ulwdth/lilength;
+					$('.year_tab_list').stop().animate({left : parseInt('-' + moveleft)},800);
+				}
+			});
+			/*2017-03-16 kh 추가 년도 카테고리 활성화*/
+			$('.year_tab_list li a').click(function(){
+				$('.year_tab_list li a').removeClass('on');
+				$(this).addClass('on');
+			});
+			/*2017-03-16 kh 추가 년도 카테고리 활성화*/
+		});
+		</script>
 	</div>
-<% } else if(tbl == "org") { %>
+	<% } else if(tbl == "org") { %>
 	<div class="contop">
 		<h3 class="page_title">조직도</h3>
 		<p>CUSTOM LAB.</p>
