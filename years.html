@@ -3,8 +3,11 @@
 <title></title>
 </head>
 <script type="text/javascript">
-  window.onload = function searchParam(key) {
-    return new URLSearchParams(location.search).get(key);
+  window.onload = function searchParam() {
+    var year = URLSearchParams(location.search).get('year');
+    if(year == '2019') {
+      document.getElementById('aa').innerHTML = 'wow';
+    }
   };
 </script>
 <body>
@@ -17,7 +20,7 @@
 						<tr>
 				<th>3</th>
 								<td>
-					<p class="pint01">
+					<p id="aa" class="pint01">
 										탄소나노튜브를 포함하는 나노복합막 및 그 제조방법					</p>
 
 					<div id="DivContents" style="width:767px;word-break:break-all;" class="mt5">
