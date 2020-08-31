@@ -13,9 +13,8 @@ function frm_check() {
     alert("내용을 입력해주세요.");
     write.content.focus();
     return false;
-  } else if(tbl == 2 && write.imgFile.value == "") {
+  } else if(tbl == 2 && !write.imgFile.value) {
     alert("파일을 선택해주세요.");
-    write.imgFile.focus();
     return false;
   }
   else return true;
