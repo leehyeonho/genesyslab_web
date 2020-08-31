@@ -95,10 +95,9 @@ function delete() {
   <form action="/delete" method="post" name="frm_delete" id="frm_delete">
   <input type="hidden" id="tbl" name="tbl" value="<%= tbl %>"/>
   <input type="hidden" id="id" name="id" value="<%= id %>" />
+  </form>
   <a href="javascript:delete();"><div class="bbs_btn">삭제</div></a>
   </td>
-  </form>
-</td>
 <td height="40" align="right">
 <a href="./board.ejs?tbl=<%= tbl %>&pageNum=1"><div class="bbs_btn">목록</div></a>
 </td>
