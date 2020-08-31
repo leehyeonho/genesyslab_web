@@ -4,7 +4,7 @@
   <script type="text/javascript" src="/js/ckeditor/ckeditor.js"></script>
 </head>
 <script>
-function frm_check() {
+function frm_check(tbl) {
   if(write.title.value == "") {
     alert("제목을 입력해주세요.");
     write.title.focus();
@@ -13,7 +13,7 @@ function frm_check() {
     alert("내용을 입력해주세요.");
     write.content.focus();
     return false;
-  } else if(tbl == 2 && !write.imgFile.value) {
+  } else if(tbl == "2" && !write.imgFile.value) {
     alert("파일을 선택해주세요.");
     return false;
   }
@@ -51,9 +51,9 @@ function frm_check() {
 			</div><!--// contop -->
 			<div class="conbody">
       <% if(tbl == "2") { %>
-        <form name="write" id="write" action="/upload" method="post" enctype="multipart/form-data" onsubmit="return frm_check();">
+        <form name="write" id="write" action="/upload" method="post" enctype="multipart/form-data" onsubmit="return frm_check(<%= tbl %>);">
       <% } else { %>
-        <form name="wirte" id="write" action="/write" method="post" onsubmit="return frm_check();">
+        <form name="wirte" id="write" action="/write" method="post" onsubmit="return frm_check(<%= tbl %>);">
       <% } %>
 
 <input type="hidden" id="tbl" name="tbl" value="<%= tbl %>" />
