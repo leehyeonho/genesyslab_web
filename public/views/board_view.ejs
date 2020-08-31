@@ -2,7 +2,14 @@
 <head>
   <%- include ("head.ejs") %>
 </head>
-
+<script type="text/javascript">
+function delete() {
+    // name이 paging인 태그
+    var f = document.frm_delete;
+    f.submit();
+  };
+  </script>
+</script>
 <body leftmargin="0" topmargin="0">
 <DIV ID="objContents">
 <%- include ("ddScript.ejs") %>
@@ -85,13 +92,15 @@
   <tr>
 <% if( data[0].author == session.user_id ) { %>
 <td height="40" colspan="5" align="right">
-<form action="/delete" method="post" name="frm_delete" id="frm_delete">
-<input type="hidden" id="tbl" name="tbl" value="<%= tbl %>"/>
-<input type="hidden" id="id" name="id" value="<%= id %>" />
-<input type="submit" value="삭제"/>
-</form>
+
 </td>
 <td height="40" align="right">
+  <form action="/delete" method="post" name="frm_delete" id="frm_delete">
+  <input type="hidden" id="tbl" name="tbl" value="<%= tbl %>"/>
+  <input type="hidden" id="id" name="id" value="<%= id %>" />
+  <a href="javascript:delete();"><div class="bbs_btn">삭제</div></a>
+  </td>
+  </form>
 <a href="./board.ejs?tbl=<%= tbl %>&pageNum=1"><div class="bbs_btn">목록</div></a>
 </td>
 <% } else { %>
