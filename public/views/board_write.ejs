@@ -11,7 +11,7 @@ function frm_check(tbl) {
     return false;
   } else if(CKEDITOR.instances['content'].getData() == "") {
     alert("내용을 입력해주세요.");
-    CKEDITOR.focus();
+    CKEDITOR.instances['content'].focus();
     return false;
   } else if(tbl == "2" && !write.imgFile.value) {
     alert("파일을 선택해주세요.");
