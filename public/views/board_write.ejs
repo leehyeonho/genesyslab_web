@@ -72,7 +72,9 @@
   <textarea id="content" name="content" cols="58" rows="18">
   </textarea>
   <% if(tbl == "2") { %>
-    <input type="file" class="bbs_btn" name="imgFile">
+    <div class="filebox">
+      <input type="file" name="imgFile">
+    </div>
   <% } %>
     <script>
 	CKEDITOR.replace('content');

@@ -305,8 +305,10 @@ ul.paging li.on a{color:#ffffff; border:1px solid #7c7c7c; }
 .bbs_categ  td {line-height:24px; height:24px; color:#c2c2c2; text-decoration:none;}
 .bbs_categ  td a:hover{line-height:24px; height:24px; color:#f26731; text-decoration:none;}
 .sub_dot{background:url('/images/sub/sub_dot.jpg') 0 4px no-repeat; padding-left:12px; vertical-align:top;}
-.bbs_btn{width:80px; height:27px; background:#ffffff; color:#111; font-weight:bold; border:1px solid #dbdbdb; text-align:center; line-height:25px; display:inline-block;}
-
+.bbs_btn{
+	width:80px; height:27px; background:#ffffff; color:#111; font-weight:bold; border:1px solid #dbdbdb; text-align:center; line-height:25px; display:inline-block;}
+.filebox label {
+	display:inline-block; width:80px; height:27px; background-color: #ffffff; color: #111; font-weight:bold; border:1px solid #dbdbdb; text-align:center; font-size: inherit; line-height: 25px;}
 img { border:0; }
 .tit {font-weight:bold;color:#444444;text-align:center; }
 .bottom_line { border-bottom:1px solid #EAEAEA; }
