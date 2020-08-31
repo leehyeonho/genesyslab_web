@@ -2,93 +2,109 @@
 		<% if(tbl == 1) { %>
 
 		<div class="sub_title">
-                <h2>커뮤니티</h2>
+                <h2>BOARD</h2>
                 </div><!--// sub_title -->
        		<div class="lnb">
-		<h3 class='on' ><a href="/board.ejs?tbl=1&pageNum=1"  class="over" ><span>공지사항</span></a></h3>
-                <h3 class='#none' ><a href="/board.ejs?tbl=2&pageNum=1"  ><span>갤러리</span></a></h3>
-                <h3 class='#none' ><a href="/board.ejs?tbl=3&pageNum=1"  ><span>문의하기</span></a></h3>
+		<h3 class='on' ><a href="/board.ejs?tbl=1&pageNum=1"  class="over" ><span>Notice</span></a></h3>
+                <h3 class='#none' ><a href="/board.ejs?tbl=2&pageNum=1"  ><span>Gallery</span></a></h3>
 
 		<% } else if(tbl == 2) { %>
 
 		<div class="sub_title">
-                <h2>커뮤니티</h2>
+                <h2>BOARD</h2>
                 </div><!--// sub_title -->
                 <div class="lnb">
-		<h3 class='#none'><a href="/board.ejs?tbl=1&pageNum=1"   ><span>공지사항</span></a></h3>
-                <h3 class='on' ><a href="/board.ejs?tbl=2&pageNum=1"  class="over" ><span>갤러리</span></a></h3>
-                <h3 class='#none' ><a href="/board.ejs?tbl=3&pageNum=1"  ><span>문의하기</span></a></h3>
+		<h3 class='#none'><a href="/board.ejs?tbl=1&pageNum=1"   ><span>Notice</span></a></h3>
+                <h3 class='on' ><a href="/board.ejs?tbl=2&pageNum=1"  class="over" ><span>Gallery</span></a></h3>
 
-		<% } else if(tbl == 3) { %>
-
-                <div class="sub_title">
-                <h2>커뮤니티</h2>
-                </div><!--// sub_title -->
-                <div class="lnb"><h3 class='#none' ><a href="/board.ejs?tbl=1&pageNum=1"  ><span>공지사항</span></a></h3>
-                <h3 class='#none' ><a href="/board.ejs?tbl=2&pageNum=1"  ><span>갤러리</span></a></h3>
-                <h3 class='on' ><a href="/board.ejs?tbl=3&pageNum=1"  class="over" ><span>문의하기</span></a></h3>
-
-		<% } else if(tbl == "info") { %>
+		<% } else if(tbl == "a") { %>
 		<div class="sub_title">
-                <h2 style="text-transform: uppercase;">회사소개</h2>
+                <h2 style="text-transform: uppercase;">RESEARCH</h2>
                 </div><!--// sub_title -->
                 <div class="lnb">
-									<h3 class='on' ><a href="/sub.ejs?tbl=info"  class="over" ><span>회사소개</span></a></h3>
-	                <h3 class='#none' ><a href="/sub.ejs?tbl=history"  ><span>회사연혁</span></a></h3>
-	                <h3 class='#none' ><a href="/sub.ejs?tbl=org"><span>조직도</span></a></h3>
-		<% } else if(tbl == "history") { %>
+									<h3 class='on' ><a href="/sub.ejs?tbl=a"  class="over" ><span>a</span></a></h3>
+	                <h3 class='#none' ><a href="/sub.ejs?tbl=b"  ><span>b</span></a></h3>
+	                <h3 class='#none' ><a href="/sub.ejs?tbl=c"><span>c</span></a></h3>
+		<% } else if(tbl == "b") { %>
 		<div class="sub_title">
-                <h2 style="text-transform: uppercase;">회사소개</h2>
+                <h2 style="text-transform: uppercase;">RESEARCH</h2>
                 </div><!--// sub_title -->
                 <div class="lnb">
-									<h3 class='#none' ><a href="/sub.ejs?tbl=info"><span>회사소개</span></a></h3>
-	                <h3 class='on' ><a href="/sub.ejs?tbl=history"  class="over" ><span>회사연혁</span></a></h3>
-	                <h3 class='#none' ><a href="/sub.ejs?tbl=org"><span>조직도</span></a></h3>
-		<% } else if(tbl == "org") { %>
+									<h3 class='#none' ><a href="/sub.ejs?tbl=info"><span>a</span></a></h3>
+	                <h3 class='on' ><a href="/sub.ejs?tbl=history"  class="over" ><span>b</span></a></h3>
+	                <h3 class='#none' ><a href="/sub.ejs?tbl=org"><span>c</span></a></h3>
+		<% } else if(tbl == "c") { %>
 		<div class="sub_title">
-								<h2 style="text-transform: uppercase;">회사소개</h2>
+								<h2 style="text-transform: uppercase;">RESEARCH</h2>
 								</div><!--// sub_title -->
 								<div class="lnb">
-									<h3 class='#none' ><a href="/sub.ejs?tbl=info"><span>회사소개</span></a></h3>
-									<h3 class='#none' ><a href="/sub.ejs?tbl=history"  ><span>회사연혁</span></a></h3>
-									<h3 class='on' ><a href="/sub.ejs?tbl=org"  class="over" ><span>조직도</span></a></h3>
-		<% } else if(tbl == "product") { %>
+									<h3 class='#none' ><a href="/sub.ejs?tbl=info"><span>a</span></a></h3>
+									<h3 class='#none' ><a href="/sub.ejs?tbl=history"  ><span>b</span></a></h3>
+									<h3 class='on' ><a href="/sub.ejs?tbl=org"  class="over" ><span>c</span></a></h3>
+		<% } else if(tbl == "professor") { %>
 		<div class="sub_title">
-								<h2 style="text-transform: uppercase;">제품</h2>
+								<h2 style="text-transform: uppercase;">PROFESSOR</h2>
 								</div><!--// sub_title -->
 								<div class="lnb">
-									<h3 class='on' ><a href="/sub.ejs?tbl=product"  class="over" ><span>제품1</span></a></h3>
-		<% } else if(tbl == "service") { %>
+									<h3 class='on' ><a href="/sub.ejs?tbl=professor"  class="over" ><span>PROFESSOR</span></a></h3>
+		<% } else if(tbl == "candidate1") { %>
 		<div class="sub_title">
-								<h2 style="text-transform: uppercase;">서비스</h2>
+								<h2 style="text-transform: uppercase;">MEMBERS</h2>
 								</div><!--// sub_title -->
 								<div class="lnb">
-									<h3 class='on' ><a href="/sub.ejs?tbl=service"  class="over" ><span>서비스소개</span></a></h3>
-									<h3 class='#none' ><a href="/sub.ejs?tbl=case"><span>서비스사례</span></a></h3>
+									<h3 class='on' ><a href="/sub.ejs?tbl=candidate1"  class="over" ><span>Ph.D. Candidate</span></a></h3>
+									<h3 class='#none' ><a href="/sub.ejs?tbl=candidate2"><span>M.S Candidate</span></a></h3>
+									<h3 class='#none' ><a href="/sub.ejs?tbl=alumni"><span>Alumni</span></a></h3>
 
-		<% } else if(tbl == "case") { %>
+		<% } else if(tbl == "candidate2") { %>
 		<div class="sub_title">
-								<h2 style="text-transform: uppercase;">서비스</h2>
+								<h2 style="text-transform: uppercase;">MEMBERS</h2>
 								</div><!--// sub_title -->
 								<div class="lnb">
-									<h3 class='#none' ><a href="/sub.ejs?tbl=service"><span>서비스소개</span></a></h3>
-									<h3 class='on' ><a href="/sub.ejs?tbl=case"  class="over" ><span>서비스사례</span></a></h3>
-
-		<% } else if(tbl == "reference") { %>
+									<h3 class='#none' ><a href="/sub.ejs?tbl=candidate1"><span>Ph.D. Candidate</span></a></h3>
+									<h3 class='on' ><a href="/sub.ejs?tbl=candidate2"  class="over" ><span>M.S Candidate</span></a></h3>
+									<h3 class='#none' ><a href="/sub.ejs?tbl=alumni"><span>Alumni</span></a></h3>
+		<% } else if(tbl == "alumni") { %>
 		<div class="sub_title">
-								<h2 style="text-transform: uppercase;">레퍼런스</h2>
+								<h2 style="text-transform: uppercase;">MEMBERS</h2>
 								</div><!--// sub_title -->
 								<div class="lnb">
-									<h3 class='on' ><a href="/sub.ejs?tbl=reference"  class="over" ><span>레퍼런스</span></a></h3>
+									<h3 class='#none' ><a href="/sub.ejs?tbl=candidate1"><span>Ph.D. Candidate</span></a></h3>
+									<h3 class='#none' ><a href="/sub.ejs?tbl=candidate2"><span>M.S Candidate</span></a></h3>
+									<h3 class='on' ><a href="/sub.ejs?tbl=alumni"  class="over" ><span>Alumni</span></a></h3>
+		<% } else if(tbl == "journals") { %>
+		<div class="sub_title">
+								<h2 style="text-transform: uppercase;">PUBLICATION</h2>
+								</div><!--// sub_title -->
+								<div class="lnb">
+									<h3 class='on' ><a href="/sub.ejs?tbl=journals" class="over" ><span>Journals</span></a></h3>
+									<h3 class='#none' ><a href="/sub.ejs?tbl=presentations"><span>Presentations</span></a></h3>
+									<h3 class='#none' ><a href="/sub.ejs?tbl=patent"><span>Patent</span></a></h3>
+		<% } else if(tbl == "presentations") { %>
+		<div class="sub_title">
+								<h2 style="text-transform: uppercase;">PUBLICATION</h2>
+								</div><!--// sub_title -->
+								<div class="lnb">
+									<h3 class='#none' ><a href="/sub.ejs?tbl=journals"><span>Journals</span></a></h3>
+									<h3 class='on' ><a href="/sub.ejs?tbl=presentations" class="over" ><span>Presentations</span></a></h3>
+									<h3 class='#none' ><a href="/sub.ejs?tbl=patent"><span>Patent</span></a></h3>
+		<% } else if(tbl == "patent") { %>
+		<div class="sub_title">
+								<h2 style="text-transform: uppercase;">PUBLICATION</h2>
+								</div><!--// sub_title -->
+								<div class="lnb">
+									<h3 class='#none' ><a href="/sub.ejs?tbl=journals"><span>Journals</span></a></h3>
+									<h3 class='#none' ><a href="/sub.ejs?tbl=presentations"><span>Presentations</span></a></h3>
+									<h3 class='on' ><a href="/sub.ejs?tbl=patent"  class="over" ><span>Patent</span></a></h3>
 
 		<% } else if(tbl == "contact") { %>
 			<div class="sub_title">
-									<h2 style="text-transform: uppercase;">오시는길</h2>
+									<h2 style="text-transform: uppercase;">CONTACT US</h2>
 									</div><!--// sub_title -->
 									<div class="lnb">
 		<% } else if(tbl == "sitemap") { %>
 			<div class="sub_title">
-									<h2 style="text-transform: uppercase;">사이트맵</h2>
+									<h2 style="text-transform: uppercase;">SITEMAP</h2>
 									</div><!--// sub_title -->
 									<div class="lnb">
 		<% } %>

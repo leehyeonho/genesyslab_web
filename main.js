@@ -41,8 +41,8 @@ var options = {
     host      : 'localhost',
     port:3306,
     user      : 'root',
-    password  : 'customlab11',
-    database  : 'customlab'
+    password  : '1234',
+    database  : 'genesys'
 };
 
 var sessionStore = new MySQLStore(options);
@@ -72,7 +72,7 @@ app.set('views', './public/views');
 
 
 
-const port = 3000
+const port = 80
 
 //index.html
 app.get('/', function(request, response) {
