@@ -282,7 +282,7 @@ ul.paging li.on a{color:#ffffff; border:1px solid #7c7c7c; }
 .p_basic dt{font-size:18px; color:#124e79; font-weight:bold; font-family:'Malgun Gothic';}
 .p_basic dd{font-size:14px; color:#666666; margin-bottom:3px;}
 .p_basic dd ul{padding:10px 0; }
-.p_basic dd ul li{font-size:14px; color:#666666; background:url(/images/sub/dot.jpg) 0 50% no-repeat; padding-left:10px; margin-bottom:3px;}
+.p_basic dd ul li{font-size:14px; color:#666666; background:url(/images/dot.jpg) 0 50% no-repeat; padding-left:10px; margin-bottom:3px;}
 .p_basic dd em{font-size:14px; color:#111111; font-weight:bold;}
 .p_basic dd a{font-size:14px; color:#124e79; text-decoration:underline;}
 

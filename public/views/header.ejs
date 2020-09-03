@@ -14,11 +14,11 @@
 				<span class="tm3"><a href="/sub.ejs?tbl=sitemap">SITEMAP</a></span>
 			</div><!--// top_menu -->
 			<ul id="gnb" class="clfix">
-	<li><a href="/sub.ejs?tbl=a">RESEARCH</a>
+	<li><a href="/sub.ejs?tbl=research0">RESEARCH</a>
 		<ul class="gnb_2depth gnb_2depth1">
-			<li><a href="/sub.ejs?tbl=info" style="font-size:12px">a</a></li>
-			<li><a href="/sub.ejs?tbl=history">b</a></li>
-			<li><a href="/sub.ejs?tbl=org">c</a></li>
+				<% for(var i=0;i<data_research.length;i++) { %>
+						<li><a href="<%= '/sub.ejs?tbl=research' + i %>" style="font-size:12px"><%= data_research[i].tblname%></a></li>
+				<% } %>
 		</ul>
 	</li>
 	<li><a href="/sub.ejs?tbl=professor">PROFESSOR</a>

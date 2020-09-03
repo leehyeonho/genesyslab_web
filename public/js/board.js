@@ -33,7 +33,12 @@ exports.home = function(request, response) {
         endPage = totalPage;
       }
       endPage = parseInt(endPage);
-      response.render('board', {session : request.session, totalCount : totalCount, pageNum : request.query.pageNum, start : startPage, end : endPage, data : results, tbl : request.query.tbl});
+      db.query(sql, function(err, result_gallery) {
+        sql = 'SELECT tblname FROM research';
+        db.query(sql, function(err, result_research) {
+          response.render('board', {session : request.session, totalCount : totalCount, pageNum : request.query.pageNum, start : startPage, end : endPage, data : results, tbl : request.query.tbl, data_research : result_research});
+        });
+      });
       });
 
     });
@@ -62,6 +67,15 @@ exports.write = function(request, response) {
 	  response.redirect('/board.ejs?tbl=3&pageNum=1');
 	}
     });
+}
+
+exports.writeview = function(request, response) {
+  var tbl = request.query.tbl;
+  var sql = "";
+  sql = 'SELECT * FROM research';
+  db.query(sql, function(err, result_research) {
+    response.render('board_write', {session : request.session, tbl : request.query.tbl, data_research : result_research});
+  });
 }
 
 exports.upload = function(request, response) {
@@ -110,8 +124,10 @@ exports.view = function(request, response) {
       sql = 'SELECT id, title FROM bbs_free WHERE id > ? ORDER BY id LIMIT 1';
     }
     db.query(sql, [request.query.id], function(error, next) {
-
-    response.render('board_view', {session : request.session, data : result, tbl : tbl, pre : pre, next : next, id : request.query.id});
+      sql = 'SELECT tblname FROM research';
+      db.query(sql, function(err, result_research) {
+        response.render('board_view', {session : request.session, data : result, tbl : tbl, pre : pre, next : next, id : request.query.id, data_research : result_research});
+      });
     });
     });
     });
@@ -190,6 +206,9 @@ exports.search = function(request, response) {
         endPage = totalPage;
       }
       endPage = parseInt(endPage);
-      response.render('board_search', {session : request.session, totalCount : totalCount, pageNum : 1, start : startPage, end : endPage, data : results, tbl : tbl});
+      sql = 'SELECT tblname FROM research';
+      db.query(sql, function(err, result_research) {
+        response.render('board_search', {session : request.session, totalCount : totalCount, pageNum : 1, start : startPage, end : endPage, data : results, tbl : tbl, data_research : result_research});
+      });
 	});
 }

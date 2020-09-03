@@ -107,6 +107,22 @@
 									<h2 style="text-transform: uppercase;">SITEMAP</h2>
 									</div><!--// sub_title -->
 									<div class="lnb">
+		<% } else { %>
+			<% for(var i=0;i<data_research.length;i++) { %>
+				<% if( tbl == ("research" + i)) { %>
+					<div class="sub_title">
+											<h2 style="text-transform: uppercase;">research</h2>
+											</div><!--// sub_title -->
+											<div class="lnb">
+											<% for(var i=0;i<data_research.length;i++) { %>
+												<% if( researchId == i) { %>
+												<h3 class='on' ><a href="<%= '/sub.ejs?tbl=research' + i %>"  class="over" ><span><%= data_research[i].tblname %></span></a></h3>
+												<% } else { %>
+												<h3 class='#none' ><a href="<%= '/sub.ejs?tbl=research' + i %>"><span><%= data_research[i].tblname %></span></a></h3>
+												<% } %>
+											<% } %>
+				<% break; } %>
+			<% } %>
 		<% } %>
 
 		</div>

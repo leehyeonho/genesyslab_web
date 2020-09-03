@@ -67,6 +67,8 @@ const ejs = require('ejs');
 var board = require('./public/js/board.js');
 var user = require('./public/js/user.js');
 var index = require('./public/js/index.js');
+var admin = require('./public/js/admin.js');
+var sub = require('./public/js/sub.js');
 app.set('view engine', 'ejs');
 app.set('views', './public/views');
 
@@ -81,7 +83,8 @@ app.get('/', function(request, response) {
 
 //sub
 app.get('/sub.ejs', function(request, response) {
-  response.render('sub', {session : request.session, tbl : request.query.tbl});
+  sub.view(request, response);
+  // response.render('sub', {session : request.session, tbl : request.query.tbl});
 });
 
 app.get('/board.ejs', function(request, response){
@@ -96,9 +99,8 @@ app.post('/delete', function(request, response){
   board.delete(request, response);
 });
 
-app.get('/board_write.ejs', function(request, response) {
-  response.render('board_write', {session: request.session, tbl : request.query.tbl});
-
+app.get('/board_write', function(request, response) {
+  board.writeview(request, response);
 });
 
 app.post('/search', function(request, response) {
@@ -131,6 +133,42 @@ app.post('/signup', function(request, response){
 
 app.post('/upload', upload.single('imgFile'), function(request, response){
   board.upload(request, response);
+});
+
+app.post('/upload', upload.single('imgFile'), function(request, response){
+  board.upload(request, response);
+});
+
+app.get('/mod_professorview', function(request, response){
+  admin.professorview(request, response);
+});
+
+app.post('/mod_professor', function(request, response){
+  admin.professor(request, response);
+});
+
+app.get('/mod_membersview', function(request, response){
+  admin.membersview(request, response);
+});
+
+app.post('/mod_members', function(request, response){
+  admin.members(request, response);
+});
+
+app.post('/mod_researchadd', upload.single('imgFile'), function(request, response){
+  admin.researchadd(request, response);
+});
+
+app.get('/mod_resselect', function(request, response){
+  admin.resselect(request, response);
+});
+
+app.get('/mod_researchmodview', function(request, response){
+  admin.researchmodview(request, response);
+});
+
+app.post('/mod_researchmod', upload.single('imgFile'), function(request, response){
+  admin.researchmod(request, response);
 });
 
 app.get('/:page', function(request, response){

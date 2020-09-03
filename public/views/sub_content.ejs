@@ -115,27 +115,6 @@
 
 </style>
 </div><!--// conbody -->
-<% } else if(tbl == "a") { %>
-	<div class="contop">
-		<h3 class="page_title">RESEARCH</h3>
-		<p>Genesys Lab.</p>
-	</div><!--// contop -->
-	<div class="conbody">
-	</div>
-<% } else if(tbl == "b") { %>
-	<div class="contop">
-		<h3 class="page_title">RESEARCH</h3>
-		<p>Genesys Lab.</p>
-	</div><!--// contop -->
-	<div class="conbody">
-	</div>
-<% } else if(tbl == "c") { %>
-	<div class="contop">
-		<h3 class="page_title">RESEARCH</h3>
-		<p>Genesys Lab.</p>
-	</div><!--// contop -->
-	<div class="conbody">
-	</div>
 <% } else if(tbl == "professor") { %>
 	<div class="contop">
 		<h3 class="page_title">PROFESSOR</h3>
@@ -150,53 +129,23 @@
 				<div class="p_basic">
 
 					<dl>
-						<dt class="mt18">Jong-Chan Lee Ph.D.</dt>
+						<dt class="mt18"><%= data[0].name %></dt>
 						<dd>
 							<ul>
-								<li>School of Chemical and Biological Engineering</li>
-								<li>Seoul National University Professor</li>
+								<%- data[0].content %>
 							</ul>
 						</dd>
-						<dd><em>Tel.</em> +82-2-880-7070</dd>
-						<dd><em>Fax.</em> +82-2-880-8899</dd>
-						<dd><a href="mailto:jongchan@snu.ac.kr">jongchan@snu.ac.kr</a> </dd>
+						<dd><em>Tel.</em><%- data[0].tel %></dd>
+						<dd><em>Fax.</em><%- data[0].fax %></dd>
+						<dd><a href="mailto:<%- data[0].email %>"><%- data[0].email %></a> </dd>
 					</dl>
 				</div>
 			</div>
 
 			<h4 class="h4_title mt30">Education</h4>
-			<h5 class="h5_title mt10">Ph.D. Case Western Reserve University, 1992-1996</h5>
-			<h5 class="h5_title">M.S. Seoul National University, 1989-1991</h5>
-			<h5 class="h5_title">B.S. Seoul National University, 1985-1989</h5>
-
+				<%- data[0].edu %>
 			<h4 class="h4_title mt60">PROFESSIONAL EXPERIENCE</h4>
-			<h5 class="h5_title mt10">School of Chemical and Biological Engineering, Seoul National University, 1999-present </h5>
-				<ul class="md35">
-					<li> - Professor</li>
-					<li> - Associate Professor</li>
-					<li> - Assistant Professor</li>
-				</ul>
-
-			<h5 class="h5_title mt20">University of Massachusetts-Amherst, 2005-2006</h5>
-				<ul class="md35">
-					<li>   - Visiting Professor</li>
-				</ul>
-			<h5 class="h5_title mt20">LG Chem, 2012-2013</h5>
-				<ul class=" md35">
-					<li>- Technical Adviser</li>
-				</ul>
-			<h5 class="h5_title mt20">Liquid Crystal Institute, 1998-1999</h5>
-				<ul class="md35">
-					<li>- Postdoctoral Researcher </li>
-				</ul>
-			<h5 class="h5_title mt20">Case Western Reserve University, 1996-1998</h5>
-				<ul class="md35">
-					<li>- Research Associate </li>
-				</ul>
-			<h5 class="h5_title mt20">KIST, 1991-1992</h5>
-				<ul class="md35">
-					<li>- Researcher</li>
-				</ul>
+			<%- data[0].exp %>
 		</div>
 	</div>
 	<% } else if(tbl == "candidate1") { %>
@@ -214,38 +163,41 @@
 		.bbs_btn{width:80px; height:27px; background:#ffffff; color:#111; font-weight:bold; border:1px solid #dbdbdb; text-align:center; line-height:25px; display:inline-block;}
 		</style>
 							<div class="mem_skin ">
-						<div class="mem_img">
-							<div style="display:table; width:125px; height:160px; #position:relative; overflow:hidden;">
-								<div style="#position:absolute; #top:50%; #left:50%; display:table-cell; vertical-align:middle; text-align:center;">
-									<div style="#position:relative; #top:-50%; #left:-50%;">
-										<img src="/bbs/data/candidate1/sum_9a069864_C8ABC7F6B1E2.png" style="max-width:125px; max-height:160px;" >
+						<% for(var i=0;i<data.length;i++) { %>
+							<div class="mem_img">
+								<div style="display:table; width:125px; height:160px; #position:relative; overflow:hidden;">
+									<div style="#position:absolute; #top:50%; #left:50%; display:table-cell; vertical-align:middle; text-align:center;">
+										<div style="#position:relative; #top:-50%; #left:-50%;">
+											<img src="/bbs/data/candidate1/sum_9a069864_C8ABC7F6B1E2.png" style="max-width:125px; max-height:160px;" >
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="mem_cont md30">
-							<table width="100%" cellpadding="0" cellspacing="0" class="mem_table ">
-								<colgroup>
-								<col width="20%">
-								</colgroup>
-								<tr>
-									<th colspan="2">
-																홍현기(Hyunkee Hong)
-																</th>
-								</tr>
-								<tr>
-									<td class="t_1">E-mail</td>
-									<td>smilehhk@hanmail.net</td>
-								</tr>
-								<tr>
-									<td  class="t_1">Research area </td>
-									<td>
-										<div style="word-break:break-all;">
-											Synthesis of Antifouling Polymers								</div>
-									</td>
-								</tr>
-							</table>
-						</div>
+							<div class="mem_cont md30">
+								<table width="100%" cellpadding="0" cellspacing="0" class="mem_table ">
+									<colgroup>
+									<col width="20%">
+									</colgroup>
+									<tr>
+										<th colspan="2">
+																	<%= data[i].name %>
+																	</th>
+									</tr>
+									<tr>
+										<td class="t_1">E-mail</td>
+										<td><%= data[i].email %></td>
+									</tr>
+									<tr>
+										<td  class="t_1">Research area </td>
+										<td>
+											<div style="word-break:break-all;">
+												<%= data[i].researchArea %></div>
+										</td>
+									</tr>
+								</table>
+							</div>
+						<% } %>
+
 					</div>
 	</div>
 	<% } else if(tbl == 'candidate2') {  %>
@@ -263,38 +215,40 @@
 		.bbs_btn{width:80px; height:27px; background:#ffffff; color:#111; font-weight:bold; border:1px solid #dbdbdb; text-align:center; line-height:25px; display:inline-block;}
 		</style>
 							<div class="mem_skin ">
-						<div class="mem_img">
-							<div style="display:table; width:125px; height:160px; #position:relative; overflow:hidden;">
-								<div style="#position:absolute; #top:50%; #left:50%; display:table-cell; vertical-align:middle; text-align:center;">
-									<div style="#position:relative; #top:-50%; #left:-50%;">
-										<img src="/bbs/data/candidate1/sum_9a069864_C8ABC7F6B1E2.png" style="max-width:125px; max-height:160px;" >
+								<% for(var i=0;i<data.length;i++) { %>
+									<div class="mem_img">
+										<div style="display:table; width:125px; height:160px; #position:relative; overflow:hidden;">
+											<div style="#position:absolute; #top:50%; #left:50%; display:table-cell; vertical-align:middle; text-align:center;">
+												<div style="#position:relative; #top:-50%; #left:-50%;">
+													<img src="/bbs/data/candidate1/sum_9a069864_C8ABC7F6B1E2.png" style="max-width:125px; max-height:160px;" >
+												</div>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-						</div>
-						<div class="mem_cont md30">
-							<table width="100%" cellpadding="0" cellspacing="0" class="mem_table ">
-								<colgroup>
-								<col width="20%">
-								</colgroup>
-								<tr>
-									<th colspan="2">
-																홍현기(Hyunkee Hong)
-																</th>
-								</tr>
-								<tr>
-									<td class="t_1">E-mail</td>
-									<td>smilehhk@hanmail.net</td>
-								</tr>
-								<tr>
-									<td  class="t_1">Research area </td>
-									<td>
-										<div style="word-break:break-all;">
-											Synthesis of Antifouling Polymers								</div>
-									</td>
-								</tr>
-							</table>
-						</div>
+									<div class="mem_cont md30">
+										<table width="100%" cellpadding="0" cellspacing="0" class="mem_table ">
+											<colgroup>
+											<col width="20%">
+											</colgroup>
+											<tr>
+												<th colspan="2">
+																			<%= data[i].name %>
+																			</th>
+											</tr>
+											<tr>
+												<td class="t_1">E-mail</td>
+												<td><%= data[i].email %></td>
+											</tr>
+											<tr>
+												<td  class="t_1">Research area </td>
+												<td>
+													<div style="word-break:break-all;">
+														<%= data[i].researchArea %></div>
+												</td>
+											</tr>
+										</table>
+									</div>
+								<% } %>
 					</div>
 	</div><!--// conbody -->
 <% } else if(tbl == "alumni") { %>
@@ -312,38 +266,40 @@
 		.bbs_btn{width:80px; height:27px; background:#ffffff; color:#111; font-weight:bold; border:1px solid #dbdbdb; text-align:center; line-height:25px; display:inline-block;}
 		</style>
 							<div class="mem_skin ">
-						<div class="mem_img">
-							<div style="display:table; width:125px; height:160px; #position:relative; overflow:hidden;">
-								<div style="#position:absolute; #top:50%; #left:50%; display:table-cell; vertical-align:middle; text-align:center;">
-									<div style="#position:relative; #top:-50%; #left:-50%;">
-										<img src="/bbs/data/candidate1/sum_9a069864_C8ABC7F6B1E2.png" style="max-width:125px; max-height:160px;" >
-									</div>
-								</div>
+								<% for(var i=0;i<data.length;i++) { %>
+									<div class="mem_img">
+					<div style="display:table; width:125px; height:160px; #position:relative; overflow:hidden;">
+						<div style="#position:absolute; #top:50%; #left:50%; display:table-cell; vertical-align:middle; text-align:center;">
+							<div style="#position:relative; #top:-50%; #left:-50%;">
+								<img src="/bbs/data/alumni/sum_3ad487c6_oh_k_s.jpg" style="max-width:125px; max-height:160px;" >
 							</div>
 						</div>
-						<div class="mem_cont md30">
-							<table width="100%" cellpadding="0" cellspacing="0" class="mem_table ">
-								<colgroup>
-								<col width="20%">
-								</colgroup>
-								<tr>
-									<th colspan="2">
-																홍현기(Hyunkee Hong)
-																</th>
-								</tr>
-								<tr>
-									<td class="t_1">E-mail</td>
-									<td>smilehhk@hanmail.net</td>
-								</tr>
-								<tr>
-									<td  class="t_1">Research area </td>
-									<td>
-										<div style="word-break:break-all;">
-											Synthesis of Antifouling Polymers								</div>
-									</td>
-								</tr>
-							</table>
-						</div>
+					</div>
+				</div>
+				<div class="mem_cont md30">
+					<table width="100%" cellpadding="0" cellspacing="0" class="mem_table ">
+						<colgroup>
+						<col width="20%">
+						</colgroup>
+
+						<tr>
+							<th>
+														<%= data[i].name %>
+														</th>
+						</tr>
+
+						<tr>
+							<td<%= data[i].year %><!-- Ph.D [M.S. [2001]년] --></td>
+						</tr>
+												<tr>
+							<td><%= data[i].researchArea %></td>
+						</tr>
+												<tr>
+							<td ><%= data[i].occu %></td>
+						</tr>
+					</table>
+				</div>
+								<% } %>
 					</div>
 	</div>
 <% } else if(tbl == "journals") { %>
@@ -637,4 +593,21 @@
 		});
 		</script>
 </div>
+<% } else { %>
+	<% for(var i=0;i<data_research.length;i++) { %>
+		<% if( tbl == ("research" + i)) { %>
+			<div class="contop">
+				<h3 class="page_title"><%= data_research[i].tblname %></h3>
+				<p>Genesys Lab.</p>
+			</div><!--// contop -->
+			<div class="conbody">
+				<div class="research_cont">
+					<div class="center">
+						<img src="<%= data_research[i].img %>" alt="" width="300px" height="200px">
+					</div>
+					<p class="mt50"><%= data_research[i].content %></p>
+				</div>
+			</div>
+		<% break; } %>
+	<% } %>
 <% } %>

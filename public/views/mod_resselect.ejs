@@ -1,0 +1,79 @@
+<html>
+<head>
+<title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<script type="text/javascript">
+function frm_check(tbl) {
+  if(write.title.value == "") {
+    alert("제목을 입력해주세요.");
+    write.title.focus();
+    return false;
+  } else if(CKEDITOR.instances['content'].getData() == "") {
+    alert("내용을 입력해주세요.");
+    CKEDITOR.instances['content'].focus();
+    return false;
+  } else if(tbl == "2" && !write.imgFile.value) {
+    alert("파일을 선택해주세요.");
+    return false;
+  }
+  else return true;
+}
+</script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+
+        $(function() {
+            $("#imgFile").on('change', function(){
+
+                readURL(this);
+            });
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                    $('#ex').attr('src', e.target.result);
+                }
+              reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <script type="text/javascript">
+      function iframe_url(link){
+        document.getElementById('research_iframe').src = link;
+      }
+    </script>
+    <script type="text/javascript">
+      function change(id) {
+        if(id == "") {
+          return false;
+        } else {
+          console.log("id : " + id);
+          document.getElementById('research_iframe').src = "/mod_researchmodview?id=" + id;
+          return true;
+        }
+      }
+    </script>
+<body>
+  <div class="conbody">
+    <div>
+      <h2 class=" mt10">> RESEARCH DATA MOD</h2>
+      <div>
+        <form class="" action="index.html" method="post">
+          <label><h3>선택</h3>
+          <select name="researchSelect" id="researchSelect" onchange="change(this.value);">
+            <option value="">변경할 데이터 선택</option>
+            <% for(var i=0;i<data.length;i++) { %>
+              <option value="<%= data[i].id %>" name=""><%= data[i].tblname %></option>
+            <% } %>
+          </select>
+          </label>
+        </form>
+
+      </div>
+      <iframe name="research_iframe" id="research_iframe" src="/" frameborder="0" width="100%" scrolling="no" height="863px"></iframe>
+  </div>
+</body>
+</html>

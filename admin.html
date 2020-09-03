@@ -1,41 +1,117 @@
 <html>
 <head>
 <title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 </head>
+<script>
+  // html dom 이 다 로딩된 후 실행된다.
+  $(document).ready(function(){
+      // memu 클래스 바로 하위에 있는 a 태그를 클릭했을때
+      $(".nav-item>a").click(function(){
+          // 현재 클릭한 태그가 a 이기 때문에
+          // a 옆의 태그중 ul 태그에 hide 클래스 태그를 넣던지 빼던지 한다.
+          $(this).next("ul").toggleClass("hide");
+      });
+  });
+  $(document).ready(function(){
+      // memu 클래스 바로 하위에 있는 a 태그를 클릭했을때
+      $(".nav-item2>a").click(function(){
+          // 현재 클릭한 태그가 a 이기 때문에
+          // a 옆의 태그중 ul 태그에 hide 클래스 태그를 넣던지 빼던지 한다.
+          $(this).next("ul").toggleClass("hide");
+      });
+  });
+</script>
 <body>
-  <div class="container-login100">
-  <div class="wrap-login100">
-    <form class="login100-form validate-form" action="/login" method="post" name="frm_login" id="frm_login">
-      <span class="login100-form-title p-b-26">
-        관리자 로그인
-      </span>
-      <span class="login100-form-title p-b-48">
-        <i class="zmdi zmdi-font"></i>
-      </span>
 
-      <div class="wrap-input100 validate-input">
-        <input class="input100" type="text" id="username" name="username" placeholder="아이디" style="height:30px;" required="required" autocomplete="off">
-        <span class="focus-input100"></span>
-      </div>
+  <script type="text/javascript">
+    function iframe_url(link){
+      document.getElementById('board_iframe').src = link;
+    }
+  </script>
+  <style type="text/css">
+    body {
+      font:13px/1.8 Arial, Helvetica, sans-serif;
+    }
+    .frame {
+      width: 800px;
+      margin: 0 auto;
+      border: 1px solid #aaa;
+    }
+    .container {
+      overflow: hidden;
+    }
+    .nav {
+      float: left;
+      width: 150px;
+      margin-right: 50px;
+      }
+    .nav-list {
+    margin: 0;
+    padding: 10px 0;
+    }
+    .nav-item {
+    margin: 4px 0;
+    }
+    .nav-item a{cursor:pointer;}
+    .nav-item .hide{display:none;}
+    .nav-item2 a{cursor:pointer;}
+    .nav-item2 .hide{display:none;}
+    .nav-link {
+    display: block;
+    text-decoration: none;
+    padding: 4px 10px;
+    }
+    .nav-link:hover {
+    color: #5457de;
+    }
+    .content {
+      float: left;
+      width: 600px;
+    }
 
-      <div class="wrap-input100 validate-input" data-validate="Enter password">
-        <span class="btn-show-pass">
-          <i class="zmdi zmdi-eye"></i>
-        </span>
-        <input class="input100" type="password" id="password" name="password" name="password" placeholder="비밀번호" style="height:30px;" required="required">
-        <span class="focus-input100"></span>
-      </div>
+  </style>
+  <div class="frame">
 
-      <div class="container-login100-form-btn">
-        <div class="wrap-login100-form-btn">
-          <div class="login100-form-bgbtn"></div>
-          <button type="submit" class="login100-form-btn">
-            Login
-          </button>
-        </div>
-      </div>
-      </form>
+  <div class="container">
+    <div class="nav">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a>▼ 데이터</a>
+          <ul class="hide">
+            <li class="nav-item2"><a class="nav-link">▼ RESEARCH</a></a>
+              <ul class="hide">
+                <li><a href="javascript:iframe_url('/mod_researchaddview');" class="nav-link">추가</a></li>
+                <li><a href="javascript:iframe_url('/mod_resselect');" class="nav-link">변경</a></li>
+              </ul>
+            </li>
+            <li><a href="javascript:iframe_url('/mod_professorview');" class="nav-link">PROFESSOR</a></li>
+            <li class="nav-item2">
+              <a class="nav-link">▼ MEMBERS</a>
+              <ul class="hide">
+                <li><a href="javascript:iframe_url('/mod_membersaddview');" class="nav-link">추가</a></li>
+                <li><a href="javascript:iframe_url('/mod_membersmodview');" class="nav-link">변경</a></li>
+              </ul>
+
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="" class="nav-link">Menu-2</a></li>
+        <li class="nav-item">
+          <a href="" class="nav-link">Menu-3</a></li>
+      </ul>
+    </div>
+    <!-- //nav -->
+    <div class="content">
+      <iframe name="board_iframe" id="board_iframe" src="/whitespace" frameborder="0" width="100%" scrolling="no" height="863px"></iframe>
+    </div>
+    <!-- //content -->
   </div>
+  <!-- //container -->
 </div>
+<!-- //frame -->
+
 </body>
 </html>
