@@ -235,6 +235,10 @@ app.get('/mod_publicationmodview', function(request, response){
   admin.publicationmodview(request, response);
 });
 
+app.post('/mod_pubdel', upload.single('imgFile'), function(request, response){
+  admin.pubdel(request, response);
+});
+
 
 app.get('/:page', function(request, response){
   if(request.params.page == '/favicon.ico') {

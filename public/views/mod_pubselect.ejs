@@ -32,7 +32,7 @@ function change1(id) {
     for (var i = 0; i < pub1.length; i++) {
       var op = new Option();
   		op.value = pub1[i].id; // 값 설정
-  		op.text = pub1[i].content.substring(10); // 텍스트 설정
+  		op.text = pub1[i].content; // 텍스트 설정
 
   		frm_pubselect.pubSelect.options.add(op); // 옵션 추가
     }
@@ -42,7 +42,7 @@ function change1(id) {
     for (var i = 0; i < pub2.length; i++) {
       var op = new Option();
   		op.value = pub2[i].id; // 값 설정
-  		op.text = pub2[i].content.substring(10); // 텍스트 설정
+  		op.text = pub2[i].content; // 텍스트 설정
 
   		frm_pubselect.pubSelect.options.add(op); // 옵션 추가
     }
@@ -52,7 +52,7 @@ function change1(id) {
     for (var i = 0; i < pub3.length; i++) {
       var op = new Option();
   		op.value = pub3[i].id; // 값 설정
-  		op.text = pub3[i].content.substring(10); // 텍스트 설정
+  		op.text = pub3[i].content; // 텍스트 설정
 
   		frm_pubselect.pubSelect.options.add(op); // 옵션 추가
     }
