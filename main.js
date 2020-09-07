@@ -4,8 +4,8 @@ const app = express()
 const passport = require('passport');
 const request = require('request');
 
-const favicon = require('serve-favicon');
-app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
+// const favicon = require('serve-favicon');
+// app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -207,7 +207,7 @@ app.post('/mod_researchdel', function(request, response){
 
 app.get('/admin', function(request, response){
   if(request.session.isLogined == true) {
-    response.render('admin/admin', {session : request.session});
+    response.render('admin', {session : request.session});
   } else {
     response.redirect("/");
   }
