@@ -1,0 +1,77 @@
+<html>
+<head>
+<title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<script type="text/javascript">
+function frm_check() {
+  if(frm_pubadd.content.value == "") {
+    alert("TITLE을 입력해주세요.");
+    frm_memadd.content.focus();
+    return false;
+  } else if(frm_pubadd.year.value == "") {
+    alert("YEAR를 입력해주세요.");
+    frm_memadd.year.focus();
+    return false;
+  } else if(!frm_pubadd.reg.value == "") {
+    frm_memadd.journal.focus();
+    alert("JOURNAL을 입력해주세요.");
+    return false;
+  } else if(!frm_pubadd.author.value == "") {
+    frm_memadd.author.focus();
+    alert("AUTHOR을 입력해주세요.");
+    return false;
+  }
+  else return true;
+}
+</script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+      function iframe_url(link){
+        document.getElementById('board_iframe').src = link;
+      }
+    </script>
+    <script type="text/javascript">
+      function change(id) {
+        var readParams = getParams();
+        if(id == "") {
+          return false;
+        } else {
+          document.getElementById('iframe').src = "/mod_researchmodview?id=" + id + "&pos=" + readParams.pos;
+          return true;
+        }
+      }
+    </script>
+<body>
+  <script type="text/javascript">
+  function getParams() {
+    var params = {};
+    window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
+    console.log("params : " + params + ", pos : " + params.pos);
+    return params;
+  }
+  window.onload = function() {
+    var readParams = getParams();
+    if(readParams.pos == "3") {
+      document.getElementById("forAlumni").setAttribute("style", "");
+    }
+  }
+  </script>
+  <form action="/mod_membersdel" method="post" name="frm_memdel" id="frm_memdel" enctype="multipart/form-data">
+    <input type="hidden" name="pos" id="pos" value="<%= data[0].position %>">
+    <label><h4>YEAR</h4>
+    <input type="text" name="year" id="year">
+    </label>
+    <label><h4>TITLE</h4>
+    <input type="text" name="content" id="content">
+    </label>
+    <label><h4>AUTHOR</h4>
+    <input type="text" name="author" id="author">
+    </label>
+      <label><h4>JOURNAL</h4>
+        <input type="text" name="reg" id="reg">
+      </label>
+<input type="submit" name="submitForm" value="제출">
+</form>
+</body>
+</html>

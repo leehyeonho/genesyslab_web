@@ -223,6 +223,10 @@ app.post('/mod_pubadd', upload.single('imgFile'), function(request, response){
   admin.pubadd(request, response);
 });
 
+app.post('/mod_pubmod', upload.single('imgFile'), function(request, response){
+  admin.pubmod(request, response);
+});
+
 app.get('/:page', function(request, response){
   if(request.params.page == '/favicon.ico') {
   } else {

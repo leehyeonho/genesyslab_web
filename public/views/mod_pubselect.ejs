@@ -1,0 +1,98 @@
+<html>
+<head>
+<title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<script type="text/javascript">
+  function removeCheck() {
+
+  }
+</script>
+<script type="text/javascript">
+  function get_action() {
+    if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+      var selectbox = document.getElementById('pubSelect');
+      var selected = selectbox.options[selectbox.selectedIndex].value;
+      return "/mod_pubdel?selected=" + selected;
+    }else{   //취소
+       return false;
+    }
+
+  }
+</script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+function change1(id) {
+  var pub1 = <%- JSON.stringify(pub1) %>;
+  var pub2 = <%- JSON.stringify(pub2) %>;
+  var pub3 = <%- JSON.stringify(pub3) %>;
+  if(id == "") {
+  } else if(id == "journals") {
+    frm_pubselect.pubSelect.options.length = 1;
+    for (var i = 0; i < pub1.length; i++) {
+      var op = new Option();
+  		op.value = pub1[i].id; // 값 설정
+  		op.text = pub1[i].content.substring(10); // 텍스트 설정
+
+  		frm_pubselect.pubSelect.options.add(op); // 옵션 추가
+    }
+
+  } else if(id == "presentations") {
+    frm_pubselect.pubSelect.options.length = 1;
+    for (var i = 0; i < pub2.length; i++) {
+      var op = new Option();
+  		op.value = pub2[i].id; // 값 설정
+  		op.text = pub2[i].content.substring(10); // 텍스트 설정
+
+  		frm_pubselect.pubSelect.options.add(op); // 옵션 추가
+    }
+
+  } else if(id == "patent") {
+    frm_pubselect.pubSelect.options.length = 1;
+    for (var i = 0; i < pub3.length; i++) {
+      var op = new Option();
+  		op.value = pub3[i].id; // 값 설정
+  		op.text = pub3[i].content.substring(10); // 텍스트 설정
+
+  		frm_pubselect.pubSelect.options.add(op); // 옵션 추가
+    }
+
+  }
+}
+function change2(id) {
+  if(id == "") {
+    return false;
+  } else {
+    var pos = frm_pubselect.pubSelect.value;
+    document.getElementById('iframe').src = "/mod_publicationmodview?id=" + id;
+    return true;
+  }
+}
+</script>
+<body>
+  <div class="conbody">
+    <div>
+      <h2 class=" mt10" id="aa" name="aa">> PUBLICATION DATA MOD</h2>
+      <div>
+        <form class="" name="frm_pubselect" method="post" onsubmit="this.action=get_action();">
+          <label><h3>선택</h3>
+          <select name="pub_tableSelect" id="pub_tableSelect" onchange="change1(this.value);">
+            <option value="">테이블 선택</option>
+              <option value="journals" >journals</option>
+              <option value="presentations" >presentations</option>
+              <option value="patent" >patent</option>
+          </select>
+          <select name="pubSelect" id="pubSelect" onchange="return change2(this.value);">
+            <option value="" style="display:none;">변경할 데이터 선택</option>
+
+
+          </select>
+          </label>
+          <input type="submit" name="" value="삭제">
+        </form>
+
+      </div>
+      <iframe name="iframe" id="iframe" src="/whitespace" frameborder="0" width="100%" scrolling="no" height="863px"></iframe>
+  </div>
+</body>
+</html>
