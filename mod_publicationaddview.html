@@ -7,18 +7,18 @@
 function frm_check() {
   if(frm_pubadd.content.value == "") {
     alert("TITLE을 입력해주세요.");
-    frm_memadd.content.focus();
+    frm_pubadd.content.focus();
     return false;
   } else if(frm_pubadd.year.value == "") {
     alert("YEAR를 입력해주세요.");
-    frm_memadd.year.focus();
+    frm_pubadd.year.focus();
     return false;
   } else if(frm_pubadd.reg.value == "") {
-    frm_memadd.journal.focus();
+    frm_pubadd.journal.focus();
     alert("JOURNAL을 입력해주세요.");
     return false;
   } else if(frm_pubadd.author.value == "") {
-    frm_memadd.author.focus();
+    frm_pubadd.author.focus();
     alert("AUTHOR을 입력해주세요.");
     return false;
   }

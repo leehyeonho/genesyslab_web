@@ -5,16 +5,20 @@
 </head>
 <script type="text/javascript">
 function frm_check() {
-  if(frm_resadd.tblname.value == "") {
-    alert("TITLE을 입력해주세요.");
-    frm_resadd.tblname.focus();
+  if(frm_memmod.name.value == "") {
+    alert("NAME을 입력해주세요.");
+    frm_memmod.tblname.focus();
     return false;
-  } else if(!frm_resadd.imgFile.value) {
+  } else if(!frm_memmod.imgFile.value) {
     alert("이미지를 첨부해주세요.");
     return false;
-  } else if(frm_resadd.content.value == "") {
-    alert("설명을 입력해주세요.");
-    frm_resadd.content.focus();
+  } else if(frm_memmod.email.value == "") {
+    alert("이메일을 입력해주세요.");
+    frm_memmod.content.focus();
+    return false;
+  } else if(frm_memmod.resArea.value == "") {
+    alert("RESEARCH AREA를 입력해주세요.");
+    frm_memmod.resArea.focus();
     return false;
   }
   else return true;
