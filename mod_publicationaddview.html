@@ -1,0 +1,59 @@
+<html>
+<head>
+<title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<script type="text/javascript">
+function frm_check() {
+  if(frm_pubadd.content.value == "") {
+    alert("TITLE을 입력해주세요.");
+    frm_memadd.content.focus();
+    return false;
+  } else if(frm_pubadd.year.value == "") {
+    alert("YEAR를 입력해주세요.");
+    frm_memadd.year.focus();
+    return false;
+  } else if(!frm_pubadd.reg.value == "") {
+    frm_memadd.journal.focus();
+    alert("JOURNAL을 입력해주세요.");
+    return false;
+  } else if(!frm_pubadd.author.value == "") {
+    frm_memadd.author.focus();
+    alert("AUTHOR을 입력해주세요.");
+    return false;
+  }
+  else return true;
+}
+</script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<body>
+  <div class="conbody">
+  <form action="/mod_pubadd" method="post" name="frm_pubadd" id="frm_pubadd" onsubmit="return frm_check();">
+    <div>
+      <h2 class=" mt10">> RESEARCH DATA ADD</h2>
+      <label><h4>선택</h4>
+      <select name="membersSelect[]" id="membersSelect[]">
+        <option value="">추가할 데이터 선택</option>
+        <option value="1">journals</option>
+        <option value="2">presentations</option>
+        <option value="3">patent</option>
+      </select>
+      </label>
+      <label><h4>YEAR</h4>
+      <input type="text" name="year" id="year">
+      </label>
+      <label><h4>TITLE</h4>
+      <input type="text" name="content" id="content">
+      </label>
+      <label><h4>AUTHOR</h4>
+      <input type="text" name="author" id="author">
+      </label>
+        <label><h4>JOURNAL</h4>
+          <input type="text" name="reg" id="reg">
+        </label>
+    </div>
+    <input type="submit" name="submitForm" value="제출">
+  </form>
+  </div>
+</body>
+</html>
