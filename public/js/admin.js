@@ -175,7 +175,7 @@ exports.pubadd = function(request, response) {
 	} else if (id == "3") {
 		id = "patent";
 	}
-	sql = 'INSERT INTO publication(content, year, reg, author, tblname) values(?,?,?,?,?,?,?)';
+	sql = 'INSERT INTO publication(content, year, reg, author, tblname) values(?,?,?,?,?)';
     db.query(sql, [content, year, reg, author, id], function(error, result) {
       response.redirect('/mod_publicationaddview');
       // response.render('mod_professor', {session : request.session, data : result});
