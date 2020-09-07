@@ -9,11 +9,15 @@ function frm_check() {
     alert("이름을 입력해주세요.");
     frm_memadd.name.focus();
     return false;
+  } else if(frm_memadd.membersSelect.value == "") {
+    alert("카테고리를 선택해주세요.");
+    frm_memadd.email.focus();
+    return false;
   } else if(!frm_memadd.email.value) {
     alert("이메일을 입력해주세요.");
     frm_memadd.email.focus();
     return false;
-  }  else if(!frm_memadd.imgFile.value) {
+  } else if(!frm_memadd.imgFile.value) {
     alert("이미지를 첨부해주세요.");
     return false;
   } else if(frm_memadd.resArea.value == "") {
