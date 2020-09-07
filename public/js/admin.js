@@ -229,7 +229,7 @@ exports.pubdel = function(request, response) {
 							db.query(sql, function(error, result2) {
 								sql = "SELECT * FROM publication WHERE tblname = 'patent'";
 									db.query(sql, function(error, result3) {
-										response.render('mod_memselect', {session : request.session, data : result_pub, pub1 : result1, pub2 : result2, pub3 : result3});
+										response.render('mod_pubselect', {session : request.session, data : result_pub, pub1 : result1, pub2 : result2, pub3 : result3});
 										});
 								});
 						});
