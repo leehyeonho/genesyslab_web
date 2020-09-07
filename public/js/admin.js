@@ -167,7 +167,7 @@ exports.pubadd = function(request, response) {
 	var year = request.body.year;
   var reg = request.body.reg;
   var author = request.body.author;
-	var id = request.body.membersSelect;
+	var id = request.body.pubSelect;
 	if (id == "1") {
 		id = "journals";
 	} else if (id == "2") {
@@ -196,8 +196,8 @@ exports.pubmod = function(request, response) {
   var reg = request.body.reg;
   var author = request.body.author;
 	var id = request.body.id;
-	sql = 'UPDATE publication SET content = ?, year = ?, reg = ?, author = ?, tblname = ? WHERE id = ?';
-    db.query(sql, [content, year, reg, author, tblname, id], function(error, result) {
+	sql = 'UPDATE publication SET content = ?, year = ?, reg = ?, author = ? WHERE id = ?';
+    db.query(sql, [content, year, reg, author, id], function(error, result) {
       response.redirect('/success');
       // response.render('mod_professor', {session : request.session, data : result});
       });
