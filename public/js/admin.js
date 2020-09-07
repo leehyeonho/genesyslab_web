@@ -182,7 +182,7 @@ exports.pubadd = function(request, response) {
       });
 }
 
-exports.pubmodview = function(request, response) {
+exports.publicationmodview = function(request, response) {
 	var pubId = request.query.id;
 	sql = 'SELECT * FROM publication WHERE id = ?';
     db.query(sql, [pubId], function(error, result) {
