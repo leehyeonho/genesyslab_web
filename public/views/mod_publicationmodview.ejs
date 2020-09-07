@@ -5,20 +5,20 @@
 </head>
 <script type="text/javascript">
 function frm_check() {
-  if(frm_pubadd.content.value == "") {
+  if(frm_pubmod.content.value == "") {
     alert("TITLE을 입력해주세요.");
-    frm_pubdel.content.focus();
+    frm_pubmod.content.focus();
     return false;
-  } else if(frm_pubdel.year.value == "") {
+  } else if(frm_pubmod.year.value == "") {
     alert("YEAR를 입력해주세요.");
-    frm_pubdel.year.focus();
+    frm_pubmod.year.focus();
     return false;
-  } else if(frm_pubdel.reg.value == "") {
-    frm_pubdel.journal.focus();
+  } else if(frm_pubmod.reg.value == "") {
+    frm_pubmod.journal.focus();
     alert("JOURNAL을 입력해주세요.");
     return false;
-  } else if(frm_pubdel.author.value == "") {
-    frm_pubdel.author.focus();
+  } else if(frm_pubmod.author.value == "") {
+    frm_pubmod.author.focus();
     alert("AUTHOR을 입력해주세요.");
     return false;
   }
@@ -27,7 +27,7 @@ function frm_check() {
 </script>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <body>
-  <form action="/mod_pubdel" method="post" name="frm_pubdel" id="frm_pubdel">
+  <form action="/mod_pubmod" method="post" name="frm_pubmod" id="frm_pubmod">
     <input type="hidden" name="id" id="id" value="<%= data[0].id %>">
     <label><h4>YEAR</h4>
     <input type="text" name="year" id="year" value="<%= data[0].year %>">

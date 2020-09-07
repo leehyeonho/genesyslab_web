@@ -195,7 +195,7 @@ exports.pubmod = function(request, response) {
 	var year = request.body.year;
   var reg = request.body.reg;
   var author = request.body.author;
-	var id = request.body.pubSelect;
+	var id = request.body.id;
 	sql = 'UPDATE publication SET content = ?, year = ?, reg = ?, author = ?, tblname = ? WHERE id = ?';
     db.query(sql, [content, year, reg, author, tblname, id], function(error, result) {
       response.redirect('/success');
@@ -214,5 +214,26 @@ exports.pubselect = function(request, response) {
 							response.render('mod_pubselect', {session : request.session, pub1 : result1, pub2 : result2, pub3 : result3});
 							});
 					});
+      });
+}
+
+exports.pubdel = function(request, response) {
+  var selected = request.query.selected;
+	sql = 'DELETE FROM publication WHERE id = ?';
+    db.query(sql, [selected], function(error, result) {
+			sql = 'SELECT * FROM publication';
+      db.query(sql, function(err, result_pub) {
+				sql = "SELECT * FROM publication WHERE tblname = 'journals'";
+					db.query(sql, function(error, result1) {
+						sql = "SELECT * FROM publication WHERE tblname = 'presentations'";
+							db.query(sql, function(error, result2) {
+								sql = "SELECT * FROM publication WHERE tblname = 'patent'";
+									db.query(sql, function(error, result3) {
+										response.render('mod_memselect', {session : request.session, data : result_members, pub1 : result1, pub2 : result2, pub3 : result3});
+										});
+								});
+						});
+      });
+      // response.render('mod_professor', {session : request.session, data : result});
       });
 }
