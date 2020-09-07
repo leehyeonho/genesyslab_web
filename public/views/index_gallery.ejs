@@ -2,7 +2,7 @@
 <a href="board.ejs?tbl=2&pageNum=1" class="btn_more"><img src="/images/btn_more.png" alt="GALLERY 더보기" /></a>
 <ul class="gallery_list">
 <% for(var i=0;i<data_gallery.length;i++) { %>
-<% if(i == data_notice.length) { break; } %>
+<% if(i == data_gallery.length) { break; } %>
 <li>
 <a href="board_view.ejs?tbl=2&id=<%= data_gallery[i].id %>">
 <div class="gallery_preview_img">

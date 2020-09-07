@@ -24,10 +24,12 @@ exports.index = function(request, response) {
       sql = 'SELECT id, title, img, date_format(date, "%Y") as YYYY, date_format(date, "%m-%d") as mmdd FROM bbs_gallery ORDER BY id DESC LIMIT 0, 2';
     }
     db.query(sql, function(err, result_gallery) {
-      sql = 'SELECT tblname FROM research';
+      sql = 'SELECT * FROM research';
       db.query(sql, function(err, result_research) {
-        response.render('index', {session : request.session, data_notice : result_notice, data_gallery : result_gallery, data_research : result_research});
-      });
+        sql = "SELECT * FROM publication WHERE tblname = 'journals' ORDER BY year DESC";
+        db.query(sql, function(err, result_publication) {
+          response.render('index', {session : request.session, data_notice : result_notice, data_gallery : result_gallery, data_research : result_research, data_publication : result_publication});
+        });      });
     });
   });
 

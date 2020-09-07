@@ -9,12 +9,12 @@
         	<script>
         		var container = document.getElementById('map');
         		var options = {
-        			center: new kakao.maps.LatLng(36.63353729102109, 127.45332042697082),
+        			center: new kakao.maps.LatLng(36.62549277032, 127.45794925929039),
         			level: 3
         		};
 
         		var map = new kakao.maps.Map(container, options);
-            var markerPosition  = new kakao.maps.LatLng(36.63353729102109, 127.45332042697082);
+            var markerPosition  = new kakao.maps.LatLng(36.62549277032, 127.45794925929039);
             // 마커를 생성합니다
             var marker = new kakao.maps.Marker({
                   position: markerPosition
@@ -27,7 +27,7 @@
             var content = '<div class ="overlay"><span class="left"></span><span class="center">            <a href="https://map.kakao.com/link/to/Genesys,36.62883224146073, 127.45657148318668" style="color:blue;text-decoration:none;" target="_blank">길찾기</a></span><span class="right"></span></div>';
 
             // 커스텀 오버레이가 표시될 위치입니다
-            var position = new kakao.maps.LatLng(36.63353729102109, 127.45332042697082);
+            var position = new kakao.maps.LatLng(36.62549277032, 127.45794925929039);
 
             // 커스텀 오버레이를 생성합니다
             var customOverlay = new kakao.maps.CustomOverlay({
@@ -53,9 +53,9 @@
 	<div class="site_wrap">
 	<dl class="site_con">
 		<dt>RESEARCH</dt>
-		<dd><a href="/sub.ejs?tbl=info">a</a></dd>
-<dd><a href="/sub.ejs?tbl=history">b</a></dd>
-<dd><a href="/sub.ejs?tbl=org">c</a></dd>
+		<% for(var i=0;i<data_research.length;i++) { %>
+			<dd><a href="<%= "/sub.ejs?tbl=research" + i %>"><%= data_research[i].tblname %></a></dd>
+		<% } %>
 	</dl>
 	<dl class="site_con">
 		<dt>PROFESSOR</dt>
@@ -124,7 +124,7 @@
 		<div id="DivContents">
 			<div class="professor01">
 				<div class="p_pic md20 mt20">
-					<img alt="" src="/images/sub/img0201.jpg">
+					<img alt="" src="/images/professor/professor.png">
 				</div>
 				<div class="p_basic">
 
@@ -313,8 +313,12 @@
 				<ul class="year_tab_list" style="width: 1785px; left: 0px;">
 					<% for (var i = 0; i < year.length; i++) { %>
 						<li>
-						<a href="javascript:iframe_url('/publication?tbl=<%= tbl %>&year=<%= year[i].year %>');" class="on">
-						<%= year[i].year %></a>
+						<a href="javascript:iframe_url('/publication?tbl=<%= tbl %>&year=<%= year[i].year %>');"
+							<% if(i==0) { %>
+								class="on"
+							<% } %>
+							>
+						<%= year[i].year %>(<%= year[i].cnt %>)</a>
 						</li>
 					<% } %>
 				</ul>
@@ -322,7 +326,7 @@
 			<p class="prev_btn"><img src="/images/pro_btn.jpg" alt=""></p>
 			<p class="next_btn"><img src="/images/next_btn.jpg" alt=""></p>
 		</div>
-		<iframe name="board_iframe" id="board_iframe" src="/whitespace" frameborder="0" width="100%" scrolling="no" onload="autoResize('board_iframe')" height="863px"></iframe>
+		<iframe name="board_iframe" id="board_iframe" src="/publication?tbl=<%= tbl %>&year=<%= year[0].year %>" frameborder="0" width="100%" scrolling="no" onload="autoResize('board_iframe')" height="863px"></iframe>
 	</div>
 <% } else { %>
 	<% for(var i=0;i<data_research.length;i++) { %>
