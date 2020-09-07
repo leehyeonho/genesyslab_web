@@ -181,3 +181,38 @@ exports.pubadd = function(request, response) {
       // response.render('mod_professor', {session : request.session, data : result});
       });
 }
+
+exports.pubmodview = function(request, response) {
+	var membersId = request.query.id;
+	sql = 'SELECT * FROM candidate WHERE id = ?';
+    db.query(sql, [membersId], function(error, result) {
+      response.render('mod_membersmodview', {session : request.session, data : result});
+      });
+}
+
+exports.pubmod = function(request, response) {
+	var content = request.body.content;
+	var year = request.body.year;
+  var reg = request.body.reg;
+  var author = request.body.author;
+	var id = request.body.pubSelect;
+	sql = 'UPDATE publication SET content = ?, year = ?, reg = ?, author = ?, tblname = ? WHERE id = ?';
+    db.query(sql, [content, year, reg, author, tblname, id], function(error, result) {
+      response.redirect('/success');
+      // response.render('mod_professor', {session : request.session, data : result});
+      });
+}
+
+exports.pubselect = function(request, response) {
+	var select = request.body.membersSelect;
+	sql = "SELECT * FROM publication WHERE tblname = 'journals'";
+    db.query(sql, function(error, result1) {
+			sql = "SELECT * FROM publication WHERE tblname = 'presentations'";
+				db.query(sql, function(error, result2) {
+					sql = "SELECT * FROM publication WHERE tblname = 'patent'";
+						db.query(sql, function(error, result3) {
+							response.render('mod_memselect', {session : request.session, pub1 : result1, pub2 : result2, pub3 : result3});
+							});
+					});
+      });
+}
