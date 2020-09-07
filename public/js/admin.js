@@ -161,3 +161,23 @@ exports.membersdel = function(request, response) {
       // response.render('mod_professor', {session : request.session, data : result});
       });
 }
+
+exports.pubadd = function(request, response) {
+  var content = request.body.content;
+	var year = request.body.year;
+  var reg = request.body.reg;
+  var author = request.body.author;
+	var id = request.body.membersSelect;
+	if (id == "1") {
+		id = "journals";
+	} else if (id == "2") {
+		id = "presentations";
+	} else if (id == "3") {
+		id = "patent";
+	}
+	sql = 'INSERT INTO publication(content, year, reg, author, tblname) values(?,?,?,?,?,?,?)';
+    db.query(sql, [content, year, reg, author, id], function(error, result) {
+      response.redirect('/mod_publicationaddview');
+      // response.render('mod_professor', {session : request.session, data : result});
+      });
+}

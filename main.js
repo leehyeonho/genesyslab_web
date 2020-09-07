@@ -205,18 +205,22 @@ app.post('/mod_researchdel', function(request, response){
   admin.researchdel(request, response);
 });
 
+
+
 app.get('/admin', function(request, response){
   if(request.session.isLogined == true) {
     response.render('admin', {session : request.session});
   } else {
     response.redirect("/");
   }
-
-
 });
 
 app.get('/publication', function(request, response){
   sub.publication(request, response);
+});
+
+app.post('/mod_pubadd', upload.single('imgFile'), function(request, response){
+  admin.pubadd(request, response);
 });
 
 app.get('/:page', function(request, response){
