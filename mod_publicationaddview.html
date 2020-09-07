@@ -5,11 +5,7 @@
 </head>
 <script type="text/javascript">
 function frm_check() {
-  if(frm_pubadd.content.value == "") {
-    alert("TITLE을 입력해주세요.");
-    frm_pubadd.content.focus();
-    return false;
-  } else if(frm_pubadd.pubSelect.value == "") {
+  if(frm_pubadd.pubSelect.value == "") {
     alert("카테고리를 선택해주세요.");
     frm_pubadd.pubSelect.focus();
     return false;
@@ -17,13 +13,17 @@ function frm_check() {
     alert("YEAR를 입력해주세요.");
     frm_pubadd.year.focus();
     return false;
-  } else if(frm_pubadd.reg.value == "") {
-    frm_pubadd.journal.focus();
-    alert("JOURNAL을 입력해주세요.");
+  } else if(frm_pubadd.content.value == "") {
+    alert("TITLE을 입력해주세요.");
+    frm_pubadd.content.focus();
     return false;
   } else if(frm_pubadd.author.value == "") {
     frm_pubadd.author.focus();
     alert("AUTHOR을 입력해주세요.");
+    return false;
+  } else if(frm_pubadd.reg.value == "") {
+    frm_pubadd.journal.focus();
+    alert("JOURNAL을 입력해주세요.");
     return false;
   }
   else return true;

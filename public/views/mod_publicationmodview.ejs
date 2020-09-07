@@ -5,21 +5,21 @@
 </head>
 <script type="text/javascript">
 function frm_check() {
-  if(frm_pubmod.content.value == "") {
+  if(frm_pubmod.year.value == "") {
+   alert("YEAR를 입력해주세요.");
+   frm_pubmod.year.focus();
+   return false;
+  } else if(frm_pubmod.content.value == "") {
     alert("TITLE을 입력해주세요.");
     frm_pubmod.content.focus();
-    return false;
-  } else if(frm_pubmod.year.value == "") {
-    alert("YEAR를 입력해주세요.");
-    frm_pubmod.year.focus();
-    return false;
-  } else if(frm_pubmod.reg.value == "") {
-    frm_pubmod.journal.focus();
-    alert("JOURNAL을 입력해주세요.");
     return false;
   } else if(frm_pubmod.author.value == "") {
     frm_pubmod.author.focus();
     alert("AUTHOR을 입력해주세요.");
+    return false;
+  } else if(frm_pubmod.reg.value == "") {
+    frm_pubmod.journal.focus();
+    alert("JOURNAL을 입력해주세요.");
     return false;
   }
   else return true;

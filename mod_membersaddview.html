@@ -5,13 +5,13 @@
 </head>
 <script type="text/javascript">
 function frm_check() {
-  if(frm_memadd.name.value == "") {
-    alert("이름을 입력해주세요.");
-    frm_memadd.name.focus();
-    return false;
-  } else if(frm_memadd.membersSelect.value == "") {
+  if (frm_memadd.membersSelect.value == "") {
     alert("카테고리를 선택해주세요.");
     frm_memadd.membersSelect.focus();
+    return false;
+  } else if(frm_memadd.name.value == "") {
+    alert("이름을 입력해주세요.");
+    frm_memadd.name.focus();
     return false;
   } else if(!frm_memadd.email.value) {
     alert("이메일을 입력해주세요.");
@@ -22,6 +22,14 @@ function frm_check() {
     return false;
   } else if(frm_memadd.resArea.value == "") {
     alert("RESEARCH AREA를 입력해주세요.");
+    frm_memadd.resArea.focus();
+    return false;
+  } else if(frm_memadd.occu.value == "" && frm_memadd.membersSelect.value == "3") {
+    alert("직업을 입력해주세요.");
+    frm_memadd.resArea.focus();
+    return false;
+  } else if(frm_memadd.year.value == "" && frm_memadd.membersSelect.value == "3") {
+    alert("졸연 연도를 입력해주세요.");
     frm_memadd.resArea.focus();
     return false;
   }
