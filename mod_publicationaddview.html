@@ -13,11 +13,11 @@ function frm_check() {
     alert("YEAR를 입력해주세요.");
     frm_memadd.year.focus();
     return false;
-  } else if(!frm_pubadd.reg.value == "") {
+  } else if(frm_pubadd.reg.value == "") {
     frm_memadd.journal.focus();
     alert("JOURNAL을 입력해주세요.");
     return false;
-  } else if(!frm_pubadd.author.value == "") {
+  } else if(frm_pubadd.author.value == "") {
     frm_memadd.author.focus();
     alert("AUTHOR을 입력해주세요.");
     return false;
@@ -32,7 +32,7 @@ function frm_check() {
     <div>
       <h2 class=" mt10">> RESEARCH DATA ADD</h2>
       <label><h4>선택</h4>
-      <select name="membersSelect[]" id="membersSelect[]">
+      <select name="pubSelect[]" id="pubSelect[]">
         <option value="">추가할 데이터 선택</option>
         <option value="1">journals</option>
         <option value="2">presentations</option>

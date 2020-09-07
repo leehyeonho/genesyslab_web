@@ -183,9 +183,9 @@ exports.pubadd = function(request, response) {
 }
 
 exports.pubmodview = function(request, response) {
-	var membersId = request.query.id;
-	sql = 'SELECT * FROM candidate WHERE id = ?';
-    db.query(sql, [membersId], function(error, result) {
+	var pubId = request.query.id;
+	sql = 'SELECT * FROM publication WHERE id = ?';
+    db.query(sql, [pubId], function(error, result) {
       response.render('mod_publicationmodview', {session : request.session, data : result});
       });
 }

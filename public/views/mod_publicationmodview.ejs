@@ -7,18 +7,18 @@
 function frm_check() {
   if(frm_pubadd.content.value == "") {
     alert("TITLE을 입력해주세요.");
-    frm_memadd.content.focus();
+    frm_pubdel.content.focus();
     return false;
-  } else if(frm_pubadd.year.value == "") {
+  } else if(frm_pubdel.year.value == "") {
     alert("YEAR를 입력해주세요.");
-    frm_memadd.year.focus();
+    frm_pubdel.year.focus();
     return false;
-  } else if(!frm_pubadd.reg.value == "") {
-    frm_memadd.journal.focus();
+  } else if(frm_pubdel.reg.value == "") {
+    frm_pubdel.journal.focus();
     alert("JOURNAL을 입력해주세요.");
     return false;
-  } else if(!frm_pubadd.author.value == "") {
-    frm_memadd.author.focus();
+  } else if(frm_pubdel.author.value == "") {
+    frm_pubdel.author.focus();
     alert("AUTHOR을 입력해주세요.");
     return false;
   }
@@ -26,50 +26,20 @@ function frm_check() {
 }
 </script>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript">
-      function iframe_url(link){
-        document.getElementById('board_iframe').src = link;
-      }
-    </script>
-    <script type="text/javascript">
-      function change(id) {
-        var readParams = getParams();
-        if(id == "") {
-          return false;
-        } else {
-          document.getElementById('iframe').src = "/mod_researchmodview?id=" + id + "&pos=" + readParams.pos;
-          return true;
-        }
-      }
-    </script>
 <body>
-  <script type="text/javascript">
-  function getParams() {
-    var params = {};
-    window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
-    console.log("params : " + params + ", pos : " + params.pos);
-    return params;
-  }
-  window.onload = function() {
-    var readParams = getParams();
-    if(readParams.pos == "3") {
-      document.getElementById("forAlumni").setAttribute("style", "");
-    }
-  }
-  </script>
-  <form action="/mod_membersdel" method="post" name="frm_memdel" id="frm_memdel" enctype="multipart/form-data">
-    <input type="hidden" name="pos" id="pos" value="<%= data[0].position %>">
+  <form action="/mod_pubdel" method="post" name="frm_pubdel" id="frm_pubdel">
+    <input type="hidden" name="id" id="id" value="<%= data[0].id %>">
     <label><h4>YEAR</h4>
-    <input type="text" name="year" id="year">
+    <input type="text" name="year" id="year" value="<%= data[0].year %>">
     </label>
     <label><h4>TITLE</h4>
-    <input type="text" name="content" id="content">
+    <input type="text" name="content" id="content" value="<%= data[0].content %>">
     </label>
     <label><h4>AUTHOR</h4>
-    <input type="text" name="author" id="author">
+    <input type="text" name="author" id="author" value="<%= data[0].author %>">
     </label>
       <label><h4>JOURNAL</h4>
-        <input type="text" name="reg" id="reg">
+        <input type="text" name="reg" id="reg" value="<%= data[0].reg %>">
       </label>
 <input type="submit" name="submitForm" value="제출">
 </form>
