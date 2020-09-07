@@ -1,0 +1,41 @@
+<div class="inner">
+<span class="path">HOME &nbsp;&gt;&nbsp;
+<% if(tbl == "contact") { %>
+<span>CONTACT US</span>
+<% } else if(tbl == 'sitemap') { %>
+<span>SITEMAP</span>
+<% } else if(tbl == 'research') { %>
+RESEARCH &nbsp;&gt;&nbsp;<span>a</span>
+<% } else if(tbl == 'history') { %>
+RESEARCH &nbsp;&gt;&nbsp;<span>b</span>
+<% } else if(tbl == 'org') { %>
+RESEARCH &nbsp;&gt;&nbsp;<span>c</span>
+
+<% } else if(tbl == 'professor') { %>
+PROFESSOR &nbsp;&gt;&nbsp;<span>PROFESSOR</span>
+<% } else if(tbl == 'candidate1') { %>
+MEMBERS &nbsp;&gt;&nbsp;<span>Ph.D. CANDIDATE</span>
+<% } else if(tbl == 'candidate2') { %>
+MEMBERS &nbsp;&gt;&nbsp;<span>M.S CANDIDATE</span>
+<% } else if(tbl == 'alumni') { %>
+MEMBERS &nbsp;&gt;&nbsp;<span>AlUMNI</span>
+
+<% } else if(tbl == 'journals') { %>
+PUBLICATION &nbsp;&gt;&nbsp;<span>JOURNALS</span>
+<% } else if(tbl == 'presentations') { %>
+PUBLICATION &nbsp;&gt;&nbsp;<span>PRESENTATIONS</span>
+<% } else if(tbl == 'patent') { %>
+PUBLICATION &nbsp;&gt;&nbsp;<span>PATENT</span>
+<% } else if(tbl == 1) { %>
+BOARD &nbsp;&gt;&nbsp;<span>Notice</span>
+<% } else if(tbl == 2) { %>
+BOARD &nbsp;&gt;&nbsp;<span>Gallery</span>
+<% } else { %>
+  <% for(var i=0;i<data_research.length;i++) { %>
+		<% if( tbl == ("research" + i)) { %>
+RESEARCH &nbsp;&gt;&nbsp;<span><%= data_research[i].tblname %></span>
+		<% break; } %>
+    <% } %>
+<% } %>
+</span>
+</div><!--// inner -->

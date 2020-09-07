@@ -1,0 +1,106 @@
+<html>
+<head>
+<title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<script type="text/javascript">
+function frm_check() {
+  if(frm_resadd.tblname.value == "") {
+    alert("TITLE을 입력해주세요.");
+    frm_resadd.tblname.focus();
+    return false;
+  } else if(!frm_resadd.imgFile.value) {
+    alert("이미지를 첨부해주세요.");
+    return false;
+  } else if(frm_resadd.content.value == "") {
+    alert("설명을 입력해주세요.");
+    frm_resadd.content.focus();
+    return false;
+  }
+  else return true;
+}
+</script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+
+        $(function() {
+            $("#imgFile").on('change', function(){
+
+                readURL(this);
+            });
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                    $('#ex').attr('src', e.target.result);
+                }
+              reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <script type="text/javascript">
+      function iframe_url(link){
+        document.getElementById('board_iframe').src = link;
+      }
+    </script>
+    <script type="text/javascript">
+      function change(id) {
+        var readParams = getParams();
+        if(id == "") {
+          return false;
+        } else {
+          document.getElementById('board_iframe').src = "/mod_researchmodview?id=" + id + "&pos=" + readParams.pos;
+          return true;
+        }
+      }
+    </script>
+<body>
+  <script type="text/javascript">
+  function getParams() {
+    var params = {};
+    window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
+    console.log("params : " + params + ", pos : " + params.pos);
+    return params;
+  }
+  window.onload = function() {
+    var readParams = getParams();
+    if(readParams.pos == "3") {
+      document.getElementById("forAlumni").setAttribute("style", "");
+    }
+  }
+  </script>
+  <form action="/mod_membersdel" method="post" name="frm_memdel" id="frm_memdel" enctype="multipart/form-data">
+    <input type="hidden" name="pos" id="pos" value="<%= data[0].position %>">
+    <label><h4>NAME</h4>
+    <input type="text" name="name" id="name" value="<%= data[0].name %>">
+    </label>
+    <label><h4>E-mail</h4>
+    <input type="text" name="email" id="email" value="<%= data[0].email %>">
+    </label>
+    <div class="center">
+      <label><h4>IMAGE</h4>
+      <img id="ex" src="<%= data[0].img %>" alt="" width="150px" height="200px">
+      </label>
+    </div>
+    <div class="filebox">
+      <input type="file" name="imgFile" id="imgFile">
+    </div>
+    <p class="mt50">
+      <label><h4>RESEARCH AREA</h4>
+      <textarea name="resArea" rows="3" cols="50"><%= data[0].researchArea %></textarea>
+      </label>
+    </p>
+    <div id="forAlumni" style="display:none;">
+      <label><h4>직업</h4>
+      <input type="text" name="occu" id="occu" value="<%= data[0].occu %>">
+      </label>
+      <label><h4>졸업연도</h4>
+      <input type="text" name="year" id="year" value="<%= data[0].year %>">
+      </label>
+    </div>
+<input type="submit" name="submitForm" value="제출">
+</form>
+</body>
+</html>

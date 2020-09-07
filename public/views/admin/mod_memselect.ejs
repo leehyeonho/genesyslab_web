@@ -1,0 +1,134 @@
+<html>
+<head>
+<title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<% var delId = 0; %>
+<script type="text/javascript">
+function frm_check(tbl) {
+  if(write.title.value == "") {
+    alert("제목을 입력해주세요.");
+    write.title.focus();
+    return false;
+  } else if(CKEDITOR.instances['content'].getData() == "") {
+    alert("내용을 입력해주세요.");
+    CKEDITOR.instances['content'].focus();
+    return false;
+  } else if(tbl == "2" && !write.imgFile.value) {
+    alert("파일을 선택해주세요.");
+    return false;
+  }
+  else return true;
+}
+</script>
+<script type="text/javascript">
+  function removeCheck() {
+
+  }
+</script>
+<script type="text/javascript">
+  function get_action() {
+    if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+      var selectbox = document.getElementById('membersSelect');
+      var selected = selectbox.options[selectbox.selectedIndex].value;
+      return "/mod_membersdel?selected=" + selected;
+    }else{   //취소
+       return false;
+    }
+
+  }
+</script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+  $(function() {
+    $("#imgFile").on('change', function(){
+
+        readURL(this);
+    });
+  });
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+            $('#ex').attr('src', e.target.result);
+        }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>
+<script type="text/javascript">
+function change1(id) {
+  var can1 = <%- JSON.stringify(can1) %>;
+  var can2 = <%- JSON.stringify(can2) %>;
+  var can3 = <%- JSON.stringify(can3) %>;
+  if(id == "") {
+  } else if(id == "1") {
+    frm_memselect.membersSelect.options.length = 1;
+    for (var i = 0; i < can1.length; i++) {
+      var op = new Option();
+  		op.value = can1[i].id; // 값 설정
+  		op.text = can1[i].name; // 텍스트 설정
+
+  		frm_memselect.membersSelect.options.add(op); // 옵션 추가
+    }
+
+  } else if(id == "2") {
+    frm_memselect.membersSelect.options.length = 1;
+    for (var i = 0; i < can2.length; i++) {
+      var op = new Option();
+  		op.value = can2[i].id; // 값 설정
+  		op.text = can2[i].name; // 텍스트 설정
+
+  		frm_memselect.membersSelect.options.add(op); // 옵션 추가
+    }
+
+  } else if(id == "3") {
+    frm_memselect.membersSelect.options.length = 1;
+    for (var i = 0; i < can3.length; i++) {
+      var op = new Option();
+  		op.value = can3[i].id; // 값 설정
+  		op.text = can3[i].name; // 텍스트 설정
+
+  		frm_memselect.membersSelect.options.add(op); // 옵션 추가
+    }
+
+  }
+}
+function change2(id) {
+  if(id == "") {
+    return false;
+  } else {
+    var pos = frm_memselect.mem_tableSelect.value;
+    document.getElementById('members_iframe').src = "/mod_membersmodview?id=" + id;
+    return true;
+  }
+}
+</script>
+<body>
+  <div class="conbody">
+    <div>
+      <h2 class=" mt10" id="aa" name="aa">> MEMBERS DATA MOD</h2>
+      <div>
+        <form class="" name="frm_memselect" method="post" onsubmit="this.action=get_action();">
+          <label><h3>선택</h3>
+          <select name="mem_tableSelect" id="mem_tableSelect" onchange="change1(this.value);">
+            <option value="">테이블 선택</option>
+              <option value="1" >Ph.D. candidate</option>
+              <option value="2" >M.S. candidate</option>
+              <option value="3" >alumni</option>
+          </select>
+          <select name="membersSelect" id="membersSelect" onchange="return change2(this.value);">
+            <option value="" style="display:none;">변경할 멤버 선택</option>
+
+
+          </select>
+          </label>
+          <input type="submit" name="" value="삭제">
+        </form>
+
+      </div>
+      <iframe name="members_iframe" id="members_iframe" src="/whitespace" frameborder="0" width="100%" scrolling="no" height="863px"></iframe>
+  </div>
+</body>
+</html>

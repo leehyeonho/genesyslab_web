@@ -1,9 +1,13 @@
 const express = require('express')
 const app = express()
-const bodyParser = require("body-parser");
+
 const passport = require('passport');
 const request = require('request');
-// const favicon = require('serve-favicon');
+
+const favicon = require('serve-favicon');
+app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
+
+const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 // Passport
@@ -139,36 +143,80 @@ app.post('/upload', upload.single('imgFile'), function(request, response){
   board.upload(request, response);
 });
 
+// professor data form
 app.get('/mod_professorview', function(request, response){
   admin.professorview(request, response);
 });
 
+// professor data transmit
 app.post('/mod_professor', function(request, response){
   admin.professor(request, response);
 });
 
-app.get('/mod_membersview', function(request, response){
-  admin.membersview(request, response);
+// members mod form
+app.get('/mod_membersmodview', function(request, response){
+  admin.membersmodview(request, response);
 });
 
-app.post('/mod_members', function(request, response){
-  admin.members(request, response);
+// members seleceted data request
+app.get('/mod_memselect', function(request, response){
+  admin.memselect(request, response);
 });
 
+app.post('/mod_memselect', function(request, response){
+  admin.memselect(request, response);
+});
+
+// members add data transmit
+app.post('/mod_membersadd', upload.single('imgFile'), function(request, response){
+  admin.membersadd(request, response);
+});
+
+app.post('/mod_membersmod', upload.single('imgFile'), function(request, response){
+  admin.membersmod(request, response);
+});
+
+app.post('/mod_membersdel', upload.single('imgFile'), function(request, response){
+  admin.membersdel(request, response);
+});
+
+// research add data transmit
 app.post('/mod_researchadd', upload.single('imgFile'), function(request, response){
   admin.researchadd(request, response);
 });
 
+// research selected data request
 app.get('/mod_resselect', function(request, response){
   admin.resselect(request, response);
 });
 
+// research mod form
 app.get('/mod_researchmodview', function(request, response){
   admin.researchmodview(request, response);
 });
 
+// research mod data transmit
 app.post('/mod_researchmod', upload.single('imgFile'), function(request, response){
   admin.researchmod(request, response);
+});
+
+// research mod data transmit
+app.post('/mod_researchdel', function(request, response){
+  admin.researchdel(request, response);
+});
+
+app.get('/admin', function(request, response){
+  if(request.session.isLogined == true) {
+    response.render('admin/admin', {session : request.session});
+  } else {
+    response.redirect("/");
+  }
+
+
+});
+
+app.get('/publication', function(request, response){
+  sub.publication(request, response);
 });
 
 app.get('/:page', function(request, response){

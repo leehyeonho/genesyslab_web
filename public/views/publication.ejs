@@ -1,34 +1,56 @@
-<div class="publication_area">
-  <h2>PUBLICATION</h2>
-  <a href="/bbs/board.php?tbl=journals" class="btn_more"><img src="/images/btn_more.png" alt="PUBLICATION 더보기" /></a>
-  <ul class="publication_list clfix">
-<li>
-<a href="/bbs/board.php?tbl=journals">
-<span class="btn_more_cont">MORE &gt;</span>
-<dl>
-  <dt>01</dt>
-  <dd style="word-break:break-all;">PIM-1-based carbon-sulfur composites for sodium-sulfur batteries that operate without the shuttle effect (Highlighted on Inside Back Cover)</dd>
-</dl>
-</a>
-</li>
-<li>
-<a href="/bbs/board.php?tbl=journals">
-<span class="btn_more_cont">MORE &gt;</span>
-<dl>
-  <dt>02</dt>
-  <dd style="word-break:break-all;">Carbanization of Carboxylate-Functionalized Polymers of Intrinsic Microporosity for Water Treatment (Highlighted on Front Cover)</dd>
-</dl>
-</a>
-</li>
-<li>
-<a href="/bbs/board.php?tbl=journals">
-<span class="btn_more_cont">MORE &gt;</span>
-<dl>
-  <dt>03</dt>
-  <dd style="word-break:break-all;">Enhanced cycle stability of rechargeable Li-O2 batteries using immobilized redox mediator on air cathode</dd>
-</dl>
-</a>
-</li>
-
-</ul>
-</div><!--// publication_area -->
+<html>
+<head>
+<title></title>
+</head>
+<script type="text/javascript">
+  window.onload = function searchParam() {
+    var year = URLSearchParams(location.search).get('year');
+    if(year == '2019') {
+      document.getElementById('aa').innerHTML = 'wow';
+    }
+  };
+</script>
+<body>
+  <div id="boardContent">
+	   <table width="100%" cellpadding="0" cellspacing="0" border="0" class="pub_table mt40">
+			<colgroup>
+        <col width="6%">
+        <col width="*">
+              </colgroup>
+              <tr>
+                <td height="2" bgcolor="#0a51ba" colspan="2"></td>
+              </tr>
+              <% for (var i = 0; i < data.length; i++) { %>
+                <tr height="20" align="center" bgcolor="#ffffff"></tr>
+  						<tr>
+  				<th align="right"><%= data[i].year + "." + data[i].month %></th>
+  								<td height="35" align="center" bgcolor="#ffffff" >
+  					<div id="DivContents" style="width:767px;word-break:break-all;" class="mt5">
+  						<p><span style="font-family: tahoma;">&#65279;사업자 등록</span></p>
+            </div>
+  									</td>
+  							</tr>
+                <tr>
+                  <td height="1" bgcolor="#aaaaaa" colspan="2"></td>
+                </tr>
+              <% } %>
+								</table>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		<tr>
+			<td height="50" align="left">
+							</td>
+			<td height="50" align="right">
+									</td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2">
+				<div class="paginate mt20">
+					<ul>
+											</ul>
+				</div>
+						</td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>

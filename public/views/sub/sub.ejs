@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+  <%- include ("head.ejs") %>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24ca9ece3cc682d28dfbc38c2e97518d">
+  </script>
+</head>
+<script type="text/javascript">
+  function iframe_url(link){
+    document.getElementById('board_iframe').src = link;
+  }
+</script>
+<body leftmargin="0" topmargin="0">
+<DIV ID="objContents">
+
+<div id="wrap">
+	<div id="header">
+	  <%- include ("header.ejs") %>
+	</div><!--// header -->
+
+	<div class="location">
+	  <%- include ("location.ejs") %>
+	</div><!--// location -->
+
+	<div id="sub_container" class="clfix">
+		<div id="sidebar">
+		  <%- include ("sidebar.ejs") %>
+		</div><!--// sidebar -->
+		<div id="sub_contents">
+		  <%- include ("sub_content.ejs") %>
+		</div><!--// sub_contents -->
+	</div><!--// sub_container -->
+	<div id="footer">
+	  <%- include ("footer.ejs") %>
+	</div><!--// footer -->
+</div><!--// wrap -->
+
+</DIV>
+<DIV ID="objSelection">
+</DIV>
+
+</body>
+</html>

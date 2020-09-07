@@ -1,7 +1,7 @@
 {
   "name": "genesys",
   "version": "1.0.0",
-  "description": "",
+  "description": "\"# Genesys\" \r # genesyslab_web",
   "main": "main.js",
   "dependencies": {
     "bcrypt": "^4.0.1",
@@ -27,5 +27,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leehyeonho/genesyslab_web.git"
+  },
+  "bugs": {
+    "url": "https://github.com/leehyeonho/genesyslab_web/issues"
+  },
+  "homepage": "https://github.com/leehyeonho/genesyslab_web#readme"
 }

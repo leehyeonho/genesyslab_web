@@ -19,9 +19,9 @@ exports.resselect = function(request, response) {
 
 exports.researchmodview = function(request, response) {
 	var researchId = request.query.id;
-	sql = 'SELECT * FROM research';
-    db.query(sql, function(error, result) {
-      response.render('mod_researchmodview', {session : request.session, data : result, id : researchId-1});
+	sql = 'SELECT * FROM research WHERE id = ?';
+    db.query(sql, [researchId], function(error, result) {
+      response.render('mod_researchmodview', {session : request.session, data : result});
       });
 }
 
@@ -52,15 +52,13 @@ exports.researchadd = function(request, response) {
 }
 
 exports.researchdel = function(request, response) {
-  var name = request.body.name;
-  console.log(name);
-  var content = request.body.content;
-  var tel = request.body.tel;
-  var fax = request.body.fax;
-  var email = request.body.email;
-	sql = 'UPDATE research SET name = ?, content = ?, tel = ?, fax = ?, email = ? WHERE id = 1';
-    db.query(sql, [name, content, tel, fax, email], function(error, result) {
-      response.redirect('/mod_researchview');
+  var selected = request.query.selected;
+	sql = 'DELETE FROM research WHERE id = ?';
+    db.query(sql, [selected], function(error, result) {
+			sql = 'SELECT * FROM research';
+      db.query(sql, function(err, result_research) {
+        response.render('mod_resselect', {session : request.session, data : result_research});
+      });
       // response.render('mod_professor', {session : request.session, data : result});
       });
 }
@@ -77,35 +75,89 @@ exports.professorview = function(request, response) {
 
 exports.professor = function(request, response) {
   var name = request.body.name;
-  console.log(name);
-  var content = request.body.content;
+	var content = request.body.content;
+  var edu = request.body.edu;
+	var exp = request.body.exp;
   var tel = request.body.tel;
   var fax = request.body.fax;
   var email = request.body.email;
-	sql = 'UPDATE professor SET name = ?, content = ?, tel = ?, fax = ?, email = ? WHERE id = 1';
-    db.query(sql, [name, content, tel, fax, email], function(error, result) {
+	sql = 'UPDATE professor SET name = ?, content = ?, tel = ?, fax = ?, email = ?, edu = ?, exp = ? WHERE id = 1';
+    db.query(sql, [name, content, tel, fax, email, edu, exp], function(error, result) {
       response.redirect('/mod_professorview');
       // response.render('mod_professor', {session : request.session, data : result});
       });
 }
 
-exports.membersview = function(request, response) {
-	sql = 'SELECT * FROM members';
-    db.query(sql, function(error, result) {
-      response.render('mod_members', {session : request.session, data : result});
+exports.memselect = function(request, response) {
+	var select = request.body.membersSelect;
+	sql = 'SELECT * FROM candidate WHERE position = 1';
+    db.query(sql, function(error, result1) {
+			sql = 'SELECT * FROM candidate WHERE position = 2';
+				db.query(sql, function(error, result2) {
+					sql = 'SELECT * FROM candidate WHERE position = 3';
+						db.query(sql, function(error, result3) {
+							response.render('mod_memselect', {session : request.session, can1 : result1, can2 : result2, can3 : result3});
+							});
+					});
       });
 }
 
-exports.members = function(request, response) {
+exports.membersmodview = function(request, response) {
+	var membersId = request.query.id;
+	sql = 'SELECT * FROM candidate WHERE id = ?';
+    db.query(sql, [membersId], function(error, result) {
+      response.render('mod_membersmodview', {session : request.session, data : result});
+      });
+}
+
+exports.membersadd = function(request, response) {
   var name = request.body.name;
-  console.log(name);
-  var content = request.body.content;
-  var tel = request.body.tel;
-  var fax = request.body.fax;
-  var email = request.body.email;
-	sql = 'UPDATE members SET name = ?, content = ?, tel = ?, fax = ?, email = ? WHERE id = 1';
-    db.query(sql, [name, content, tel, fax, email], function(error, result) {
-      response.redirect('/mod_membersview');
+	var email = request.body.email;
+  var resArea = request.body.resArea;
+  var occu = request.body.occu;
+  var year = request.body.year;
+	var id = request.body.membersSelect;
+	console.log("ddd " + id);
+
+	sql = 'INSERT INTO candidate(name, email, researchArea, occu, year, position, img) values(?,?,?,?,?,?,?)';
+    db.query(sql, [name, email, resArea, occu, year, id, request.file.path.substring(6)], function(error, result) {
+      response.redirect('/mod_membersaddview');
+      // response.render('mod_professor', {session : request.session, data : result});
+      });
+}
+
+exports.membersmod = function(request, response) {
+	var name = request.body.name;
+	var email = request.body.email;
+  var resArea = request.body.resArea;
+  var occu = request.body.occu;
+  var year = request.body.year;
+	var pos = request.body.pos;
+  var img = request.file.path.substring(6);
+	sql = 'UPDATE candidate SET name = ?, email = ?, researchArea = ?, occu = ?, year = ?, img = ? WHERE position = ?';
+    db.query(sql, [name, email, resArea, occu, year, request.file.path.substring(6), pos], function(error, result) {
+      response.redirect('/success');
+      // response.render('mod_professor', {session : request.session, data : result});
+      });
+}
+
+exports.membersdel = function(request, response) {
+  var selected = request.query.selected;
+	sql = 'DELETE FROM candidate WHERE id = ?';
+    db.query(sql, [selected], function(error, result) {
+			sql = 'SELECT * FROM candidate';
+      db.query(sql, function(err, result_members) {
+				sql = 'SELECT * FROM candidate WHERE position = 1';
+					db.query(sql, function(error, result1) {
+						sql = 'SELECT * FROM candidate WHERE position = 2';
+							db.query(sql, function(error, result2) {
+								sql = 'SELECT * FROM candidate WHERE position = 3';
+									db.query(sql, function(error, result3) {
+										response.render('mod_memselect', {session : request.session, data : result_members, can1 : result1, can2 : result2, can3 : result3});
+										});
+								});
+						});
+      });
       // response.render('mod_professor', {session : request.session, data : result});
       });
 }

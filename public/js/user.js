@@ -23,7 +23,7 @@ exports.login = function (request, response) {
 		 request.session.isLogined = true;
 		 console.log("login success, user_id : " + request.session.user_id);
                  request.session.save(function(){
-		   response.redirect('/');
+                   response.render('admin', {});
 		 });
 		 //response.render('index', {session : request.session});
                 } else { // 비교 실패
