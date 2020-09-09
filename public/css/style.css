@@ -138,8 +138,8 @@ label.invisible{*position:Absolute;}
 #header .top_menu span{line-height:40px; display:block; float:left; width:110px; height:40px; text-align:center; }
 #header .top_menu span a{display:block; width:100%; height:100%; font-size:12px; }
 #header .top_menu span img{vertical-align:-3px; margin-right:5px;}
-#header .top_menu span.tm1 a{background:#6baddf; color:#ffffff; }
-#header .top_menu span.tm2 a{background:#005dab; color:#ffffff; }
+#header .top_menu span.tm1 a{background:#00FF00; color:#ffffff; }
+#header .top_menu span.tm2 a{background:#04B404; color:#ffffff; }
 #header .top_menu span.tm3 a{background:#ececec; color:#555555; }
 #gnb{float:right; margin-top:40px;}
 #gnb > li{float:left; height:100px; line-height:102px; margin-left:90px; position:relative; }
@@ -171,10 +171,10 @@ label.invisible{*position:Absolute;}
 -o-box-shadow: inset 0 0 5px 2px rgba(255,255,255,.5);
 box-shadow: 0 0 5px 2px rgba(255,255,255,.5);
 }
-.member_info .member_1{width:375px; background:#222e4c url(/images/main/icon_cap1.png) 222px center no-repeat; }
-.member_info .member_1:hover{background:#222e4c url(/images/main/icon_cap1_over.png) 222px center no-repeat;}
-.member_info .member_2{width:375px; background:#0c5ca1 url(/images/main/icon_cap2.png) 222px center no-repeat; }
-.member_info .member_2:hover{background:#0c5ca1 url(/images/main/icon_cap2_over.png) 222px center no-repeat;}
+.member_info .member_1{width:375px; background:#00FF00 url(/images/main/icon_cap1.png) 222px center no-repeat; }
+.member_info .member_1:hover{background:#00FF00 url(/images/main/icon_cap1_over.png) 222px center no-repeat;}
+.member_info .member_2{width:375px; background:#04B404 url(/images/main/icon_cap2.png) 222px center no-repeat; }
+.member_info .member_2:hover{background:#04B404 url(/images/main/icon_cap2_over.png) 222px center no-repeat;}
 .member_info .member_3{width:370px; background:#33302e url(/images/main/icon_cap3.png) 217px center no-repeat; }
 .member_info .member_3:hover{background:#33302e url(/images/main/icon_cap3_over.png) 217px center no-repeat;}
 .main_container{width:1120px; margin:22px auto 25px; }
