@@ -139,10 +139,6 @@ app.post('/upload', upload.single('imgFile'), function(request, response){
   board.upload(request, response);
 });
 
-app.post('/upload', upload.single('imgFile'), function(request, response){
-  board.upload(request, response);
-});
-
 // professor data form
 app.get('/mod_professorview', function(request, response){
   admin.professorview(request, response);
@@ -256,17 +252,17 @@ app.get('/loginfail', function(request, response){
 
 app.get('/mod_membersaddview', function(request, response){
     response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
-    fs.createReadStream("./mod_membersmodview.html").pipe(response);
+    fs.createReadStream("./mod_membersaddview.html").pipe(response);
 });
 
 app.get('/mod_publicationaddview', function(request, response){
     response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
-    fs.createReadStream("./mod_publicationmodview.html").pipe(response);
+    fs.createReadStream("./mod_publicationaddview.html").pipe(response);
 });
 
 app.get('/mod_researchaddview', function(request, response){
     response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
-    fs.createReadStream("./mod_researchmodview.html").pipe(response);
+    fs.createReadStream("./mod_researchaddview.html").pipe(response);
 });
 
 app.get('/signup', function(request, response){
