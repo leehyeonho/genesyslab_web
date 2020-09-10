@@ -6,28 +6,12 @@
 }
 
 /* 카카오 지도 커스텀 오버레이 */
-.overlay {
-	margin-bottom: 96px;
-}
-.overlay * {
-	display: inline-block;vertical-align: top;
-}
-.overlay .left {
-	background: url("http://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;display: inline-block;height: 24px;overflow: hidden;vertical-align: top;width: 7px;
-}
-.overlay .center {
-	background: url(http://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png) repeat-x;display: inline-block;height: 24px;font-size: 12px;line-height: 24px;
-}
-.overlay .right {
-	background: url("http://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png") -1px 0  no-repeat;display: inline-block;height: 24px;overflow: hidden;width: 6px;
-}
-
-/* new css */
-
-/* Common **********************************************************************/
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-복사하기
-            @font-face {
+.overlay {margin-bottom: 96px;}
+.overlay * {display: inline-block;vertical-align: top;}
+.overlay .left {background: url("http://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;display: inline-block;height: 24px;overflow: hidden;vertical-align: top;width: 7px;}
+.overlay .center {background: url(http://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png) repeat-x;display: inline-block;height: 24px;font-size: 12px;line-height: 24px;}
+.overlay .right {background: url("http://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png") -1px 0  no-repeat;display: inline-block;height: 24px;overflow: hidden;width: 6px;}
+@font-face {
   font-family: 'LotteMartDream';
   font-style: normal;
   font-weight: 400;
@@ -48,7 +32,7 @@
 .lottemartdream * {
  font-family: 'LotteMartDream', sans-serif;
 }
-/* Common **********************************************************************/
+
 html,body {width:100%; font-family: "dreamLight"; font-size: 30px;}
 html {overflow-y:scroll; box-sizing:border-box;}
 *, *:before, *:after{box-sizing:inherit;}
@@ -77,7 +61,6 @@ caption {position:static;}
 .invisible{overflow:hidden; visibility:hidden; width:0; height:0; font-size:0; line-height:0; position:absolute;}
 label.invisible{*position:Absolute;}
 
-/* common */
 .clfix:after {content: "."; display: block; height:0px; clear: both; visibility: hidden;}
 .clfix {display:inline-block;}
 .clfix {display:block;}
@@ -144,7 +127,7 @@ label.invisible{*position:Absolute;}
 #gnb{float:right; margin-top:40px;}
 #gnb > li{float:left; height:100px; line-height:102px; margin-left:90px; position:relative; }
 #gnb > li > a{font-size:16px; color:#555555; font-weight:bold;}
-#gnb > li > a:hover{color:#0c5ca1; }
+#gnb > li > a:hover{color:#0B610B; }
 .gnb_2depth{width:180px; position:absolute; left:0; top:100px; background:#f5f5f5; z-index:9990; display:none;}
 .gnb_2depth1{position:absolute; left:-50px; top:100px; }
 .gnb_2depth2{position:absolute; left:-45px; top:100px; }
@@ -300,12 +283,12 @@ ul.paging li.on a{color:#ffffff; border:1px solid #7c7c7c; }
 .professor01:after{display:block; content:''; clear:both;}
 .p_pic{height:278px;  width:235px; float:left;}
 .p_basic{width:550px; float:right;}
-.p_basic dt{font-size:18px; color:#124e79; font-weight:bold; font-family:'LotteMartDream';}
+.p_basic dt{font-size:18px; color:#0B610B; font-weight:bold; font-family:'LotteMartDream';}
 .p_basic dd{font-size:14px; color:#666666; margin-bottom:3px;}
 .p_basic dd ul{padding:10px 0; }
 .p_basic dd ul li{font-size:14px; color:#666666; background:url(/images/dot.jpg) 0 50% no-repeat; padding-left:10px; margin-bottom:3px;}
 .p_basic dd em{font-size:14px; color:#111111; font-weight:bold;}
-.p_basic dd a{font-size:14px; color:#124e79; text-decoration:underline;}
+.p_basic dd a{font-size:14px; color:#0B610B; text-decoration:underline;}
 
 .h4_title{font-size:20px; color:#124e79; background:url(/images/h4_title.jpg) 0 center no-repeat; padding-left:15px;}
 .h5_title{font-size:14px; color:#444; background:url(/images/h5_title.jpg)15px center no-repeat; padding-left:35px;}
