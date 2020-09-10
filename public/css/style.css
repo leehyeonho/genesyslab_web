@@ -241,8 +241,8 @@ box-shadow: 0 0 5px 2px rgba(255,255,255,.5);
 .lnb{padding:15px 15px 20px 20px; border:1px solid #dddddd; background:#f9f9f9; }
 .lnb h3{line-height:33px; height:33px;}
 .lnb h3 a{display:block; width:100%; height:100%; font-size:13px; color:#888888; background:url(/images/sub/lnb_off.jpg) right 55% no-repeat; }
-.lnb h3 a:hover{color:#0a51ba; }
-.lnb h3 a.over{color:#0a51ba; background:url(/images/sub/lnb_on.jpg) right 55% no-repeat;}
+.lnb h3 a:hover{color:#088A08; }
+.lnb h3 a.over{color:#088A08; background:url(/images/sub/lnb_on.jpg) right 55% no-repeat;}
 #sub_contents{width:840px; float:right; }
 .contop{height:118px; border-bottom:1px solid #dddddd; padding-top:20px;}
 .contop h3.page_title{font-size:32px; color:#000000; line-height:40px; text-transform:uppercase;}
