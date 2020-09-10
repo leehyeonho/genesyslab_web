@@ -254,17 +254,17 @@ app.get('/loginfail', function(request, response){
     fs.createReadStream("./loginfail.html").pipe(response);
 });
 
-app.get('/mod_membersmodview', function(request, response){
+app.get('/mod_membersaddview', function(request, response){
     response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
     fs.createReadStream("./mod_membersmodview.html").pipe(response);
 });
 
-app.get('/mod_publicationmodview', function(request, response){
+app.get('/mod_publicationaddview', function(request, response){
     response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
     fs.createReadStream("./mod_publicationmodview.html").pipe(response);
 });
 
-app.get('/mod_researchmodview', function(request, response){
+app.get('/mod_researchaddview', function(request, response){
     response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
     fs.createReadStream("./mod_researchmodview.html").pipe(response);
 });
@@ -277,6 +277,11 @@ app.get('/signup', function(request, response){
 app.get('/success', function(request, response){
     response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
     fs.createReadStream("./success.html").pipe(response);
+});
+
+app.get('/whitespace', function(request, response){
+    response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
+    fs.createReadStream("./whitespace.html").pipe(response);
 });
 
 app.get('/favicon.ico', function(request, response){
