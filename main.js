@@ -283,9 +283,13 @@ app.get('/whitespace', function(request, response){
 app.get('/favicon.ico', function(request, response){
 });
 
+app.use((req, res, next) => { // 404 처리 부분
+  res.status(404).send('일치하는 주소가 없습니다!');
+});
+
 app.use((err, req, res, next) => {
   console.log(err);
-  res.status(404).send("Server Error");
+  res.status(500).send("Server Error");
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
