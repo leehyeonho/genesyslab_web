@@ -150,13 +150,7 @@ function frm_check() {
 				</td>
 <td align="right">
 <% if(session.isLogined) { %>
-<% if(tbl == 1) { %>
-<%   if(session.user_id == 'admin') { %>
        <a href="./board_write.ejs?tbl=<%= tbl %>"><div class="bbs_btn">글쓰기</div>
-<%   } %>
-<% } else { %>
-<a href="./board_write?tbl=<%= tbl %>"><div class="bbs_btn">글쓰기</div>
-<% } %>
 <% } %>
 </td>
 	</tr>
