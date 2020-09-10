@@ -248,4 +248,9 @@ app.get('/:page', function(request, response){
   }
 });
 
+app.use((err, req, res, next) => {
+  console.log(err);
+  res.status(404).send("Server Error");
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
