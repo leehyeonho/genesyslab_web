@@ -27,13 +27,18 @@ function frm_check() {
 </script>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <body>
+  <style media="screen">
+    input {
+      width : 200px;
+    }
+  </style>
   <form action="/mod_pubmod" method="post" name="frm_pubmod" id="frm_pubmod">
     <input type="hidden" name="id" id="id" value="<%= data[0].id %>">
     <label><h4>YEAR</h4>
     <input type="text" name="year" id="year" value="<%= data[0].year %>">
     </label>
     <label><h4>TITLE</h4>
-    <input type="text" name="content" id="content" value="<%= data[0].content %>">
+    <input type="text" name="content" id="content" value="<%= data[0].content %>" >
     </label>
     <label><h4>AUTHOR</h4>
     <input type="text" name="author" id="author" value="<%= data[0].author %>">

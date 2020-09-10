@@ -42,6 +42,11 @@ function frm_check() {
         }
     </script>
 <body>
+  <style media="screen">
+    input {
+      width : 200px;
+    }
+  </style>
   <div class="conbody">
   <form action="/mod_researchadd" method="post" name="frm_resadd" id="frm_resadd" enctype="multipart/form-data" onsubmit="return frm_check();">
     <div>
@@ -59,7 +64,7 @@ function frm_check() {
       </div>
       <p class="mt50">
         <label><h3>CONTENT</h3>
-        <textarea name="content" rows="8" cols="80"></textarea>
+        <textarea name="content" rows="8" cols="40"></textarea>
         </label>
       </p>
     </div>
