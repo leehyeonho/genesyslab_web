@@ -239,13 +239,47 @@ app.post('/mod_pubdel', upload.single('imgFile'), function(request, response){
   admin.pubdel(request, response);
 });
 
-
-app.get('/:page', function(request, response){
-  if(request.params.page == '/favicon.ico') {
-  } else {
+app.get('/adminlogin', function(request, response){
     response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
-    fs.createReadStream("./" + request.params.page + ".html").pipe(response);
-  }
+    fs.createReadStream("./adminlogin.html").pipe(response);
+});
+
+app.get('/complete', function(request, response){
+    response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
+    fs.createReadStream("./complete.html").pipe(response);
+});
+
+app.get('/loginfail', function(request, response){
+    response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
+    fs.createReadStream("./loginfail.html").pipe(response);
+});
+
+app.get('/mod_membersmodview', function(request, response){
+    response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
+    fs.createReadStream("./mod_membersmodview.html").pipe(response);
+});
+
+app.get('/mod_publicationmodview', function(request, response){
+    response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
+    fs.createReadStream("./mod_publicationmodview.html").pipe(response);
+});
+
+app.get('/mod_researchmodview', function(request, response){
+    response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
+    fs.createReadStream("./mod_researchmodview.html").pipe(response);
+});
+
+app.get('/signup', function(request, response){
+    response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
+    fs.createReadStream("./signup.html").pipe(response);
+});
+
+app.get('/success', function(request, response){
+    response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
+    fs.createReadStream("./success.html").pipe(response);
+});
+
+app.get('/favicon.ico', function(request, response){
 });
 
 app.use((err, req, res, next) => {
