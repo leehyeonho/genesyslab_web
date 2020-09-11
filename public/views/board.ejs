@@ -55,7 +55,9 @@ function frm_check() {
   	<tbody><tr>
   		<td colspan="4" style="padding-bottom:5px;"></td>
   	</tr>
-
+    <% if(data.length == 0) { %>
+      글이 없습니다.
+    <% } else { %>
     <% for(var i = 0; i<data.length;i++) { %>
       <% if(i % 4 == 0) { %>
         <tr>
@@ -82,6 +84,7 @@ function frm_check() {
         </tr>
       <% } %>
     <% } %>
+    <% } %>
   </tbody></table>
 
 <% } else { %>
@@ -106,6 +109,9 @@ function frm_check() {
     <td height="1" bgcolor="#aaaaaa" colspan="26"></td>
   </tr>
   </tr>
+  <% if(data.length == 0) { %>
+    글이 없습니다.
+  <% } else { %>
     <% for ( var i = 0; i<data.length;i++) { %>
     <tr height="35" align="center">
     <td> <%= data[i].id %> </td>
@@ -126,6 +132,7 @@ function frm_check() {
   <tr>
     <td height="1" bgcolor="#F0F0F0" colspan="26"></td>
   </tr>
+  <% } %>
   <% } %>
       <tr>
     <td height="1" bgcolor="#dcdcdc" colspan="26"></td>
