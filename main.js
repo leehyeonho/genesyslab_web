@@ -281,12 +281,12 @@ app.get('/favicon.ico', function(request, response){
 
 app.get('/404_error', function(request, response){
   response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
-  fs.createReadStream("./html/404_error.html").pipe(response);
+  fs.createReadStream("./404_error.html").pipe(response);
 });
 
 app.get('/500_error', function(request, response){
   response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
-  fs.createReadStream("./html/500_error.html").pipe(response);
+  fs.createReadStream("./500_error.html").pipe(response);
 });
 
 app.use((req, res, next) => { // 404 처리 부분
