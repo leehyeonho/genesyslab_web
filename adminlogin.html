@@ -8,7 +8,7 @@
 	$(function() {
 		$.getJSON("https://api.ipify.org?format=jsonp&callback=?",
 			function(json) {
-        document.write(json.ip);
+				document.getElementById('IP').innerHTML =json.ip;
 			}
 		);
 	});
