@@ -2,7 +2,13 @@
 <head>
 <title></title>
 </head>
-<body>
+<body onload="getIP(json);">
+  <script type="text/javascript">
+	function getIP(json) {
+		document.getElementById('IP').innerHTML =json.ip;
+	}
+</script>
+<script type="text/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
   <div class="container-login100" style="text-align:center;">
   <div class="wrap-login100">
     <form class="login100-form validate-form" action="/login" method="post" name="frm_login" id="frm_login">
@@ -34,6 +40,7 @@
           </button>
         </div>
       </div>
+      <label id="IP"></label>
       </form>
   </div>
 </div>
