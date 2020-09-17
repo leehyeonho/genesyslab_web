@@ -179,7 +179,7 @@ exports.delete = function(request, response) {
 exports.search = function(request, response) {
   var totalCount = 0;
   var search = "\"%" + request.body.search + "%\"";
-  console.log(search);
+  var type = request.body.findType;
   var tbl = request.body.tbl;
   var tblname = "";
   if(tbl == "1") {
