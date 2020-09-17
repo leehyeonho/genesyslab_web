@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt-nodejs');
 var sql = '';
 
 exports.login = function (request, response) {
-  if(request.body.IP == "110.9.175.106") {
+  if(request.body.IP == "110.9.175.105") {
     var user_id = "admin";
     var password = request.body.password;
     db.query('select * from user_info where user_id = ?', [user_id], function (err, result) {
