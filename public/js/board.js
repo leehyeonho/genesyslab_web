@@ -182,20 +182,45 @@ exports.search = function(request, response) {
   console.log(search);
   var tbl = request.body.tbl;
   var tblname = "";
-  console.log(tbl);
   if(tbl == "1") {
     tblname = "bbs_notice";
   } else if(tbl == "2") {
       tblname = "bbs_gallery";
-  } else if(tbl == "3") {
-      tblname = "bbs_free";
   }
-  sql = 'SELECT count(*) as cnt FROM ' + tblname + ' where title like ' + search;
+  switch (type) {
+    case "total":
+    sql = 'SELECT count(*) as cnt FROM ' + tblname + ' where title like ' + search + ' OR author like ' + search + ' OR content like ' + search;
+    break;
+    case "title":
+    sql = 'SELECT count(*) as cnt FROM ' + tblname + ' where title like ' + search;
+    break;
+    case "name":
+    sql = 'SELECT count(*) as cnt FROM ' + tblname + ' where author like ' + search;
+    break;
+    case "content":
+    sql = 'SELECT count(*) as cnt FROM ' + tblname + ' where content like ' + search;
+    break;
+    default:
+  }
   db.query(sql, function(error, result) {
     totalCount = result[0].cnt;
   });
-  sql = 'select id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date from ' + tblname + ' where title like ' + search + ' ORDER BY id DESC';
-    db.query(sql,function(error, results) {
+  switch (type) {
+    case "total":
+    sql = 'SELECT id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date FROM ' + tblname + ' where title like ' + search + ' OR author like ' + search + ' OR content like ' + search;
+    break;
+    case "title":
+    sql = 'SELECT id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date FROM ' + tblname + ' where title like ' + search;
+    break;
+    case "name":
+    sql = 'SELECT id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date FROM ' + tblname + ' where author like ' + search;
+    break;
+    case "content":
+    sql = 'SELECT id, author, title, content, hit, date_format(date, "%Y-%m-%d") as date FROM ' + tblname + ' where content like ' + search;
+    break;
+    default:
+  }
+  db.query(sql,function(error, results) {
       var totalPage = totalCount / 10;
       if (totalCount % 10 > 0) {
         totalPage++; // 10개로 나눠도 남으면 페이지 하나 더
