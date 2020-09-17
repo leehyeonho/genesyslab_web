@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt-nodejs');
 var sql = '';
 
 exports.login = function (request, response) {
-  var user_id = request.body.username;
+  var user_id = "admin";
   var password = request.body.password;
   db.query('select * from user_info where user_id = ?', [user_id], function (err, result) {
       if (err) {
