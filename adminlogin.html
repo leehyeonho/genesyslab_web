@@ -9,6 +9,7 @@
 		$.getJSON("https://api.ipify.org?format=jsonp&callback=?",
 			function(json) {
 				document.getElementById('IP').innerHTML =json.ip;
+        document.getElementById('hiddenIP').value =json.ip;
 			}
 		);
 	});
@@ -47,7 +48,7 @@
       <div id="IP" name="IP">
 
       </div>
-
+      <input type="hidden" name="hiddenIP" value="">
       </form>
   </div>
 </div>
