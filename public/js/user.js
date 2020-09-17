@@ -5,36 +5,39 @@ const bcrypt = require('bcrypt-nodejs');
 var sql = '';
 
 exports.login = function (request, response) {
-  var user_id = "admin";
-  var password = request.body.password;
-  db.query('select * from user_info where user_id = ?', [user_id], function (err, result) {
-      if (err) {
-        console.log('err :' + err);
-      } else {
-          if (result.length === 0) {
-	    console.log("id 없음.");
-            response.json({success: false, msg: '존재하지 않습니다.'})
-          } else {
-	      bcrypt.compare(password, result[0].password, function(err, res) {
-		if (res) { // 비교 성공
-		 request.session.user_id = result[0].user_id;
-		 request.session.user_name = result[0].user_name;
-		 request.session.user_tell = result[0].user_tell;
-		 request.session.isLogined = true;
-		 console.log("login success, user_id : " + request.session.user_id);
-                 request.session.save(function(){
-                   response.render('admin', {});
-		 });
-		 //response.render('index', {session : request.session});
-                } else { // 비교 실패
-		    console.log("password incorrected");
-		    response.redirect('/loginfail');
-		  }
-});
+  if(request.body.IP == "110.9.175.106") {
+    var user_id = "admin";
+    var password = request.body.password;
+    db.query('select * from user_info where user_id = ?', [user_id], function (err, result) {
+        if (err) {
+          console.log('err :' + err);
+        } else {
+            if (result.length === 0) {
+  	    console.log("id 없음.");
+              response.json({success: false, msg: '존재하지 않습니다.'})
+            } else {
+  	      bcrypt.compare(password, result[0].password, function(err, res) {
+  		if (res) { // 비교 성공
+  		 request.session.user_id = result[0].user_id;
+  		 request.session.user_name = result[0].user_name;
+  		 request.session.user_tell = result[0].user_tell;
+  		 request.session.isLogined = true;
+  		 console.log("login success, user_id : " + request.session.user_id);
+                   request.session.save(function(){
+                     response.render('admin', {});
+  		 });
+  		 //response.render('index', {session : request.session});
+                  } else { // 비교 실패
+  		    console.log("password incorrected");
+  		    response.redirect('/loginfail');
+  		  }
+  });
+            }
           }
-        }
-      });
-
+        });
+  } else {
+    response.redirect('/loginfail');
+  }
 }
 
 exports.kakaoLogin = function (request, response) {
