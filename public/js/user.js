@@ -106,7 +106,7 @@ exports.logout = function ( request, response ){
 
 exports.adminPwMod = function(request,response) {
   var admin = request.body;
-  db.query('select * from user_info where user_id = admin', function (err, result) {
+  db.query("select * from user_info where user_id = 'admin'", function (err, result) {
     bcrypt.compare(admin.presentpw, result[0].password, function(err, res) {
       if (res) { // 비교 성공
         bcrypt.hash(admin.password, null, null, function(err, hash) {
