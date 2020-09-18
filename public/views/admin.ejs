@@ -29,6 +29,9 @@
     function iframe_url(link){
       document.getElementById('board_iframe').src = link;
     }
+    function dd() {
+      alert("작업완료시 꼭 로그아웃해주세요!");
+    }
   </script>
   <style type="text/css">
     body {
@@ -117,7 +120,7 @@
         <li class="nav-item">
           <a href="javascript:iframe_url('/dev_notice');" class="nav-link">HOME(ADMIN MAIN)</a></li>
         <li class="nav-item">
-          <a href="/" class="nav-link" onclick="alert("작업완료시 꼭 로그아웃해주세요!");">HOME(GENESYS MAIN)</a></li>
+          <a href="/" class="nav-link" onclick="dd();">HOME(GENESYS MAIN)</a></li>
         <li class="nav-item" >────────────────────────────────</li>
         <li class="nav-item" >개선 사항이나 사용법 등 의견이 있으신 경우 아래 연락처로 연락 바랍니다.</li>
         <li class="nav-item" >E-mail : newlhh2@naver.com</li>
