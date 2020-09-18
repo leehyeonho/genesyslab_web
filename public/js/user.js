@@ -116,26 +116,14 @@ exports.adminPwMod = function(request,response) {
             console.log("err : " + err);
           } else {
             console.log("admin 비밀번호 변경 성공");
-            response.redirect('/fail?key=admodfail');
+            response.redirect('/alert?key=admodsuccess');
           }
           });
         });
                 } else { // 비교 실패
         console.log("password incorrected");
-        response.redirect('//fail?key=admodfail');
+        response.redirect('/alert?key=admodfail');
       }
-    });
-  });
-
-  bcrypt.hash(admin.password, null, null, function(err, hash) {
-    sql = 'insert into user_info(user_id, password, user_name, user_tell, reg_date) values (?, ?, ?, ? , now())';
-    db.query(sql, [admin.user_id, hash, user.user_name, user.user_tell], function(err, result) {
-    if(err) {
-      console.log("err : " + err);
-    } else {
-      console.log("회원가입 성공");
-      response.redirect('/complete');
-    }
     });
   });
 }
