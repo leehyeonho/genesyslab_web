@@ -154,7 +154,7 @@ app.get('/logout', function(request, response){
   user.logout(request,response);
 });
 
-app.post('/upload', upload.single('imgFile'), function(request, response){
+app.post('/upload', upload_g.single('imgFile'), function(request, response){
   board.upload(request, response);
 });
 
