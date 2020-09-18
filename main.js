@@ -131,10 +131,6 @@ app.get('/logout', function(request, response){
   user.logout(request,response);
 });
 
-app.post('/signup', function(request, response){
-  user.signup(request, response);
-});
-
 app.post('/upload', upload.single('imgFile'), function(request, response){
   board.upload(request, response);
 });
@@ -270,11 +266,6 @@ app.get('/mod_researchaddview', function(request, response){
     fs.createReadStream("./mod_researchaddview.html").pipe(response);
 });
 
-app.get('/signup', function(request, response){
-    response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
-    fs.createReadStream("./signup.html").pipe(response);
-});
-
 app.get('/success', function(request, response){
     response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
     fs.createReadStream("./success.html").pipe(response);
@@ -302,7 +293,7 @@ app.use((req, res, next) => { // 404 처리 부분
   res.status(404).redirect('/404_error');
 });
 
-app.use((err, req, res, next) => {
+app.use((err, req, res, next) => { // 500 처리 부분
   res.status(500).redirect('/500_error');
 });
 
