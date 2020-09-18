@@ -222,7 +222,7 @@ app.post('/mod_researchdel', function(request, response){
 
 
 
-app.post('/admin', function(request, response){
+app.get('/admin', function(request, response){
   if(request.session.isLogined == true) {
     response.render('admin', {session : request.session});
   } else {
