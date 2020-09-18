@@ -245,9 +245,9 @@ app.get('/complete', function(request, response){
     fs.createReadStream("./complete.html").pipe(response);
 });
 
-app.get('/fail', function(request, response){
+app.get('/alert', function(request, response){
     response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
-    fs.createReadStream("./fail.html").pipe(response);
+    fs.createReadStream("./alert.html").pipe(response);
 });
 
 app.get('/mod_membersaddview', function(request, response){
