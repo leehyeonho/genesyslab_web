@@ -21,7 +21,7 @@ const MySQLStore = require('express-mysql-session')(session);
 
 //multer
 const multer = require('multer');
-var storage = multer.diskStorage({
+var storage_gallery = multer.diskStorage({
 destination: function (req, file, cb) {
 cb(null, './public/images/gallery/')
 },
@@ -31,8 +31,31 @@ cb(null, Date.now() + "-" + file.originalname)
 }
 
 })
+var storage_mem = multer.diskStorage({
+destination: function (req, file, cb) {
+cb(null, './public/images/members/')
+},
+//파일이름 설정
+filename: function (req, file, cb) {
+cb(null, Date.now() + "-" + file.originalname)
+}
+
+})
+var storage_research = multer.diskStorage({
+destination: function (req, file, cb) {
+cb(null, './public/images/research/')
+},
+//파일이름 설정
+filename: function (req, file, cb) {
+cb(null, Date.now() + "-" + file.originalname)
+}
+
+})
 //파일 업로드 모듈
-var upload = multer({ storage: storage })
+var upload_g = multer({ storage: storage_gallery })
+var upload_m = multer({ storage: storage_mem })
+var upload_re = multer({ storage: storage_research })
+
 
 // var options = {
 //     host      : 'localhost',
@@ -160,20 +183,20 @@ app.post('/mod_memselect', function(request, response){
 });
 
 // members add data transmit
-app.post('/mod_membersadd', upload.single('imgFile'), function(request, response){
+app.post('/mod_membersadd', upload_m.single('imgFile'), function(request, response){
   admin.membersadd(request, response);
 });
 
-app.post('/mod_membersmod', upload.single('imgFile'), function(request, response){
+app.post('/mod_membersmod', upload_m.single('imgFile'), function(request, response){
   admin.membersmod(request, response);
 });
 
-app.post('/mod_membersdel', upload.single('imgFile'), function(request, response){
+app.post('/mod_membersdel', function(request, response){
   admin.membersdel(request, response);
 });
 
 // research add data transmit
-app.post('/mod_researchadd', upload.single('imgFile'), function(request, response){
+app.post('/mod_researchadd', upload_re.single('imgFile'), function(request, response){
   admin.researchadd(request, response);
 });
 
@@ -188,7 +211,7 @@ app.get('/mod_researchmodview', function(request, response){
 });
 
 // research mod data transmit
-app.post('/mod_researchmod', upload.single('imgFile'), function(request, response){
+app.post('/mod_researchmod', upload_re.single('imgFile'), function(request, response){
   admin.researchmod(request, response);
 });
 
@@ -212,11 +235,11 @@ app.get('/publication', function(request, response){
   sub.publication(request, response);
 });
 
-app.post('/mod_pubadd', upload.single('imgFile'), function(request, response){
+app.post('/mod_pubadd', function(request, response){
   admin.pubadd(request, response);
 });
 
-app.post('/mod_pubmod', upload.single('imgFile'), function(request, response){
+app.post('/mod_pubmod', function(request, response){
   admin.pubmod(request, response);
 });
 
@@ -228,7 +251,7 @@ app.get('/mod_publicationmodview', function(request, response){
   admin.publicationmodview(request, response);
 });
 
-app.post('/mod_pubdel', upload.single('imgFile'), function(request, response){
+app.post('/mod_pubdel', function(request, response){
   admin.pubdel(request, response);
 });
 
