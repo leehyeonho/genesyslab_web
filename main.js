@@ -299,6 +299,11 @@ app.get('/whitespace', function(request, response){
     fs.createReadStream("./whitespace.html").pipe(response);
 });
 
+app.get('/dev_notice', function(request, response){
+    response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
+    fs.createReadStream("./dev_notice.html").pipe(response);
+});
+
 app.get('/favicon.ico', function(request, response){
 });
 
