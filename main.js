@@ -236,6 +236,10 @@ app.post('/mod_pubdel', upload.single('imgFile'), function(request, response){
   admin.pubdel(request, response);
 });
 
+app.get('/adminPwMod', function(request, response){
+  user.adminPwMod(request, response);
+});
+
 app.get('/complete', function(request, response){
     response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
     fs.createReadStream("./complete.html").pipe(response);

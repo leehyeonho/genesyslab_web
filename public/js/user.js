@@ -28,7 +28,7 @@ exports.login = function (request, response) {
   		 //response.render('index', {session : request.session});
                   } else { // 비교 실패
   		    console.log("password incorrected");
-  		    response.redirect('/loginfail');
+  		    response.redirect('//fail?key=loginfail');
   		  }
   });
             }
@@ -102,4 +102,40 @@ exports.logout = function ( request, response ){
     request.session;
   });
   response.redirect('/');
+}
+
+exports.adminPwMod = function(request,response) {
+  var admin = request.body;
+  db.query('select * from user_info where user_id = admin', function (err, result) {
+    bcrypt.compare(admin.presentpw, result[0].password, function(err, res) {
+      if (res) { // 비교 성공
+        bcrypt.hash(admin.password, null, null, function(err, hash) {
+          sql = 'UPDATE user_info SET password = ? WHERE user_id = admin';
+          db.query(sql, hash, function(err, result) {
+          if(err) {
+            console.log("err : " + err);
+          } else {
+            console.log("admin 비밀번호 변경 성공");
+            response.redirect('/fail?key=admodfail');
+          }
+          });
+        });
+                } else { // 비교 실패
+        console.log("password incorrected");
+        response.redirect('//fail?key=admodfail');
+      }
+    });
+  });
+
+  bcrypt.hash(admin.password, null, null, function(err, hash) {
+    sql = 'insert into user_info(user_id, password, user_name, user_tell, reg_date) values (?, ?, ?, ? , now())';
+    db.query(sql, [admin.user_id, hash, user.user_name, user.user_tell], function(err, result) {
+    if(err) {
+      console.log("err : " + err);
+    } else {
+      console.log("회원가입 성공");
+      response.redirect('/complete');
+    }
+    });
+  });
 }
