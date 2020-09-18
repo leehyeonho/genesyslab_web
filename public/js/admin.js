@@ -3,6 +3,9 @@ const ejs = require('ejs');
 var sql = '';
 
 exports.researchview = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
 	sql = 'SELECT * FROM research';
     db.query(sql, function(error, result) {
       response.render('mod_research', {session : request.session, data : result});
@@ -10,6 +13,9 @@ exports.researchview = function(request, response) {
 }
 
 exports.resselect = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
 	var select = request.body.researchSelect;
 	sql = 'SELECT * FROM research';
     db.query(sql, function(error, result) {
@@ -18,6 +24,9 @@ exports.resselect = function(request, response) {
 }
 
 exports.researchmodview = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
 	var researchId = request.query.id;
 	sql = 'SELECT * FROM research WHERE id = ?';
     db.query(sql, [researchId], function(error, result) {
@@ -26,6 +35,9 @@ exports.researchmodview = function(request, response) {
 }
 
 exports.researchmod = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
   var tblname = request.body.tblname;
   var content = request.body.content;
 	var id = request.body.id;
@@ -38,6 +50,9 @@ exports.researchmod = function(request, response) {
 }
 
 exports.researchadd = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
   var content = request.body.content;
 	var tblname = request.body.tblname;
   sql = 'INSERT INTO research(tblname, content, img) values (?, ?, ?)';
@@ -52,6 +67,9 @@ exports.researchadd = function(request, response) {
 }
 
 exports.researchdel = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
   var selected = request.query.selected;
 	sql = 'DELETE FROM research WHERE id = ?';
     db.query(sql, [selected], function(error, result) {
@@ -64,6 +82,9 @@ exports.researchdel = function(request, response) {
 }
 
 exports.professorview = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
 	sql = 'SELECT * FROM professor';
     db.query(sql, function(error, result) {
 			sql = 'SELECT tblname FROM research';
@@ -74,6 +95,9 @@ exports.professorview = function(request, response) {
 }
 
 exports.professor = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
   var name = request.body.name;
 	var content = request.body.content;
   var edu = request.body.edu;
@@ -89,6 +113,9 @@ exports.professor = function(request, response) {
 }
 
 exports.memselect = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
 	var select = request.body.membersSelect;
 	sql = 'SELECT * FROM candidate WHERE position = 1';
     db.query(sql, function(error, result1) {
@@ -103,6 +130,9 @@ exports.memselect = function(request, response) {
 }
 
 exports.membersmodview = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
 	var membersId = request.query.id;
 	sql = 'SELECT * FROM candidate WHERE id = ?';
     db.query(sql, [membersId], function(error, result) {
@@ -111,6 +141,9 @@ exports.membersmodview = function(request, response) {
 }
 
 exports.membersadd = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
   var name = request.body.name;
 	var email = request.body.email;
   var resArea = request.body.resArea;
@@ -127,6 +160,9 @@ exports.membersadd = function(request, response) {
 }
 
 exports.membersmod = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
 	var name = request.body.name;
 	var email = request.body.email;
   var resArea = request.body.resArea;
@@ -142,6 +178,9 @@ exports.membersmod = function(request, response) {
 }
 
 exports.membersdel = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
   var selected = request.query.selected;
 	sql = 'DELETE FROM candidate WHERE id = ?';
     db.query(sql, [selected], function(error, result) {
@@ -163,6 +202,9 @@ exports.membersdel = function(request, response) {
 }
 
 exports.pubadd = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
   var content = request.body.content;
 	var year = request.body.year;
   var reg = request.body.reg;
@@ -183,6 +225,9 @@ exports.pubadd = function(request, response) {
 }
 
 exports.publicationmodview = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
 	var pubId = request.query.id;
 	sql = 'SELECT * FROM publication WHERE id = ?';
     db.query(sql, [pubId], function(error, result) {
@@ -191,6 +236,9 @@ exports.publicationmodview = function(request, response) {
 }
 
 exports.pubmod = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
 	var content = request.body.content;
 	var year = request.body.year;
   var reg = request.body.reg;
@@ -204,6 +252,9 @@ exports.pubmod = function(request, response) {
 }
 
 exports.pubselect = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
 	var select = request.body.membersSelect;
 	sql = "SELECT * FROM publication WHERE tblname = 'journals'";
     db.query(sql, function(error, result1) {
@@ -218,6 +269,9 @@ exports.pubselect = function(request, response) {
 }
 
 exports.pubdel = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
   var selected = request.query.selected;
 	sql = 'DELETE FROM publication WHERE id = ?';
     db.query(sql, [selected], function(error, result) {
