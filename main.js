@@ -236,7 +236,7 @@ app.post('/mod_pubdel', upload.single('imgFile'), function(request, response){
   admin.pubdel(request, response);
 });
 
-app.get('/adminPwMod', function(request, response){
+app.post('/adminPwMod', function(request, response){
   user.adminPwMod(request, response);
 });
 
