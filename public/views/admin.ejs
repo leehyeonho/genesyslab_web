@@ -23,7 +23,7 @@
       });
   });
 </script>
-<body>
+<body onLoad="dl();">
 
   <script type="text/javascript">
     function iframe_url(link){
@@ -31,6 +31,13 @@
     }
     function dd() {
       alert("작업완료시 꼭 로그아웃해주세요!");
+    }
+    function dl() {
+      var isLogin = <%= session.isLogined %>
+      if(isLogin) {
+      } else {
+                location.href="/404_error";
+      }
     }
   </script>
   <style type="text/css">
