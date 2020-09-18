@@ -245,9 +245,9 @@ app.get('/complete', function(request, response){
     fs.createReadStream("./complete.html").pipe(response);
 });
 
-app.get('/loginfail', function(request, response){
+app.get('/fail', function(request, response){
     response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
-    fs.createReadStream("./loginfail.html").pipe(response);
+    fs.createReadStream("./fail.html").pipe(response);
 });
 
 app.get('/mod_membersaddview', function(request, response){
