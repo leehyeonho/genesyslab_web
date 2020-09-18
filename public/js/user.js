@@ -111,8 +111,8 @@ exports.adminPwMod = function(request,response) {
     bcrypt.compare(admin.presentpw, result[0].password, function(err, res) {
       if (res) { // 비교 성공
         bcrypt.hash(admin.password, null, null, function(err, hash) {
-          sql = 'UPDATE user_info SET password = ? WHERE user_id = admin';
-          db.query(sql, hash, function(err, result) {
+          sql = 'UPDATE user_info SET password = ? WHERE user_id = ?';
+          db.query(sql, [hash, id], function(err, result) {
           if(err) {
             console.log("err : " + err);
           } else {
