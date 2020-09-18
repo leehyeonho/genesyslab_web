@@ -1,0 +1,49 @@
+<html>
+<head>
+<title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<script type="text/javascript">
+function frm_check() {
+  if(frm.presentpw.value == "") {
+    alert("현재 비밀번호를 입력해주세요.");
+    frm.presentpw.focus();
+    return false;
+  } else if(frm.password.value == "") {
+    alert("바꿀 비밀번호를 입력해주세요.");
+    frm.password.focus();
+    return false;
+  } else if(frm.password2.value != frm.password.value) {
+    alert("바꿀 비밀번호 재입력 값이 다릅니다.");
+    frm.password2.focus();
+    return false;
+  }
+  else return true;
+}
+</script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<body>
+  <style media="screen">
+    input {
+      width : 200px;
+    }
+  </style>
+  <div class="conbody">
+  <form action="/adminPwMod" method="post" name="frm" id="frm" onsubmit="return frm_check();">
+    <div>
+      <h2 class=" mt10">> ADMIN 비밀번호 변경</h2>
+      <label><h4>현재 비밀번호 입력</h4>
+      <input type="password" name="presentpw" id="presentpw">
+      </label>
+      <label><h4>바꿀 비밀번호 입력</h4>
+      <input type="password" name="password" id="password">
+      </label>
+      <label><h4>바꿀 비밀번호 재입력</h4>
+      <input type="password" name="password2" id="password2">
+      </label>
+    </div>
+    <input type="submit" name="submitForm" value="제출">
+  </form>
+  </div>
+</body>
+</html>

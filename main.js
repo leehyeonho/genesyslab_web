@@ -240,6 +240,11 @@ app.get('/adminPwMod', function(request, response){
   user.adminPwMod(request, response);
 });
 
+app.get('/adminPwModview', function(request, response){
+    response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
+    fs.createReadStream("./adminPwModview.html").pipe(response);
+});
+
 app.get('/complete', function(request, response){
     response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
     fs.createReadStream("./complete.html").pipe(response);
