@@ -150,7 +150,6 @@ exports.membersadd = function(request, response) {
   var occu = request.body.occu;
   var year = request.body.year;
 	var id = request.body.membersSelect;
-	console.log("ddd " + id);
 
 	sql = 'INSERT INTO candidate(name, email, researchArea, occu, year, position, img) values(?,?,?,?,?,?,?)';
     db.query(sql, [name, email, resArea, occu, year, id, request.file.path.substring(6)], function(error, result) {
