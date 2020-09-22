@@ -1,6 +1,7 @@
 {
   "name": "genesys",
   "version": "1.0.0",
+  "private": true,
   "description": "\"# Genesys\" \r # genesyslab_web",
   "main": "main.js",
   "dependencies": {

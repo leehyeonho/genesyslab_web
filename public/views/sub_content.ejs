@@ -162,8 +162,8 @@
 		.sub_dot{background:url('/images/sub/sub_dot.jpg') 0 4px no-repeat; padding-left:12px; vertical-align:top;}
 		.bbs_btn{width:80px; height:27px; background:#ffffff; color:#111; font-weight:bold; border:1px solid #dbdbdb; text-align:center; line-height:25px; display:inline-block;}
 		</style>
+		<% for(var i=0;i<data.length;i++) { %>
 							<div class="mem_skin ">
-						<% for(var i=0;i<data.length;i++) { %>
 							<div class="mem_img">
 								<div style="display:table; width:125px; height:160px; #position:relative; overflow:hidden;">
 									<div style="#position:absolute; #top:50%; #left:50%; display:table-cell; vertical-align:middle; text-align:center;">
@@ -196,9 +196,10 @@
 									</tr>
 								</table>
 							</div>
-						<% } %>
+
 
 					</div>
+					<% } %>
 	</div>
 	<% } else if(tbl == 'candidate2') {  %>
 	<div class="contop">
@@ -214,8 +215,8 @@
 		.sub_dot{background:url('/images/sub/sub_dot.jpg') 0 4px no-repeat; padding-left:12px; vertical-align:top;}
 		.bbs_btn{width:80px; height:27px; background:#ffffff; color:#111; font-weight:bold; border:1px solid #dbdbdb; text-align:center; line-height:25px; display:inline-block;}
 		</style>
+		<% for(var i=0;i<data.length;i++) { %>
 							<div class="mem_skin ">
-								<% for(var i=0;i<data.length;i++) { %>
 									<div class="mem_img">
 										<div style="display:table; width:125px; height:160px; #position:relative; overflow:hidden;">
 											<div style="#position:absolute; #top:50%; #left:50%; display:table-cell; vertical-align:middle; text-align:center;">
@@ -248,8 +249,8 @@
 											</tr>
 										</table>
 									</div>
-								<% } %>
 					</div>
+					<% } %>
 	</div><!--// conbody -->
 <% } else if(tbl == "alumni") { %>
 	<div class="contop">
@@ -265,8 +266,8 @@
 		.sub_dot{background:url('/images/sub/sub_dot.jpg') 0 4px no-repeat; padding-left:12px; vertical-align:top;}
 		.bbs_btn{width:80px; height:27px; background:#ffffff; color:#111; font-weight:bold; border:1px solid #dbdbdb; text-align:center; line-height:25px; display:inline-block;}
 		</style>
+		<% for(var i=0;i<data.length;i++) { %>
 							<div class="mem_skin ">
-								<% for(var i=0;i<data.length;i++) { %>
 									<div class="mem_img">
 					<div style="display:table; width:125px; height:160px; #position:relative; overflow:hidden;">
 						<div style="#position:absolute; #top:50%; #left:50%; display:table-cell; vertical-align:middle; text-align:center;">
@@ -299,8 +300,8 @@
 						</tr>
 					</table>
 				</div>
-								<% } %>
 					</div>
+					<% } %>
 	</div>
 <% } else if(tbl == "journals" || tbl == "presentations" || tbl == "patent") { %>
 	<div class="contop">
