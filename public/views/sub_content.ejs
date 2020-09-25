@@ -304,6 +304,16 @@
 					<% } %>
 	</div>
 <% } else if(tbl == "journals" || tbl == "presentations" || tbl == "patent") { %>
+	<style>
+		.board_iframe {
+			scrollbar-aroow-color: #navy;
+			scrollbar-3dlight-color: #FFFFFF;
+			scrollbar-highlight-color: #navy;
+			scrollbar-face-color: #FFFFFF;
+			scrollbar-darkshadow-color: #FFFFFF;
+			scrollbar-track-color: #FFFFFF;
+		}
+	</style>
 	<div class="contop">
 		<h3 class="page_title"><%= tbl %></h3>
 		<p>>Genesys Lab.</p>
@@ -327,7 +337,7 @@
 			<p class="prev_btn"><img src="/images/component/pro_btn.jpg" alt=""></p>
 			<p class="next_btn"><img src="/images/component/next_btn.jpg" alt=""></p>
 		</div>
-		<iframe name="board_iframe" id="board_iframe" src="/publication?tbl=<%= tbl %>&year=<%= year[0].year %>" frameborder="0" width="100%" scrolling="yes" height="800px"></iframe>
+		<iframe name="board_iframe" id="board_iframe" src="/publication?tbl=<%= tbl %>&year=<%= year[0].year %>" frameborder="0" width="100%" scrolling="auto" height="863px"></iframe>
 	</div>
 <% } else { %>
 	<% for(var i=0;i<data_research.length;i++) { %>
