@@ -60,12 +60,16 @@ exports.view = function(request, response) {
         response.render('sub', {session : request.session, data : result, year : result_year, data_research : result_research, tbl : tbl});
         });      });
   } else {
-      for(var i=0;i<10;i++) {
+    sql = "SELECT count(*) as cnt FROM research";
+    db.query(sql, function(error, cnt_research) {
+      for(var i=0;i<cnt_research[0].cnt;i++) {
         if( tbl == ("research" + i)) {
           response.render('sub', {session : request.session, data_research : result_research, researchId : i, tbl : tbl});
           break;
         }
       }
+      });
+
   }
   });
 
