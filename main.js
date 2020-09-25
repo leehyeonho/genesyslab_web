@@ -56,7 +56,6 @@ var upload_g = multer({ storage: storage_gallery })
 var upload_m = multer({ storage: storage_mem })
 var upload_re = multer({ storage: storage_research })
 
-
 // var options = {
 //     host      : 'localhost',
 //     port:3306,
@@ -68,7 +67,7 @@ var options = {
     host      : 'localhost',
     port:3306,
     user      : 'root',
-    password  : 'genesys11',
+    password  : 'customlab11',
     database  : 'genesys'
 };
 
