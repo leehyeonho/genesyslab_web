@@ -21,9 +21,8 @@ var connection = mysql.createConnection({
   port:3306,
   user      : 'root',
   password  : 'customlab11',
-  database  : 'customlab'
+  database  : 'genesys'
 });
-
 
 
 connection.connect();
