@@ -338,7 +338,7 @@
 			<p class="prev_btn"><img src="/images/component/pro_btn.jpg" alt=""></p>
 			<p class="next_btn"><img src="/images/component/next_btn.jpg" alt=""></p>
 		</div>
-		<iframe name="board_iframe" id="board_iframe" src="/publication?tbl=<%= tbl %>&year=<%= year[0].year %>" frameborder="0" width="100%" scrolling="auto" height="863px"></iframe>
+		<iframe name="board_iframe" id="board_iframe" src="/bbs/board.php?tbl=journals&amp;board_sub=ok&amp;category=2020" frameborder="0" width="100%" scrolling="no" onload="autoResize('board_iframe')" height="5500px"></iframe>
 	</div>
 <% } else { %>
 	<% for(var i=0;i<data_research.length;i++) { %>
@@ -359,6 +359,16 @@
 	<% } %>
 <% } %>
 <script type="text/javascript">
+function autoResize(id){
+	var newheight;
+	if(document.getElementById){
+		newheight = $("#"+id).contents().find("#boardContent").height();
+		newheight = 100+newheight;	// 버튼들이 짤려나와 세로길이를 조금더 추가 했다.
+	}
+
+	document.getElementById(id).height= (newheight) + "px";
+}
+
 $(function(){
 	//$( ".year_tab_list" ).draggable({ axis: "x" });
 	var wrprwdth = $('.year_tab').width(),
