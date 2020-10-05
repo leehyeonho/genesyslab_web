@@ -8,21 +8,21 @@ var mysql = require('mysql');
 //   database  : 'customlab'
 // });
 
-var connection = mysql.createConnection({
-  host      : 'localhost',
-  port:3306,
-  user      : 'root',
-  password  : 'genesys11',
-  database  : 'genesys'
-});
-
 // var connection = mysql.createConnection({
 //   host      : 'localhost',
 //   port:3306,
 //   user      : 'root',
-//   password  : 'customlab11',
+//   password  : 'genesys11',
 //   database  : 'genesys'
 // });
+
+var connection = mysql.createConnection({
+  host      : 'localhost',
+  port:3306,
+  user      : 'root',
+  password  : 'customlab11',
+  database  : 'genesys'
+});
 
 
 connection.connect();

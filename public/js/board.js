@@ -126,7 +126,10 @@ exports.view = function(request, response) {
     db.query(sql, [request.query.id], function(error, next) {
       sql = 'SELECT tblname FROM research';
       db.query(sql, function(err, result_research) {
-        response.render('board_view', {session : request.session, data : result, tbl : tbl, pre : pre, next : next, id : request.query.id, data_research : result_research});
+        sql = "SELECT dir FROM image WHERE id = ? AND tbl = ?";
+        db.query(sql, [request.query.id, tbl], function(error, images) {
+        response.render('board_view', {session : request.session, data : result, tbl : tbl, pre : pre, next : next, id : request.query.id, data_research : result_research, images : images});
+        });
       });
     });
     });
