@@ -316,6 +316,15 @@ app.get('/500_error', function(request, response){
   fs.createReadStream("./500_error.html").pipe(response);
 });
 
+app.get('/signup', function(request, response){
+  response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
+  fs.createReadStream("./signup.html").pipe(response);
+});
+
+app.post('/signup', function(request, response){
+  user.signup(request, response);
+});
+
 app.use((req, res, next) => { // 404 처리 부분
   res.status(404).redirect('/404_error');
 });
