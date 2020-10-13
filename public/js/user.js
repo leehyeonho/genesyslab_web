@@ -34,7 +34,6 @@ exports.login = function (request, response) {
             }
           }
         });
-
 }
 
 exports.kakaoLogin = function (request, response) {
