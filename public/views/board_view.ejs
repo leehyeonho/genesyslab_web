@@ -86,7 +86,7 @@ function delete() {
                 </div>
                 <% if(tbl == "2") { %>
                   <% for(var i  = 0;i<images.length;i++) { %>
-                  <a href="<%= '/public' + images[i].dir %>" download>다운로드</a>
+                  <a href="<%= images[i].dir %>" download>다운로드</a>
                   <% } %>
                 <br>
                 <% } %>
