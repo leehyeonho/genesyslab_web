@@ -84,6 +84,12 @@ function delete() {
                   <% } %>
                   <%- data[0].content.replace(/<p>/gi, '').replace(/<\/p>/gi, '') %>
                 </div>
+                <% if(tbl == "2") { %>
+                  <% for(var i  = 0;i<images.length;i++) { %>
+                  <a href="<%= images[i].dir %>" download>다운로드</a>
+                  <% } %>
+                <br>
+                <% } %>
             	</td>
             </tr>
         </table>
