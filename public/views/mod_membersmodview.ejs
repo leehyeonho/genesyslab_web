@@ -77,6 +77,7 @@ function frm_check() {
   </script>
   <form action="/mod_membersmod" method="post" name="frm_memmod" id="frm_memmod" enctype="multipart/form-data">
     <input type="hidden" name="pos" id="pos" value="<%= data[0].position %>">
+    <input type="hidden" name="member_id" id="member_id" value="<%= data[0].id %>">
     <label><h4>NAME</h4>
     <input type="text" name="name" id="name" value="<%= data[0].name %>">
     </label>

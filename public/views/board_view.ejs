@@ -78,18 +78,13 @@ function delete() {
                     <% for(var i  = 0;i<images.length;i++) { %>
                     <img src="<%= images[i].dir %>" border="0">
                     <br>
+                    <a href="<%= images[i].dir %>">이미지 크게 보기(다운로드)</a>
                     <br>
                     <% } %>
                   <br>
                   <% } %>
                   <%- data[0].content.replace(/<p>/gi, '').replace(/<\/p>/gi, '') %>
                 </div>
-                <% if(tbl == "2") { %>
-                  <% for(var i  = 0;i<images.length;i++) { %>
-                  <a href="<%= images[i].dir %>">다운로드</a>
-                  <% } %>
-                <br>
-                <% } %>
             	</td>
             </tr>
         </table>
