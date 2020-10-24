@@ -168,10 +168,10 @@ exports.membersmod = function(request, response) {
   var occu = request.body.occu;
   var year = request.body.year;
 	var pos = request.body.pos;
-	var id = request.body.member_id;
+	var member_id = request.body.member_id;
   var img = request.file.path.substring(6);
 	sql = 'UPDATE candidate SET name = ?, email = ?, researchArea = ?, occu = ?, year = ?, img = ? WHERE position = ? AND id = ?';
-    db.query(sql, [name, email, resArea, occu, year, request.file.path.substring(6), pos, id], function(error, result) {
+    db.query(sql, [name, email, resArea, occu, year, request.file.path.substring(6), pos, member_id], function(error, result) {
       response.redirect('/success');
       // response.render('mod_professor', {session : request.session, data : result});
       });
