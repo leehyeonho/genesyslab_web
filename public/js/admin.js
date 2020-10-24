@@ -170,7 +170,7 @@ exports.membersmod = function(request, response) {
 	var pos = request.body.pos;
 	var id = request.body.member_id;
   var img = request.file.path.substring(6);
-	sql = 'UPDATE candidate SET name = ?, email = ?, researchArea = ?, occu = ?, year = ?, img = ? WHERE position = ?, id = ?';
+	sql = 'UPDATE candidate SET name = ?, email = ?, researchArea = ?, occu = ?, year = ?, img = ? WHERE position = ? AND id = ?';
     db.query(sql, [name, email, resArea, occu, year, request.file.path.substring(6), pos, id], function(error, result) {
       response.redirect('/success');
       // response.render('mod_professor', {session : request.session, data : result});
