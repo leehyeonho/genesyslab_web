@@ -128,7 +128,7 @@ label.invisible{*position:Absolute;}
 #gnb > li{float:left; height:100px; line-height:102px; margin-left:90px; position:relative; }
 #gnb > li > a{font-size:16px; color:#555555; font-weight:bold;}
 #gnb > li > a:hover{color:#0B610B; }
-.gnb_2depth{width:200 px; position:absolute; left:0; top:100px; background:#f5f5f5; z-index:9990; display:none;}
+.gnb_2depth{width:200px; position:absolute; left:0; top:100px; background:#f5f5f5; z-index:9990; display:none;}
 .gnb_2depth1{position:absolute; left:-50px; top:100px; }
 .gnb_2depth2{position:absolute; left:-45px; top:100px; }
 .gnb_2depth3{position:absolute; left:-50px; top:100px; }
