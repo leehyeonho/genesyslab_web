@@ -77,6 +77,23 @@ exports.writeview = function(request, response) {
     response.render('board_write', {session : request.session, tbl : request.query.tbl, data_research : result_research});
   });
 }
+//
+// exports.upload = function(request, response) {
+//   var author = request.body.author;
+//   var title = request.body.title;
+//   var content = request.body.content;
+//   sql = 'INSERT INTO bbs_gallery(author, title, content, img) values (?, ?, ?, ?)';
+//   db.query(sql, [author, title, content, request.file.path.substring(6)], function(error, result) {
+//     if(error) {
+//       console.log(error);
+//     }else {
+//       console.log("post")
+//       console.log(request.file)
+//       console.log(request.file.path.substring(6))
+//   	  response.redirect('/board.ejs?tbl=2&pageNum=1');
+//   	}
+//     });
+// }
 
 exports.upload = function(request, response) {
   var author = request.body.author;
@@ -87,10 +104,20 @@ exports.upload = function(request, response) {
     if(error) {
       console.log(error);
     }else {
-      console.log("post")
-      console.log(request.file)
-      console.log(request.file.path.substring(6))
-  	  response.redirect('/board.ejs?tbl=2&pageNum=1');
+      sql = 'SELECT MAX(id) as max FROM bbs_gallery';
+      db.query(sql, function(error, res) {
+        sql = 'INSERT INTO image(tbl, id, dir) values (?, ?, ?)';
+        db.query(sql, [2, res[0].max, request.file.path.substring(6)], function(error, result) {
+          if(error) {
+            console.log(error);
+          }else {
+            console.log("post")
+            console.log(request.file)
+            console.log(request.file.path.substring(6))
+            response.redirect('/board.ejs?tbl=2&pageNum=1');
+          }
+          });
+      });
   	}
     });
 }
