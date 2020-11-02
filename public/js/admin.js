@@ -201,6 +201,103 @@ exports.membersdel = function(request, response) {
       });
 }
 
+exports.mainslidemod = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
+	var id = request.body.id;
+  var img = request.file.path.substring(6);
+	sql = 'UPDATE main_slide SET img = ? WHERE orderid = ?';
+    db.query(sql, [request.file.path.substring(6).replace(/\\/g,'/'), id], function(error, result) {
+      response.redirect('/success');
+      // response.render('mod_professor', {session : request.session, data : result});
+      });
+}
+
+exports.mainslidedel = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
+  var selected = request.query.selected;
+	sql = 'DELETE FROM main_slide WHERE orderid = ?';
+    db.query(sql, [selected], function(error, result) {
+			sql = 'SELECT * FROM main_slide';
+      db.query(sql, function(err, result_research) {
+        response.render('mod_mainslideselect', {session : request.session, data : result_research});
+      });
+      // response.render('mod_professor', {session : request.session, data : result});
+      });
+}
+
+exports.mainslideadd = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
+	sql = 'SELECT count(*) as cnt FROM main_slide';
+	db.query(sql, function(error, cnt) {
+		if(cnt[0].cnt >= 5) {
+			response.redirect('/alert?key=maxslide');
+		} else {
+			sql = 'SELECT MAX(orderid) as max FROM main_slide';
+			db.query(sql, function(error, res) {
+				var orderid = res[0].max+1;
+				sql = 'SELECT orderid FROM main_slide ORDER BY orderid';
+				db.query(sql, function(error, res) {
+					for (var i = 0; i < res.length; i++) {
+						if(res[i].orderid != i+1) {
+							orderid = i+1;
+							break;
+						}
+					}
+					sql = 'INSERT INTO main_slide(img, orderid) values(?,?)';
+			    db.query(sql, [request.file.path.substring(6).replace(/\\/g,'/'), orderid], function(error, result) {
+			    	response.redirect('/mod_mainslideaddview');
+			    });
+				});
+
+			});
+		}
+	});
+
+}
+
+exports.mainslideselect = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
+	var select = request.body.mainslideSelect;
+	sql = 'SELECT * FROM main_slide ORDER BY orderid';
+    db.query(sql, function(error, result) {
+      response.render('mod_mainslideselect', {session : request.session, data : result});
+      });
+}
+
+exports.mainslidemodview = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
+	var orderId = request.query.id;
+	sql = 'SELECT * FROM main_slide WHERE orderid = ?';
+    db.query(sql, [orderId], function(error, result) {
+      response.render('mod_mainslidemodview', {session : request.session, data : result});
+      });
+}
+
+exports.researchmod = function(request, response) {
+	if(!request.session.isLogined) {
+		response.redirect("/alert?key=notlogin");
+	}
+  var tblname = request.body.tblname;
+  var content = request.body.content;
+	var id = request.body.id;
+  var img = request.file.path.substring(6);
+	sql = 'UPDATE research SET tblname = ?, content = ?, img = ? WHERE id = ?';
+    db.query(sql, [tblname, content, request.file.path.substring(6), id], function(error, result) {
+      response.redirect('/success');
+      // response.render('mod_professor', {session : request.session, data : result});
+      });
+}
+
 exports.pubadd = function(request, response) {
 	if(!request.session.isLogined) {
 		response.redirect("/alert?key=notlogin");

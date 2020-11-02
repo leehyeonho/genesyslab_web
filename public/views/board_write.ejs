@@ -4,7 +4,7 @@
   <script type="text/javascript" src="/js/ckeditor/ckeditor.js"></script>
 </head>
 <script>
-function frm_check(tbl) {
+window.onload = function frm_check(tbl) {
   if(write.title.value == "") {
     alert("제목을 입력해주세요.");
     write.title.focus();
@@ -13,7 +13,7 @@ function frm_check(tbl) {
     alert("내용을 입력해주세요.");
     CKEDITOR.instances['content'].focus();
     return false;
-  } else if(tbl == "2" && !write.imgFile.value) {
+  } else if(!write.imgFile.value) {
     alert("파일을 선택해주세요.");
     return false;
   }
@@ -72,12 +72,8 @@ $(document).ready(function(){
 				<p>Genesys Lab.</p>
 			</div><!--// contop -->
 			<div class="conbody">
-      <% if(tbl == "2") { %>
         <form name="write" id="write" action="/upload" method="post" enctype="multipart/form-data" onsubmit="return frm_check(<%= tbl %>);">
-      <% } else { %>
-        <form name="wirte" id="write" action="/write" method="post" onsubmit="return frm_check(<%= tbl %>);">
-      <% } %>
-
+        <!-- <form name="wirte" id="write" action="/write" method="post" onsubmit="return frm_check(<%= tbl %>);"> -->
 <input type="hidden" id="tbl" name="tbl" value="<%= tbl %>" />
 <input type="hidden" id="author" name="author" value="<%= session.user_name %>" />
 <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
@@ -109,11 +105,9 @@ $(document).ready(function(){
 <div id="DivContents" style="line-height:1.4;word-break:break-all;">
   <textarea id="content" name="content" cols="58" rows="18">
   </textarea>
-  <% if(tbl == "2") { %>
-    <div class="filebox">
+    <div class="filebox" id="filebox">
       <input type="file" name="imgFile" id="imgFile">
     </div>
-  <% } %>
     <script>
 	CKEDITOR.replace('content');
     </script>
@@ -131,9 +125,7 @@ $(document).ready(function(){
                                   </td>
   </tr>
 </table>
-<% if(tbl == "2") { %>
 <input type="button" class="bbs_btn" id="addFile" value="파일 추가"/>
-<% } %>
 <input type="submit" class="bbs_btn" value="글쓰기"/>
 </form>
 <br>
@@ -182,7 +174,3 @@ window.onload = imgResize;
 
 </body>
 </html>
-<!-- new post -->
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type="text/javascript" src="/addr_zip/Uzipjs/new_UzipJs.js"></script>
-<!-- openDaumPostcode -->

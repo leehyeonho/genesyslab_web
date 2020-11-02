@@ -1,0 +1,65 @@
+<html>
+<head>
+<title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<script type="text/javascript">
+function frm_check() {
+  if(!frm_memadd.imgFile.value) {
+    alert("이미지를 첨부해주세요.");
+    return false;
+  }
+  else return true;
+}
+</script>
+<script type="text/javascript">
+  function change(id) {
+    if(id == "" || id == "1" || id == "2") {
+      console.log("id : " + id);
+      document.getElementById('forAlumni').setAttribute("style", "display:none;");
+    } else if(id == "3") {
+      console.log("id : " + id);
+      document.getElementById('forAlumni').setAttribute("style", "");
+    }
+  }
+</script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(function() {
+            $("#imgFile").on('change', function(){
+
+                readURL(this);
+            });
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                    $('#ex').attr('src', e.target.result);
+                }
+              reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+<body>
+  <div class="conbody">
+  <form action="/mod_mainslideadd" method="post" name="frm_memadd" id="frm_memadd" enctype="multipart/form-data" onsubmit="return frm_check();">
+    <div>
+      <h2 class=" mt10">> MAIN SLIDE ADD</h2>
+      <div class="center">
+        <label><h4>IMAGE(1120*489)</h4>
+        <img id="ex" src="" alt="" width="560px" height="245px">
+        </label>
+      </div>
+      <div class="filebox">
+        <input type="file" name="imgFile" id="imgFile">
+      </div>
+    </div>
+    <input type="submit" name="submitForm" value="제출">
+  </form>
+  </div>
+</body>
+</html>

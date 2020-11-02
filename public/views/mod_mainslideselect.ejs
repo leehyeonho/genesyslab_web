@@ -1,0 +1,100 @@
+<html>
+<head>
+<title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<% var delId = 0; %>
+<script type="text/javascript">
+function frm_check(tbl) {
+  if(write.title.value == "") {
+    alert("제목을 입력해주세요.");
+    write.title.focus();
+    return false;
+  } else if(CKEDITOR.instances['content'].getData() == "") {
+    alert("내용을 입력해주세요.");
+    CKEDITOR.instances['content'].focus();
+    return false;
+  } else if(tbl == "2" && !write.imgFile.value) {
+    alert("파일을 선택해주세요.");
+    return false;
+  }
+  else return true;
+}
+</script>
+<script type="text/javascript">
+  function removeCheck() {
+    if()
+    if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+       document.removefrm.submit();
+    }else{   //취소
+       return false;
+    }
+  }
+</script>
+<script type="text/javascript">
+  function get_action() {
+    var selectbox = document.getElementById('mainslideSelect');
+    var selected = selectbox.options[selectbox.selectedIndex].value;
+    console.log("/mod_mainslidedel?selected=" + selected);
+    return "/mod_mainslidedel?selected=" + selected;
+  }
+</script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+  $(function() {
+    $("#imgFile").on('change', function(){
+
+        readURL(this);
+    });
+  });
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+            $('#ex').attr('src', e.target.result);
+        }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>
+<script type="text/javascript">
+  function iframe_url(link){
+    document.getElementById('mainslide_iframe').src = link;
+  }
+</script>
+<script type="text/javascript">
+  function change(id) {
+    if(id == "") {
+      return false;
+    } else {
+      document.getElementById('mainslide_iframe').src = "/mod_mainslidemodview?id=" + id;
+      return true;
+    }
+  }
+</script>
+<body>
+  <div class="conbody">
+    <div>
+      <h2 class=" mt10">> MAIN SLIDE DATA MOD</h2>
+      <h4 class=" mt10">슬라이드 이미지는 최대 개수 5개 제한입니다.</h3>
+      <h4 class=" mt10">중간 번호 삭제 후 추가 시 삭제된 번호로 추가됩니다.</h3>
+      <h5 class=" mt10">ex) 5개 설정되어있는 상태에서 4번 삭제한 경우 다음 추가될 번호는 4번입니다.</h4>
+      <div>
+        <form class="" method="post" onsubmit="this.action=get_action();">
+          <label><h3>선택</h3>
+          <select name="mainslideSelect" id="mainslideSelect" onchange="return change(this.value);">
+            <option value="">데이터 선택</option>
+            <% for(var i=0;i<data.length;i++) { %>
+              <option value="<%= data[i].orderid %>" name=""><%= data[i].orderid %></option>
+            <% } %>
+          </select>
+          </label>
+          <input type="submit" name="" value="삭제">
+        </form>
+
+      </div>
+      <iframe name="mainslide_iframe" id="mainslide_iframe" src="/whitespace" frameborder="0" width="100%" scrolling="no" height="863px"></iframe>
+  </div>
+</body>
+</html>

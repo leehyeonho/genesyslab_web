@@ -52,18 +52,29 @@ cb(null, Date.now() + "-" + file.originalname)
 }
 
 })
+var storage_component = multer.diskStorage({
+destination: function (req, file, cb) {
+cb(null, './public/images/component/')
+},
+//파일이름 설정
+filename: function (req, file, cb) {
+cb(null, Date.now() + "-" + file.originalname)
+}
+
+})
 //파일 업로드 모듈
 var upload_g = multer({ storage: storage_gallery })
 var upload_m = multer({ storage: storage_mem })
 var upload_re = multer({ storage: storage_research })
+var upload_s = multer({ storage: storage_component })
 
-var options = {
-    host      : 'localhost',
-    port:3306,
-    user      : 'root',
-    password  : 'genesys11',
-    database  : 'genesys'
-};
+// var options = {
+//     host      : 'localhost',
+//     port:3306,
+//     user      : 'root',
+//     password  : 'genesys11',
+//     database  : 'genesys'
+// };
 // var options = {
 //     host      : 'localhost',
 //     port:3306,
@@ -71,13 +82,13 @@ var options = {
 //     password  : 'customlab11',
 //     database  : 'genesys'
 // };
-// var options = {
-//     host      : 'localhost',
-//     port:3306,
-//     user      : 'root',
-//     password  : '1234',
-//     database  : 'genesys'
-// };
+var options = {
+    host      : 'localhost',
+    port:3306,
+    user      : 'root',
+    password  : '1234',
+    database  : 'genesys'
+};
 
 var sessionStore = new MySQLStore(options);
 app.use(cookieParser());
@@ -189,7 +200,14 @@ app.get('/logout', function(request, response){
   user.logout(request,response);
 });
 
-app.post('/upload', upload_g.single('imgFile'), function(request, response){
+app.post('/upload', upload_g.array('imgFile'), function(request, response){
+  if(request.files.length == 0) {
+    if(request.body.tbl == 2) {
+      response.redirect('/alert?key=nofile&tbl=2');
+    } else {
+      board.write(request, response);
+    }
+  } else
   board.upload(request, response);
 });
 
@@ -312,6 +330,31 @@ app.get('/alert', function(request, response){
 app.get('/mod_membersaddview', function(request, response){
     response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
     fs.createReadStream("./mod_membersaddview.html").pipe(response);
+});
+
+app.get('/mod_mainslideaddview', function(request, response){
+    response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
+    fs.createReadStream("./mod_mainslideaddview.html").pipe(response);
+});
+
+app.get('/mod_mainslidemodview', function(request, response){
+  admin.mainslidemodview(request, response);
+});
+
+app.post('/mod_mainslideadd', upload_s.single('imgFile'), function(request, response){
+  admin.mainslideadd(request, response);
+});
+
+app.post('/mod_mainslidemod', upload_s.single('imgFile'), function(request, response){
+  admin.mainslidemod(request, response);
+});
+
+app.post('/mod_mainslidedel', function(request, response){
+  admin.mainslidedel(request, response);
+});
+
+app.get('/mod_mainslideselect', function(request, response){
+  admin.mainslideselect(request, response);
 });
 
 app.get('/mod_publicationaddview', function(request, response){

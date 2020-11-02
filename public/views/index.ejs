@@ -64,11 +64,11 @@
 		<link rel="stylesheet" href="/css/main_slider.css" type="text/css">
 		<link rel="stylesheet" href="/css/login.css" type="text/css">
 		<script type="text/javascript" src="/css/js/bxslider.js"></script>
+
 		<ul id="visual">
-			<li><p style="background:url(/images/component/banner3_slide.png) top center no-repeat; height:610px;"></p></li>
-			<li><p style="background:url(/images/component/slide1.jpg) top center no-repeat; height:610px;"></p></li>
-			<li><p style="background:url(/images/component/slide2.jpg) top center no-repeat; height:610px;"></p></li>
-			<li><p style="background:url(/images/component/slide3.jpg) top center no-repeat; height:610px;"></p></li>
+			<% for(var i=0;i<data_slide.length;i++) { %>
+			<li><p style="background:url(<%= data_slide[i].img %>) top center no-repeat; height:610px;"></p></li>
+			<% } %>
 		</ul>
 
 		<script type="text/javascript">

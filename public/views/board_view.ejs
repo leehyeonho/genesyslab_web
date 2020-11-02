@@ -74,7 +74,6 @@ function delete() {
             <tr>
                 <td  style="word-break:break-all;padding:15px;">
                 <div id="DivContents" style="line-height:1.4;word-break:break-all;">
-                  <% if(tbl == "2") { %>
                     <% for(var i  = 0;i<images.length;i++) { %>
                     <img src="<%= images[i].dir %>" border="0">
                     <br>
@@ -84,7 +83,6 @@ function delete() {
                     <br>
                     <% } %>
                   <br>
-                  <% } %>
                   <%- data[0].content.replace(/<p>/gi, '').replace(/<\/p>/gi, '') %>
                 </div>
             	</td>
@@ -196,7 +194,3 @@ window.onload = imgResize;
 
 </body>
 </html>
-<!-- new post -->
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type="text/javascript" src="/addr_zip/Uzipjs/new_UzipJs.js"></script>
-<!-- openDaumPostcode -->
