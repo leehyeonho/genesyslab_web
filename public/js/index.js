@@ -30,6 +30,7 @@ exports.index = function(request, response) {
         db.query(sql, function(err, result_publication) {
           sql = "SELECT * FROM main_slide ORDER BY orderid";
           db.query(sql, function(err, result_slide) {
+
             response.render('index', {session : request.session, data_notice : result_notice, data_gallery : result_gallery, data_research : result_research, data_publication : result_publication, data_slide : result_slide});
           });
         });
