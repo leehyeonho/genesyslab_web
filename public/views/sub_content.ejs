@@ -306,6 +306,11 @@
 					<% } %>
 	</div>
 <% } else if(tbl == "journals" || tbl == "presentations" || tbl == "patent") { %>
+	<script type="text/javascript">
+		function iframe_url(link){
+			document.getElementById('board_iframe').src = link;
+		}
+	</script>
 	<style>
 		.board_iframe {
 			scrollbar-arrow-color: #navy;
