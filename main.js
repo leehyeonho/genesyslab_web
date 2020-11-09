@@ -152,7 +152,7 @@ app.set('views', './public/views');
 const port = 80
 
 //index.html
-app.get('/:nn', function(request, response) {
+app.get('//:nn', function(request, response) {
   index.index(request, response);
 });
 
