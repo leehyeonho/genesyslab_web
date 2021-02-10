@@ -77,7 +77,7 @@ exports.signup = function ( request, response ){
     if(err) {
       console.log("err : " + err);
     } else {
-      if(isExist.length == 0){
+      if(true){
           bcrypt.hash(user.password, null, null, function(err, hash) {
             sql = 'insert into user_info(user_id, password, user_name, user_tell, reg_date) values (?, ?, ?, ? , now())';
             db.query(sql, [user.user_id, hash, user.user_name, user.user_tell], function(err, result) {
