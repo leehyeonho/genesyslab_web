@@ -260,7 +260,7 @@ exports.view = function(request, response) {
 }
 
 exports.editView = function(request, response) {
-  var tbl = request.body.tbl;
+  var tbl = request.query.tbl;
   var id = request.body.id;
   if(tbl == 1) {
     sql = 'SELECT id, author, title, content, hit, date_format(date,"%Y-%m-%d") as date FROM bbs_notice WHERE id = ?';
