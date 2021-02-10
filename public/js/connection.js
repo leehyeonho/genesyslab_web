@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 
-var dev_connectionId = 3;
+var dev_connectionId = 1;
 var connection;
 switch (dev_connectionId) {
   case 1:

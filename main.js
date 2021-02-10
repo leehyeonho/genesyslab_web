@@ -68,7 +68,7 @@ var upload_m = multer({ storage: storage_mem })
 var upload_re = multer({ storage: storage_research })
 var upload_s = multer({ storage: storage_component })
 
-var dev_id = 3;
+var dev_id = 1;
 var options;
 switch (dev_id) {
   case 1:
