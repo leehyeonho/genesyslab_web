@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt-nodejs');
 var sql = '';
 
 exports.login = function (request, response) {
-    var user_id = "admin";
+    var user_id = request.body.username;
     var password = request.body.password;
     db.query('select * from user_info where user_id = ?', [user_id], function (err, result) {
         if (err) {
@@ -77,7 +77,7 @@ exports.signup = function ( request, response ){
     if(err) {
       console.log("err : " + err);
     } else {
-      if(true){
+      if(isExist.length == 0){
           bcrypt.hash(user.password, null, null, function(err, hash) {
             sql = 'insert into user_info(user_id, password, user_name, user_tell, reg_date) values (?, ?, ?, ? , now())';
             db.query(sql, [user.user_id, hash, user.user_name, user.user_tell], function(err, result) {
