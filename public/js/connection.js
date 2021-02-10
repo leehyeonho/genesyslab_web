@@ -1,28 +1,38 @@
 var mysql = require('mysql');
 
-var connection = mysql.createConnection({
-  host      : 'localhost',
-  port:3306,
-  user      : 'root',
-  password  : 'genesys11',
-  database  : 'genesys'
-});
+var dev_connectionId = 1;
+var connection;
+switch (dev_connectionId) {
+  case 1:
+  connection = mysql.createConnection({
+    host      : 'localhost',
+    port:3306,
+    user      : 'root',
+    password  : 'genesys11',
+    database  : 'genesys'
+  });
+    break;
+  case 2:
+  connection = mysql.createConnection({
+    host      : 'localhost',
+    port:3306,
+    user      : 'root',
+    password  : 'customlab11',
+    database  : 'genesys'
+  });
+    break;
+  case 3:
+  connection = mysql.createConnection({
+    host      : 'localhost',
+    port:3306,
+    user      : 'root',
+    password  : '110356tk@@',
+    database  : 'genesys'
+  });
+    break;
+  default:
 
-// var connection = mysql.createConnection({
-//   host      : 'localhost',
-//   port:3306,
-//   user      : 'root',
-//   password  : 'customlab11',
-//   database  : 'genesys'
-// });
-
-// var connection = mysql.createConnection({
-//   host      : 'localhost',
-//   port:3306,
-//   user      : 'root',
-//   password  : '1234',
-//   database  : 'genesys'
-// });
+}
 
 
 connection.connect();

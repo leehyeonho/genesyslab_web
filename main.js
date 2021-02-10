@@ -68,29 +68,39 @@ var upload_m = multer({ storage: storage_mem })
 var upload_re = multer({ storage: storage_research })
 var upload_s = multer({ storage: storage_component })
 
-var options = {
-    host      : 'localhost',
-    port:3306,
-    user      : 'root',
-    password  : 'genesys11',
-    database  : 'genesys'
-};
+var dev_id = 1;
+var options;
+switch (dev_id) {
+  case 1:
+    options = {
+        host      : 'localhost',
+        port:3306,
+        user      : 'root',
+        password  : 'genesys11',
+        database  : 'genesys'
+    };
+    break;
+  case 2:
+    options = {
+        host      : 'localhost',
+        port:3306,
+        user      : 'root',
+        password  : 'customlab11',
+        database  : 'genesys'
+    };
+    break;
+  case 3:
+    options = {
+        host      : 'localhost',
+        port:3306,
+        user      : 'root',
+        password  : '110356tk@@',
+        database  : 'genesys'
+    };
+    break;
+  default:
 
-// var options = {
-//     host      : 'localhost',
-//     port:3306,
-//     user      : 'root',
-//     password  : 'customlab11',
-//     database  : 'genesys'
-// };
-
-// var options = {
-//     host      : 'localhost',
-//     port:3306,
-//     user      : 'root',
-//     password  : '1234',
-//     database  : 'genesys'
-// };
+}
 
 var sessionStore = new MySQLStore(options);
 app.use(cookieParser());
@@ -202,6 +212,10 @@ app.get('/logout', function(request, response){
   user.logout(request,response);
 });
 
+app.get('/signup', function(request, response){
+  user.signup(request,response);
+});
+
 app.post('/upload', upload_g.array('imgFile'), function(request, response){
   if(request.files.length == 0) {
     if(request.body.tbl == 2) {
@@ -211,6 +225,10 @@ app.post('/upload', upload_g.array('imgFile'), function(request, response){
     }
   } else
   board.upload(request, response);
+});
+
+app.post('/edit', upload_g.array('imgFile'), function(request, response){
+  board.edit(request, response);
 });
 
 // professor data form
@@ -390,6 +408,11 @@ app.get('/favicon.ico', function(request, response){
 app.get('/404_error', function(request, response){
   response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
   fs.createReadStream("./404_error.html").pipe(response);
+});
+
+app.get('/signup.html', function(request, response){
+  response.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
+  fs.createReadStream("./signup.html").pipe(response);
 });
 
 app.post('/signup', function(request, response){
