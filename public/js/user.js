@@ -28,7 +28,7 @@ exports.login = function (request, response) {
   		 //response.render('index', {session : request.session});
                   } else { // 비교 실패
   		    console.log("password incorrected");
-  		    response.redirect('//fail?key=loginfail');
+  		    response.redirect('/fail?key=loginfail');
   		  }
   });
             }
