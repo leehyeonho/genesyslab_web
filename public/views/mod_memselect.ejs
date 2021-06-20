@@ -62,7 +62,6 @@ function change1(id) {
   var can1 = <%- JSON.stringify(can1) %>;
   var can2 = <%- JSON.stringify(can2) %>;
   var can3 = <%- JSON.stringify(can3) %>;
-  var can4 = <%- JSON.stringify(can4) %>;
   if(id == "") {
   } else if(id == "1") {
     frm_memselect.membersSelect.options.length = 1;
@@ -90,16 +89,6 @@ function change1(id) {
       var op = new Option();
   		op.value = can3[i].id; // 값 설정
   		op.text = can3[i].name; // 텍스트 설정
-
-  		frm_memselect.membersSelect.options.add(op); // 옵션 추가
-    }
-
-  } else if(id == "4") {
-    frm_memselect.membersSelect.options.length = 1;
-    for (var i = 0; i < can4.length; i++) {
-      var op = new Option();
-  		op.value = can4[i].id; // 값 설정
-  		op.text = can4[i].name; // 텍스트 설정
 
   		frm_memselect.membersSelect.options.add(op); // 옵션 추가
     }
