@@ -37,7 +37,7 @@ exports.view = function(request, response) {
     db.query(sql, function(error, result) {
       response.render('sub', {session : request.session, data : result, data_research : result_research, tbl : tbl});
       });
-  } else if(tbl == 'guest_researcher') {
+  } else if(tbl == 'guest') {
     sql = 'SELECT * FROM candidate WHERE position=4';
     db.query(sql, function(error, result) {
       response.render('sub', {session : request.session, data : result, data_research : result_research, tbl : tbl});
