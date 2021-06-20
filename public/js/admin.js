@@ -121,7 +121,7 @@ exports.memselect = function(request, response) {
     db.query(sql, function(error, result1) {
 			sql = 'SELECT * FROM candidate WHERE position = 2';
 				db.query(sql, function(error, result2) {
-					sql = 'SELECT * FROM candidate WHERE position = 3';
+					sql = 'SELECT * FROM candidate WHERE position = 4';
 						db.query(sql, function(error, result3) {
 							sql = 'SELECT * FROM candidate WHERE position = 4';
 								db.query(sql, function(error, result4) {
