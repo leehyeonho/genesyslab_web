@@ -123,7 +123,10 @@ exports.memselect = function(request, response) {
 				db.query(sql, function(error, result2) {
 					sql = 'SELECT * FROM candidate WHERE position = 3';
 						db.query(sql, function(error, result3) {
-							response.render('mod_memselect', {session : request.session, can1 : result1, can2 : result2, can3 : result3});
+							sql = 'SELECT * FROM candidate WHERE position = 4';
+								db.query(sql, function(error, result4) {
+									response.render('mod_memselect', {session : request.session, can1 : result1, can2 : result2, can3 : result3, can4 : result4});
+									});
 							});
 					});
       });
