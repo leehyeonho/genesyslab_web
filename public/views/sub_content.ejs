@@ -305,6 +305,57 @@
 					</div>
 					<% } %>
 	</div>
+<% } else if(tbl == "guest_researcher") { %>
+	<div class="contop">
+		<h3 class="page_title">GUEST RESEARCHER</h3>
+		<p>Genesys Lab.</p>
+	</div><!--// contop -->
+	<div class="conbody">
+		<style>
+		.tit {font-weight:bold;color:#666666;text-align:center;}
+		.bbs_categ {line-height:22px;}
+		.bbs_categ  td {line-height:24px; height:24px; color:#c2c2c2; text-decoration:none;}
+		.bbs_categ  td a:hover{line-height:24px; height:24px; color:#f26731; text-decoration:none;}
+		.sub_dot{background:url('/images/sub/sub_dot.jpg') 0 4px no-repeat; padding-left:12px; vertical-align:top;}
+		.bbs_btn{width:80px; height:27px; background:#ffffff; color:#111; font-weight:bold; border:1px solid #dbdbdb; text-align:center; line-height:25px; display:inline-block;}
+		</style>
+		<% for(var i=0;i<data.length;i++) { %>
+							<div class="mem_skin ">
+									<div class="mem_img">
+					<div style="display:table; width:125px; height:160px; #position:relative; overflow:hidden;">
+						<div style="#position:absolute; #top:50%; #left:50%; display:table-cell; vertical-align:middle; text-align:center;">
+							<div style="#position:relative; #top:-50%; #left:-50%;">
+								<img src="<%= data[i].img %>" style="max-width:125px; max-height:160px;" >
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mem_cont md30">
+					<table width="100%" cellpadding="0" cellspacing="0" class="mem_table ">
+						<colgroup>
+						<col width="20%">
+						</colgroup>
+
+						<tr>
+							<th>
+														<%= data[i].name %>
+														</th>
+						</tr>
+
+						<tr>
+							<td>[<%= data[i].year %>]<!-- Ph.D [M.S. [2001]년] --></td>
+						</tr>
+												<tr>
+							<td><%= data[i].researchArea %></td>
+						</tr>
+												<tr>
+							<td ><%= data[i].occu %></td>
+						</tr>
+					</table>
+				</div>
+					</div>
+					<% } %>
+	</div>
 <% } else if(tbl == "journals" || tbl == "presentations" || tbl == "patent") { %>
 	<script type="text/javascript">
 		function iframe_url(link){
